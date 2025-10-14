@@ -1,31 +1,4 @@
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #222;
-}
-header {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 2rem 0;
-}
-nav a {
-    color: #00adb5;
-    margin: 0 10px;
-    text-decoration: none;
-}
-section {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 10px;
-}
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #222;
-    color: #ccc;
-}
+
+* { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji'; }
+html { scroll-behavior: smooth; }
+a:focus-visible, button:focus-visible { outline: 2px solid rgb(45 212 191); outline-offset: 2px; }
