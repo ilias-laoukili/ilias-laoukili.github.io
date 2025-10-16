@@ -5,28 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ilias Laoukili — AI & Cybersecurity Engineer Student</title>
   <meta name="description" content="Ilias Laoukili — Portfolio in AI, Cybersecurity, ML and Systems." />
+  <link rel="canonical" href="https://laoukili.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ilias Laoukili — AI & Cybersecurity Engineer Student" />
+  <meta property="og:description" content="Portfolio in AI, Cybersecurity, ML and Systems by Ilias Laoukili." />
+  <meta property="og:url" content="https://laoukili.com/" />
+  <meta property="og:image" content="https://laoukili.com/assets/profile-pic.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ilias Laoukili — AI & Cybersecurity Engineer Student" />
+  <meta name="twitter:description" content="Research and engineering work in AI, cybersecurity, graph learning, and systems." />
+  <meta name="twitter:image" content="https://laoukili.com/assets/profile-pic.png" />
+  <meta name="theme-color" content="#0f172a" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./assets/profile-pic.png" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body class="bg-slate-950 text-slate-200">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full backdrop-blur bg-slate-900/70 border-b border-slate-800 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-teal-400 font-semibold tracking-wide">Ilias Laoukili</a>
-      <div class="hidden md:flex items-center gap-6 text-sm">
-        <a class="hover:text-teal-400" href="#about">About</a>
-        <a class="hover:text-teal-400" href="#project">Current Project</a>
-        <a class="hover:text-teal-400" href="#projects">Projects</a>
-        <a class="hover:text-teal-400" href="#skills">Skills</a>
-        <a class="hover:text-teal-400" href="#contact">Contact</a>
+  <nav class="fixed top-0 left-0 w-full backdrop-blur bg-slate-900/70 border-b border-slate-800 z-50" aria-label="Primary navigation">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between gap-4">
+        <a href="#" class="text-teal-400 font-semibold tracking-wide">Ilias Laoukili</a>
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center gap-6 text-sm">
+            <a class="hover:text-teal-400" href="#about">About</a>
+            <a class="hover:text-teal-400" href="#project">Current Project</a>
+            <a class="hover:text-teal-400" href="#projects">Projects</a>
+            <a class="hover:text-teal-400" href="#skills">Skills</a>
+            <a class="hover:text-teal-400" href="#contact">Contact</a>
+          </div>
+          <a href="./assets/US_Resume.pdf" class="inline-flex items-center gap-2 bg-teal-400 text-slate-900 px-4 py-2 rounded-md font-medium shadow hover:shadow-lg">Download CV</a>
+          <button type="button" class="md:hidden inline-flex items-center justify-center rounded-md border border-slate-700 p-2 text-slate-300 hover:border-teal-500 hover:text-teal-400 transition" aria-controls="mobile-nav" aria-expanded="false" data-menu-toggle>
+            <span class="sr-only">Toggle navigation</span>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <a href="./assets/US_Resume.pdf" class="inline-flex items-center gap-2 bg-teal-400 text-slate-900 px-4 py-2 rounded-md font-medium shadow hover:shadow-lg">Download CV</a>
+      <div id="mobile-nav" class="hidden md:hidden flex-col gap-2 border border-slate-800 bg-slate-900/90 mt-3 rounded-lg p-4 text-sm shadow-lg">
+        <a class="block rounded-md px-3 py-2 hover:bg-slate-800 hover:text-teal-400" href="#about">About</a>
+        <a class="block rounded-md px-3 py-2 hover:bg-slate-800 hover:text-teal-400" href="#project">Current Project</a>
+        <a class="block rounded-md px-3 py-2 hover:bg-slate-800 hover:text-teal-400" href="#projects">Projects</a>
+        <a class="block rounded-md px-3 py-2 hover:bg-slate-800 hover:text-teal-400" href="#skills">Skills</a>
+        <a class="block rounded-md px-3 py-2 hover:bg-slate-800 hover:text-teal-400" href="#contact">Contact</a>
+        <a class="block rounded-md px-3 py-2 bg-teal-500 text-slate-900 font-medium text-center hover:bg-teal-400 transition" href="./assets/US_Resume.pdf">Download CV</a>
+      </div>
     </div>
   </nav>
 
+  <main id="main-content">
   <!-- Hero -->
   <header class="pt-28 md:pt-36 pb-16">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.4fr,1fr] gap-10 items-center">
@@ -45,7 +77,7 @@
       </div>
       <div class="flex justify-center md:justify-end">
         <div class="relative">
-          <img src="./assets/profile-pic.png" alt="Profile photo of Ilias Laoukili" class="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover ring-4 ring-teal-500/40 shadow-xl" />
+          <img src="./assets/profile-pic.png" alt="Profile photo of Ilias Laoukili" class="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover ring-4 ring-teal-500/40 shadow-xl" width="224" height="224" />
         </div>
       </div>
     </div>
@@ -88,29 +120,79 @@
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-2xl font-bold">Projects</h2>
       <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Project cards (placeholders to replace later) -->
         <article class="group rounded-xl border border-slate-800 bg-slate-900/60 hover:border-teal-500 transition overflow-hidden">
-          <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-          <div class="p-5">
+          <div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <img src="./assets/gnn-illustration.svg" alt="Stylized graph neural network with message passing flow highlighted." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col gap-3">
             <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Tremplin Recherche — GNN Sparsification</h3>
-            <p class="mt-2 text-sm text-slate-400">Sparsity strategies for efficient graph neural networks with PyG/DGL.</p>
+            <p class="text-sm text-slate-400">Structured sparsity experiments to accelerate GNN inference without sacrificing accuracy.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">PyTorch Geometric</span>
+              <span class="badge">DGL</span>
+              <span class="badge">Model Compression</span>
+            </div>
           </div>
         </article>
         <article class="group rounded-xl border border-slate-800 bg-slate-900/60 hover:border-teal-500 transition overflow-hidden">
-          <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-          <div class="p-5">
-            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">YOLO Vision — Object Detection</h3>
-            <p class="mt-2 text-sm text-slate-400">Training/evaluation on custom datasets; interactive visualization dashboard.</p>
+          <div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <img src="./assets/fire-detection-illustration.svg" alt="Drone vision interface highlighting fire and smoke detections with bounding boxes." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col gap-3">
+            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Drone Fire + Smoke Detection</h3>
+            <p class="text-sm text-slate-400">Fine-tuned YOLO pipeline for onboard detection, cutting false alarms by 30% on field data.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">Python</span>
+              <span class="badge">YOLOv8</span>
+              <span class="badge">Edge AI</span>
+            </div>
           </div>
         </article>
         <article class="group rounded-xl border border-slate-800 bg-slate-900/60 hover:border-teal-500 transition overflow-hidden">
-          <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-          <div class="p-5">
-            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Java Platformer Game</h3>
-            <p class="mt-2 text-sm text-slate-400">2D platformer with physics/collision written in Java.</p>
+          <div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <img src="./echoes_of_innocense_screenshot.png" alt="Echoes of Innocence Java game screenshot showing 2D gameplay mockup." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col gap-3">
+            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Echoes of Innocence — 2D Story Game</h3>
+            <p class="text-sm text-slate-400">Narrative-driven Java adventure following Mathis in a conflict zone; built on clean OOP architecture.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">Java</span>
+              <span class="badge">OOP</span>
+              <span class="badge">Game Design</span>
+            </div>
+            <details class="group/open text-xs leading-relaxed text-slate-400 bg-slate-900/70 border border-slate-800 rounded-lg p-3">
+              <summary class="cursor-pointer text-teal-400 font-semibold">Read project brief</summary>
+              <p class="mt-2">Echoes of Innocence follows Mathis, a 10-year-old navigating a war-torn city to find his sister Lina. The game blends exploration, moral dilemmas, stealth, and inventory mechanics across locations such as a hidden rebel camp, a ruined cathedral, and the kidnapper’s lair—each revealing fragments of family memories.</p>
+              <p class="mt-2">Co-created with David J. Barnes, Michael Kolling, and D. Bureau, the project expanded the BlueJ world by refactoring navigation to <code>HashMap</code> exits, adding item collections with weight limits, and introducing branching endings driven by player choices.</p>
+            </details>
           </div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section id="highlights" class="py-16 bg-slate-900/60 border-y border-slate-800">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold">Highlights</h2>
+      <ol class="mt-8 space-y-6 border-l border-slate-800 pl-6">
+        <li class="relative pl-4">
+          <span class="absolute -left-[11px] top-1 h-3 w-3 rounded-full bg-teal-400"></span>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm uppercase tracking-wide text-slate-500">2025 — Present</p>
+            <p class="text-lg font-semibold text-slate-100">Volunteer, French Red Cross</p>
+            <p class="text-sm text-slate-400">Coordinating logistics for outreach operations supporting 200+ families while streamlining supply workflows.</p>
+          </div>
+        </li>
+        <li class="relative pl-4">
+          <span class="absolute -left-[11px] top-1 h-3 w-3 rounded-full bg-teal-400"></span>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm uppercase tracking-wide text-slate-500">2021 — Present</p>
+            <p class="text-lg font-semibold text-slate-100">Academic Tutor & Instructor</p>
+            <p class="text-sm text-slate-400">Guided 45+ students in math, physics, and CS with customized curricula, raising performance metrics by 15% on average.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -154,8 +236,33 @@
     </div>
   </section>
 
+  </main>
   <footer class="py-8 text-center text-slate-500 text-sm border-t border-slate-800">
     © Ilias Laoukili · Built with HTML + Tailwind (dark mode)
   </footer>
+  <script>
+    const navToggleButton = document.querySelector('[data-menu-toggle]');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (navToggleButton && mobileNav) {
+      const toggleMenu = () => {
+        mobileNav.classList.toggle('hidden');
+        const isExpanded = !mobileNav.classList.contains('hidden');
+        navToggleButton.setAttribute('aria-expanded', String(isExpanded));
+      };
+      navToggleButton.addEventListener('click', toggleMenu);
+      mobileNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (!mobileNav.classList.contains('hidden')) {
+            toggleMenu();
+          }
+        });
+      });
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
+          toggleMenu();
+        }
+      });
+    }
+  </script>
 </body>
 </html>

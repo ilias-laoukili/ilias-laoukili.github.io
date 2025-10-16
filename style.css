@@ -2,3 +2,33 @@
 * { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji'; }
 html { scroll-behavior: smooth; }
 a:focus-visible, button:focus-visible { outline: 2px solid rgb(45 212 191); outline-offset: 2px; }
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: rgb(8 47 73);
+  color: rgb(226 232 240);
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.skip-link:focus {
+  opacity: 1;
+  pointer-events: auto;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(45, 212, 191, 0.12);
+  color: rgb(94 234 212);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

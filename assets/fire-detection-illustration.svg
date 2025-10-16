@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#0b0d17"/>
+
+  <!-- defs -->
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#d0d4e4"/>
+    </marker>
+  </defs>
+  <style>
+    .panel { fill: #141829; stroke: #2a2e44; stroke-width: 2; rx: 12; }
+    .arrow { stroke: #d0d4e4; stroke-width: 3; marker-end: url(#arrow); fill: none; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 600; fill: #f3f5ff; }
+    .sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #a2a8c5; }
+    .bbox-fire { fill: none; stroke: #ff5c5c; stroke-width: 3; filter: drop-shadow(0 0 6px #ff5c5c); }
+    .bbox-smoke { fill: none; stroke: #4dccff; stroke-width: 3; stroke-dasharray: 8 6; filter: drop-shadow(0 0 6px #4dccff); }
+  </style>
+
+  <!-- TITLE -->
+  <text x="400" y="70" text-anchor="middle" font-family="system-ui" font-size="26" font-weight="700" fill="#e6e9ff">
+    Fire &amp; Smoke Recognition (YOLO)
+  </text>
+
+  <!-- VIDEO INPUT -->
+  <g transform="translate(150,110)">
+    <rect width="500" height="200" class="panel"/>
+    <text x="250" y="40" text-anchor="middle" class="label">Video Input</text>
+    <text x="250" y="64" text-anchor="middle" class="sub">Scene with Fire &amp; Smoke</text>
+
+    <!-- buildings / ground -->
+    <rect x="30" y="160" width="440" height="40" fill="#1e2338"/>
+    <rect x="60" y="120" width="70" height="40" fill="#252b46"/>
+    <rect x="150" y="110" width="55" height="50" fill="#2c3352"/>
+    <rect x="230" y="130" width="90" height="30" fill="#313960"/>
+
+    <!-- smoke -->
+    <g opacity="0.7">
+      <ellipse cx="280" cy="90" rx="26" ry="16" fill="#4dccff" opacity="0.35"/>
+      <ellipse cx="302" cy="82" rx="22" ry="13" fill="#4dccff" opacity="0.25"/>
+      <ellipse cx="255" cy="96" rx="18" ry="12" fill="#4dccff" opacity="0.2"/>
+    </g>
+
+    <!-- fire -->
+    <g transform="translate(160,140)">
+      <path d="M20,30 C10,18 14,10 20,4 C26,10 30,18 20,30 Z" fill="#ff7a00"/>
+      <path d="M21,24 C16,18 18,14 21,8 C24,14 26,18 21,24 Z" fill="#ffd166"/>
+    </g>
+
+    <!-- bounding boxes -->
+    <rect x="150" y="125" width="50" height="50" class="bbox-fire"/>
+    <rect x="230" y="80" width="90" height="50" class="bbox-smoke"/>
+  </g>
+
+  <!-- ARROW DOWN -->
+  <line x1="400" y1="310" x2="400" y2="390" class="arrow"/>
+
+  <!-- YOLO MODEL -->
+  <g transform="translate(280,390)">
+    <rect width="240" height="120" class="panel"/>
+    <text x="120" y="70" text-anchor="middle" class="label">YOLO Model</text>
+    <text x="120" y="50" text-anchor="middle" class="sub">Detection Stage</text>
+    <rect x="60" y="82" width="120" height="6" fill="#4dccff"/>
+  </g>
+
+  <!-- ARROW DOWN -->
+  <line x1="400" y1="510" x2="400" y2="590" class="arrow"/>
+
+  <!-- DETECTIONS -->
+  <g transform="translate(180,590)">
+    <rect width="440" height="140" class="panel"/>
+    <text x="220" y="44" text-anchor="middle" class="label">Detections</text>
+
+    <g transform="translate(44,68)">
+      <rect width="352" height="28" rx="6" fill="#0f1326" stroke="#2a2f55"/>
+      <circle cx="16" cy="14" r="5" fill="#ff5c5c"/>
+      <text x="32" y="19" class="sub">Fire detected (0.98)</text>
+
+      <g transform="translate(0,36)">
+        <rect width="352" height="28" rx="6" fill="#0f1326" stroke="#2a2f55"/>
+        <circle cx="16" cy="14" r="5" fill="#4dccff"/>
+        <text x="32" y="19" class="sub">Smoke detected (0.91)</text>
+      </g>
+    </g>
+  </g>
+</svg>

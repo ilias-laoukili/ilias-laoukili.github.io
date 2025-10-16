@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" role="img" aria-labelledby="title desc">
+  <title id="title">Graph neural network concept illustration</title>
+  <desc id="desc">Stylized graph showing nodes grouped by color with edges representing message passing.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.65">
+      <stop offset="0%" stop-color="rgba(45,212,191,0.35)"/>
+      <stop offset="100%" stop-color="rgba(15,23,42,0)"/>
+    </radialGradient>
+    <style>
+      .node { fill: #38bdf8; stroke: #0ea5e9; stroke-width: 4; }
+      .node--secondary { fill: #22d3ee; stroke: #0ea5e9; }
+      .node--tertiary { fill: #2dd4bf; stroke: #0ea5e9; }
+      .node--target { fill: #ecfeff; stroke: #22d3ee; }
+      .edge { stroke: rgba(148,163,184,0.8); stroke-width: 3; stroke-linecap: round; }
+      .edge--highlight { stroke: rgba(45,212,191,0.9); stroke-width: 4; }
+      text { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #e2e8f0; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect width="420" height="240" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <circle cx="90" cy="120" r="80" fill="url(#glow)"/>
+    <circle cx="210" cy="105" r="70" fill="url(#glow)"/>
+    <circle cx="330" cy="125" r="90" fill="url(#glow)"/>
+  </g>
+  <g>
+    <line class="edge" x1="80" y1="70" x2="120" y2="120"/>
+    <line class="edge" x1="120" y1="120" x2="60" y2="155"/>
+    <line class="edge edge--highlight" x1="120" y1="120" x2="200" y2="85"/>
+    <line class="edge" x1="200" y1="85" x2="250" y2="130"/>
+    <line class="edge edge--highlight" x1="250" y1="130" x2="310" y2="95"/>
+    <line class="edge edge--highlight" x1="250" y1="130" x2="320" y2="150"/>
+    <line class="edge" x1="320" y1="150" x2="360" y2="105"/>
+    <line class="edge" x1="320" y1="150" x2="360" y2="185"/>
+    <line class="edge" x1="310" y1="95" x2="360" y2="105"/>
+    <line class="edge" x1="200" y1="85" x2="210" y2="40"/>
+    <line class="edge" x1="200" y1="85" x2="170" y2="150"/>
+    <line class="edge" x1="170" y1="150" x2="130" y2="190"/>
+  </g>
+  <g>
+    <circle class="node" cx="120" cy="120" r="18"/>
+    <circle class="node--secondary" cx="80" cy="70" r="14"/>
+    <circle class="node--secondary" cx="60" cy="155" r="14"/>
+    <circle class="node--secondary" cx="210" cy="40" r="12"/>
+    <circle class="node--tertiary" cx="170" cy="150" r="16"/>
+    <circle class="node--tertiary" cx="130" cy="190" r="13"/>
+    <circle class="node--target" cx="200" cy="85" r="19"/>
+    <circle class="node" cx="250" cy="130" r="17"/>
+    <circle class="node--secondary" cx="310" cy="95" r="15"/>
+    <circle class="node--tertiary" cx="320" cy="150" r="16"/>
+    <circle class="node--secondary" cx="360" cy="105" r="13"/>
+    <circle class="node--secondary" cx="360" cy="185" r="13"/>
+  </g>
+</svg>
