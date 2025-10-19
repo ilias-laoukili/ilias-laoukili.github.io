@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilias Laoukili — AI & Cybersecurity Engineer Student</title>
+  <meta name="description" content="Ilias Laoukili — Portfolio in AI, Cybersecurity, ML and Systems." />
+  <meta name="author" content="Ilias Laoukili" />
+  <link rel="canonical" href="https://laoukili.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ilias Laoukili — AI & Cybersecurity Engineer Student" />
+  <meta property="og:description" content="Portfolio in AI, Cybersecurity, ML and Systems by Ilias Laoukili." />
+  <meta property="og:url" content="https://laoukili.com/" />
+  <meta property="og:image" content="https://laoukili.com/assets/profile-pic.png" />
+  <meta property="og:site_name" content="Ilias Laoukili" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ilias Laoukili — AI & Cybersecurity Engineer Student" />
+  <meta name="twitter:description" content="Research and engineering work in AI, cybersecurity, graph learning, and systems." />
+  <meta name="twitter:image" content="https://laoukili.com/assets/profile-pic.png" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
+  </noscript>
+  <link rel="icon" type="image/png" href="./assets/profile-pic.png" />
+  <style id="critical-css">
+    :root {
+      color-scheme: light dark;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #f8fafc;
+      color: #1f2937;
+      font-family: inherit;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    html.dark body {
+      background-color: #020617;
+      color: #e2e8f0;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+    }
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem 1rem;
+      background: #082f49;
+      color: #e2e8f0;
+      border-radius: 0.375rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 999;
+    }
+    .skip-link:focus {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    nav[aria-label="Primary navigation"] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background-color: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid #e2e8f0;
+      z-index: 50;
+    }
+    html.dark nav[aria-label="Primary navigation"] {
+      background-color: rgba(15, 23, 42, 0.7);
+      border-color: #1e293b;
+    }
+    .max-w-6xl {
+      max-width: 72rem;
+    }
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .flex {
+      display: flex;
+    }
+    .hidden {
+      display: none;
+    }
+    .block {
+      display: block;
+    }
+    .inline-flex {
+      display: inline-flex;
+    }
+    .grid {
+      display: grid;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .justify-center {
+      justify-content: center;
+    }
+    .gap-3 {
+      gap: 0.75rem;
+    }
+    .gap-4 {
+      gap: 1rem;
+    }
+    .gap-6 {
+      gap: 1.5rem;
+    }
+    .gap-10 {
+      gap: 2.5rem;
+    }
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+    .font-medium {
+      font-weight: 500;
+    }
+    .font-semibold {
+      font-weight: 600;
+    }
+    .font-extrabold {
+      font-weight: 800;
+    }
+    .tracking-wide {
+      letter-spacing: 0.08em;
+    }
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+    .text-4xl {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+    .leading-tight {
+      line-height: 1.25;
+    }
+    .mt-5 {
+      margin-top: 1.25rem;
+    }
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    .pt-28 {
+      padding-top: 7rem;
+    }
+    .pb-16 {
+      padding-bottom: 4rem;
+    }
+    .rounded-md {
+      border-radius: 0.375rem;
+    }
+    .rounded-full {
+      border-radius: 9999px;
+    }
+    .shadow {
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    }
+    .shadow-xl {
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
+    }
+    .border {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #cbd5f5;
+    }
+    .border-b {
+      border-bottom-width: 1px;
+    }
+    .border-slate-200 {
+      border-color: #e2e8f0;
+    }
+    .border-slate-300 {
+      border-color: #cbd5f5;
+    }
+    .text-teal-400 {
+      color: #2dd4bf;
+    }
+    .text-slate-900 {
+      color: #0f172a;
+    }
+    .text-slate-800 {
+      color: #1f2937;
+    }
+    .text-slate-700 {
+      color: #334155;
+    }
+    .text-slate-600 {
+      color: #475569;
+    }
+    .bg-teal-400 {
+      background-color: #2dd4bf;
+    }
+    .bg-teal-500 {
+      background-color: #14b8a6;
+    }
+    .bg-white\\/70 {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+    .text-slate-600 {
+      color: #475569;
+    }
+    .w-full {
+      width: 100%;
+    }
+    .w-44 {
+      width: 11rem;
+    }
+    .h-44 {
+      height: 11rem;
+    }
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .px-5 {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .py-3 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    .transition {
+      transition: all 0.2s ease-in-out;
+    }
+    .hover\\:text-teal-400:hover {
+      color: #2dd4bf;
+    }
+    .ringed-avatar {
+      box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.35);
+    }
+    .relative {
+      position: relative;
+    }
+    .z-50 {
+      z-index: 50;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .hero-header {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .md\\:flex {
+        display: flex;
+      }
+      .md\\:hidden {
+        display: none !important;
+      }
+      .md\\:inline-flex {
+        display: inline-flex;
+      }
+      .md\\:justify-end {
+        justify-content: flex-end;
+      }
+      .md\\:pt-36 {
+        padding-top: 9rem;
+      }
+      .md\\:w-56 {
+        width: 14rem;
+      }
+      .md\\:h-56 {
+        height: 14rem;
+      }
+      .md\\:grid-cols-\\[1\\.4fr,1fr\\] {
+        grid-template-columns: 1.4fr 1fr;
+      }
+      .md\\:text-5xl {
+        font-size: 3rem;
+        line-height: 1.1;
+      }
+    }
+    .hero-header {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .hero-header {
+        grid-template-columns: 1.4fr 1fr;
+      }
+    }
+    .hero-kicker {
+      color: #2dd4bf;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      margin: 0;
+      font-size: 2.25rem;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+        line-height: 1.1;
+      }
+    }
+    .hero-title span {
+      color: #2dd4bf;
+    }
+    .hero-copy {
+      margin-top: 1.25rem;
+      color: #475569;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      max-width: 42rem;
+    }
+    html.dark .dark\\:bg-slate-900\\/70 {
+      background-color: rgba(15, 23, 42, 0.7);
+    }
+    html.dark .dark\\:bg-slate-950 {
+      background-color: #020617;
+    }
+    html.dark .dark\\:border-slate-700 {
+      border-color: #334155;
+    }
+    html.dark .dark\\:border-slate-800 {
+      border-color: #1e293b;
+    }
+    html.dark .dark\\:text-slate-200 {
+      color: #e2e8f0;
+    }
+    html.dark .dark\\:text-slate-300 {
+      color: #cbd5f5;
+    }
+    html.dark .dark\\:hover\\:text-teal-400:hover {
+      color: #2dd4bf;
+    }
+  </style>
+  <link rel="preload" as="style" href="./assets/tailwind.css">
+  <link rel="preload" as="style" href="./style.css">
+  <link rel="stylesheet" href="./assets/tailwind.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="./assets/tailwind.css">
+    <link rel="stylesheet" href="./style.css">
+  </noscript>
+  <script>
+    (function () {
+      const storageKey = 'darkMode';
+      const classList = document.documentElement.classList;
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let shouldUseDark = prefersDark;
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        if (stored !== null) {
+          shouldUseDark = stored === 'true';
+        }
+      } catch (error) {
+        shouldUseDark = prefersDark;
+      }
+      classList.toggle('dark', shouldUseDark);
+      document.documentElement.style.colorScheme = shouldUseDark ? 'dark' : 'light';
+    })();
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ilias Laoukili",
+      "url": "https://laoukili.com/",
+      "jobTitle": "AI & Cybersecurity Engineer Student",
+      "sameAs": [
+        "https://github.com/ilias-laoukili",
+        "https://linkedin.com/in/ilias-laoukili"
+      ]
+    }
+  </script>
+  <link rel="stylesheet" href="./assets/tailwind.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200">
+<a class="skip-link" href="#main-content">Skip to content</a>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 z-50" aria-label="Primary navigation">
+<div class="max-w-6xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="text-teal-400 font-semibold tracking-wide">Ilias Laoukili</a>
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center gap-6 text-sm">
+            <a class="hover:text-teal-400" href="#about">About</a>
+            <a class="hover:text-teal-400" href="#project">Current Project</a>
+            <a class="hover:text-teal-400" href="#projects">Projects</a>
+            <a class="hover:text-teal-400" href="#skills">Skills</a>
+            <a class="hover:text-teal-400" href="blog/blog.html">Blog</a>
+            <a class="hover:text-teal-400" href="#contact">Contact</a>
+          </div>
+          <a href="./assets/US_Resume.pdf" class="inline-flex items-center gap-2 bg-teal-400 text-slate-900 px-4 py-2 rounded-md font-medium shadow hover:shadow-lg">Download CV</a>
+          <button type="button" class="md:hidden inline-flex items-center justify-center rounded-md border border-slate-300 dark:border-slate-700 p-2 text-slate-700 dark:text-slate-300 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400 transition" aria-controls="mobile-nav" aria-expanded="false" data-menu-toggle>
+            <span class="sr-only">Toggle navigation</span>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+        <div id="mobile-nav" class="hidden md:hidden flex-col gap-2 border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 mt-3 rounded-lg p-4 text-sm shadow-lg">
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="#about">About</a>
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="#project">Current Project</a>
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="#projects">Projects</a>
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="#skills">Skills</a>
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="blog/blog.html">Blog</a>
+          <a class="block rounded-md px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600 dark:hover:text-teal-400" href="#contact">Contact</a>
+          <a class="block rounded-md px-3 py-2 bg-teal-500 dark:bg-teal-600 text-slate-900 font-medium text-center hover:bg-teal-400 dark:hover:bg-teal-500 transition" href="./assets/US_Resume.pdf">Download CV</a>
+</div>
+</div>
+  </nav>
+
+  <main id="main-content">
+  <!-- Hero -->
+  <header class="pt-28 md:pt-36 pb-16">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.4fr,1fr] gap-10 items-center hero-header">
+      <div>
+        <p class="text-teal-400 font-semibold mb-2 hero-kicker">Portfolio</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight hero-title">
+          Ilias Laoukili — <span class="text-teal-400">AI & Cybersecurity Engineer Student</span>
+        </h1>
+        <p class="mt-5 text-slate-600 dark:text-slate-300 text-lg max-w-2xl hero-copy">
+          Engineering intelligence and security through data, algorithms, and systems. Currently seeking 2025 research internships focused on trustworthy AI and security, open to relocation across the EU and US.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#project" class="px-5 py-3 rounded-md bg-teal-500 text-slate-900 font-semibold hover:bg-teal-400 transition">View Current Project</a>
+          <a href="#projects" class="px-5 py-3 rounded-md border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400 transition">Browse Projects</a>
+        </div>
+      </div>
+      <div class="flex justify-center md:justify-end">
+        <div class="relative">
+          <picture>
+            <source type="image/png" srcset="./assets/profile-pic-176.png 176w, ./assets/profile-pic-224.png 224w" sizes="(min-width: 768px) 224px, 176px">
+            <img src="./assets/profile-pic-224.png" alt="Profile photo of Ilias Laoukili" class="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover shadow-xl ringed-avatar" width="224" height="224" fetchpriority="high" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- About -->
+  <section id="about" class="py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">About</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+        I'm an engineering student specializing in <span class="text-teal-400">Artificial Intelligence</span> and <span class="text-teal-400">Cybersecurity</span>.
+        I like building fast, accessible interfaces and applying machine learning for practical problems such as anomaly detection and graph learning.
+      </p>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-slate-900/60 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+<h3 class="font-semibold text-lg text-teal-400 mb-2">AI Focus</h3>
+          <ul class="space-y-2 text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Graph Neural Networks</li>
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Model Optimization</li>
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Computer Vision</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-900/60 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+<h3 class="font-semibold text-lg text-teal-400 mb-2">Security Interests</h3>
+          <ul class="space-y-2 text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Threat Intelligence</li>
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Secure Systems</li>
+            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-teal-400 rounded-full"></span> Ethical Hacking</li>
+          </ul>
+        </div>
+</div>
+    </div>
+  </section>
+  <!-- Current Project -->
+  <section id="project" class="py-16 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <h2 class="text-2xl font-bold">Current Project — Tremplin Recherche (GNN Sparsification)</h2>
+        <div class="flex gap-3">
+          <a href="./assets/Projet_tremplin_sparsification_GNN.pdf" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold hover:bg-teal-400 transition">Download GNN Project PDF</a>
+          <a href="./assets/US_Resume.pdf" class="px-4 py-2 rounded-md border border-slate-700 hover:border-teal-500 hover:text-teal-400 transition">Download CV</a>
+        </div>
+      </div>
+      <p class="mt-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+        Research on <strong>Graph Neural Networks sparsification</strong> to improve inference latency and memory while preserving accuracy. Exploring structured pruning, topology-aware sparsity, and reproducible benchmarks with PyTorch Geometric/DGL.
+      </p>
+      <ul class="mt-4 grid md:grid-cols-3 gap-3 text-sm text-slate-600 dark:text-slate-400">
+        <li class="bg-white dark:bg-slate-900/60 p-3 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">Frameworks: PyTorch Geometric, DGL</li>
+        <li class="bg-white dark:bg-slate-900/60 p-3 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">Focus: latency · memory · accuracy</li>
+        <li class="bg-white dark:bg-slate-900/60 p-3 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">Deliverables: survey, experiments, demo</li>
+      </ul>
+    </div>
+  </section>
+  <!-- Projects Grid -->
+  <section id="projects" class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-bold">Featured Projects</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-400">Selected work showcasing AI and security applications</p>
+<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/60 hover:border-teal-500 dark:hover:border-teal-500 transition overflow-hidden">
+<div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <img src="./assets/gnn-illustration.svg" alt="Stylized graph neural network with message passing flow highlighted." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="p-5 flex flex-col gap-3">
+            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Tremplin Recherche — GNN Sparsification</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Structured sparsity experiments to accelerate GNN inference without sacrificing accuracy.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">PyTorch Geometric</span>
+              <span class="badge">DGL</span>
+              <span class="badge">Model Compression</span>
+            </div>
+          </div>
+        </article>
+        <article class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-teal-500 dark:hover:border-teal-500 transition overflow-hidden">
+          <div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <img src="./assets/fire-detection-illustration.svg" alt="Drone vision interface highlighting fire and smoke detections with bounding boxes." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="p-5 flex flex-col gap-3">
+            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Drone Fire + Smoke Detection</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Fine-tuned YOLO pipeline for onboard detection, cutting false alarms by 30% on field data.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">Python</span>
+              <span class="badge">YOLOv8</span>
+              <span class="badge">Edge AI</span>
+            </div>
+          </div>
+        </article>
+        <article class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-teal-500 dark:hover:border-teal-500 transition overflow-hidden">
+          <div class="aspect-[4/3] bg-slate-800/70 overflow-hidden">
+            <picture>
+              <img src="./assets/echoes_of_innocense_screenshot.png" alt="Echoes of Innocence Java game screenshot showing 2D gameplay mockup." class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" width="1200" height="900" />
+            </picture>
+          </div>
+          <div class="p-5 flex flex-col gap-3">
+            <h3 class="font-semibold text-lg group-hover:text-teal-400 transition">Echoes of Innocence — 2D Story Game</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Narrative-driven Java adventure following Mathis in a conflict zone; built on clean OOP architecture.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="badge">Java</span>
+              <span class="badge">OOP</span>
+              <span class="badge">Game Design</span>
+            </div>
+            <details class="group/open text-xs leading-relaxed text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-lg p-3">
+              <summary class="cursor-pointer text-teal-400 font-semibold">Read project brief</summary>
+              <p class="mt-2">Echoes of Innocence follows Mathis, a 10-year-old navigating a war-torn city to find his sister Lina. The game blends exploration, moral dilemmas, stealth, and inventory mechanics across locations such as a hidden rebel camp, a ruined cathedral, and the kidnapper’s lair—each revealing fragments of family memories.</p>
+              <p class="mt-2">Co-created with David J. Barnes, Michael Kolling, and D. Bureau, the project expanded the BlueJ world by refactoring navigation to <code>HashMap</code> exits, adding item collections with weight limits, and introducing branching endings driven by player choices.</p>
+            </details>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Highlights -->
+  <section id="highlights" class="py-16 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold">Highlights</h2>
+      <ol class="mt-8 space-y-6 border-l border-slate-200 dark:border-slate-800 pl-6">
+<li class="relative pl-4">
+          <span class="absolute -left-[11px] top-1 h-3 w-3 rounded-full bg-teal-400"></span>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm uppercase tracking-wide text-slate-500">2025 — Present</p>
+            <p class="text-lg font-semibold text-slate-900 dark:text-slate-100">Volunteer, French Red Cross</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Coordinating logistics for outreach operations supporting 200+ families while streamlining supply workflows.</p>
+          </div>
+        </li>
+        <li class="relative pl-4">
+          <span class="absolute -left-[11px] top-1 h-3 w-3 rounded-full bg-teal-400"></span>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm uppercase tracking-wide text-slate-500">2021 — Present</p>
+            <p class="text-lg font-semibold text-slate-900 dark:text-slate-100">Academic Tutor & Instructor</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Guided 45+ students in math, physics, and CS with customized curricula, raising performance metrics by 15% on average.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <!-- Skills -->
+  <section id="skills" class="py-16 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl font-bold">Skills</h2>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Python</div>
+<div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">PyTorch</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">TensorFlow</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Scikit-learn</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Data Analysis</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Deep Learning</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Cybersecurity</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Linux</div>
+        <div class="p-3 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-200">Git</div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact -->
+  <section id="contact" class="py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold">Get In Touch</h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">Open to collaborations and interesting research/engineering challenges. Currently available for:</p>
+      <div class="mt-4 flex justify-center gap-4 flex-wrap">
+        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-sm text-slate-700 dark:text-slate-200">Research Projects</span>
+        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-sm text-slate-700 dark:text-slate-200">Security Consulting</span>
+        <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-sm text-slate-700 dark:text-slate-200">AI Development</span>
+      </div>
+<div class="mt-8 flex flex-col items-center gap-4">
+        <a href="mailto:ilias.laoukili@proton.me" class="px-4 py-2 rounded-md bg-teal-500 text-slate-900 font-semibold hover:bg-teal-400 transition">Email: ilias.laoukili@proton.me</a>
+        <div class="flex items-center gap-6">
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/ilias-laoukili" class="inline-flex items-center gap-2 hover:text-teal-400">
+            <img src="./assets/github-mark.svg" alt="GitHub" class="w-6 h-6 dark:hidden" width="24" height="24" />
+            <img src="./assets/github-mark-white.svg" alt="" aria-hidden="true" class="w-6 h-6 hidden dark:block" width="24" height="24" />
+            <span>github.com/ilias-laoukili</span>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/ilias-laoukili" class="inline-flex items-center gap-2 hover:text-teal-400">
+            <img src="./assets/linkedin.svg" alt="LinkedIn" class="w-6 h-6" width="24" height="24" loading="lazy" decoding="async" />
+            <span>linkedin.com/in/ilias-laoukili</span>
+          </a>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-slate-500">CV and project PDFs available above.</p>
+    </div>
+  </section>
+
+  </main>
+  <footer class="py-8 text-center text-slate-500 dark:text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800">
+          © Ilias Laoukili
+  </footer>
+  <script src="./assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<script>
+  (function () {
+    const storageKey = 'darkMode';
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+
+    const ensureThemeMeta = () => {
+      let meta = document.querySelector('meta[name="theme-color"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'theme-color');
+        document.head.appendChild(meta);
+      }
+      return meta;
+    };
+
+    const themeMeta = ensureThemeMeta();
+
+    const ensureStyles = () => {
+      if (document.querySelector('style[data-theme-toggle-style]')) {
+        return;
+      }
+      const style = document.createElement('style');
+      style.setAttribute('data-theme-toggle-style', '');
+      style.textContent = `
+:root {
+  --toggle-bg-light: #f8fafc;
+  --toggle-bg-dark: rgba(15, 23, 42, 0.92);
+  --toggle-fg-light: #1f2937;
+  --toggle-fg-dark: #e2e8f0;
+  --toggle-border-light: rgba(148, 163, 184, 0.8);
+  --toggle-border-dark: rgba(71, 85, 105, 0.8);
+}
+[data-theme-toggle] {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: var(--toggle-bg-light);
+  color: var(--toggle-fg-light);
+  border: 1px solid var(--toggle-border-light);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 100;
+}
+[data-theme-toggle]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.18);
+}
+[data-theme-toggle]:focus-visible {
+  outline: 2px solid rgba(45, 212, 191, 0.9);
+  outline-offset: 3px;
+}
+[data-theme-toggle] svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+[data-theme-toggle][data-theme="dark"] {
+  background: var(--toggle-bg-dark);
+  color: var(--toggle-fg-dark);
+  border-color: var(--toggle-border-dark);
+}
+[data-theme-toggle][data-theme="light"] svg[data-icon="moon"],
+[data-theme-toggle][data-theme="dark"] svg[data-icon="sun"] {
+  display: none;
+}
+[data-theme-toggle][data-theme="light"] svg[data-icon="sun"],
+[data-theme-toggle][data-theme="dark"] svg[data-icon="moon"] {
+  display: block;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-theme-toggle] {
+    transition: none;
+  }
+  [data-theme-toggle]:hover {
+    transform: none;
+  }
+}
+@media print {
+  [data-theme-toggle] {
+    display: none;
+  }
+}
+      `.trim();
+      document.head.appendChild(style);
+    };
+
+    ensureStyles();
+
+    const removeAlternateFormats = () => {
+      const alt = document.querySelector('.quarto-alternate-formats');
+      if (alt && alt.parentElement) {
+        alt.parentElement.remove();
+      } else if (alt) {
+        alt.remove();
+      }
+    };
+
+    removeAlternateFormats();
+
+    const applyQuartoMode = (isDark) => {
+      if (!bodyEl) return;
+      bodyEl.classList.toggle('quarto-dark', isDark);
+      bodyEl.classList.toggle('quarto-light', !isDark);
+      bodyEl.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+
+      const bootstrapLink = document.getElementById('quarto-bootstrap');
+      if (bootstrapLink) {
+        const lightHref = bootstrapLink.getAttribute('data-href-light');
+        const darkHref = bootstrapLink.getAttribute('data-href-dark');
+        if (lightHref && darkHref) {
+          const desiredHref = isDark ? darkHref : lightHref;
+          if (desiredHref && bootstrapLink.getAttribute('href') !== desiredHref) {
+            bootstrapLink.setAttribute('href', desiredHref);
+          }
+        }
+        bootstrapLink.setAttribute('data-mode', isDark ? 'dark' : 'light');
+      }
+    };
+
+    const createFloatingToggle = () => {
+      const existing = document.querySelector('.quarto-color-scheme-toggle');
+      const markup = `
+          <span class="sr-only">Toggle color theme</span>
+          <svg xmlns="http://www.w3.org/2000/svg" data-icon="sun" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" data-icon="moon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8 8 0 1010.586 10.586z" />
+          </svg>
+        `;
+      if (existing) {
+        existing.setAttribute('data-theme-toggle', '');
+        existing.setAttribute('aria-pressed', 'false');
+        existing.setAttribute('aria-label', 'Toggle color theme');
+        existing.classList.remove('top-right');
+        if (existing.tagName.toLowerCase() === 'a') {
+          existing.removeAttribute('href');
+          existing.removeAttribute('onclick');
+          existing.setAttribute('role', 'button');
+          existing.setAttribute('tabindex', '0');
+        }
+        existing.innerHTML = markup;
+        return existing;
+      }
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.classList.add('quarto-color-scheme-toggle');
+      button.setAttribute('data-theme-toggle', '');
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Toggle color theme');
+      button.innerHTML = markup;
+      document.body.appendChild(button);
+      return button;
+    };
+
+    createFloatingToggle();
+
+    const toggleButtons = document.querySelectorAll('[data-theme-toggle]');
+
+    const setTheme = (isDark, persist = false) => {
+      htmlEl.classList.toggle('dark', isDark);
+      applyQuartoMode(isDark);
+      if (persist) {
+        localStorage.setItem(storageKey, String(isDark));
+      }
+      if (themeMeta) {
+        themeMeta.setAttribute('content', isDark ? '#0f172a' : '#f8fafc');
+      }
+      toggleButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(isDark));
+        button.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      });
+    };
+
+    const getStoredPreference = () => localStorage.getItem(storageKey);
+
+    const initializeTheme = () => {
+      const stored = getStoredPreference();
+      const shouldUseDark = stored === 'true' || (stored === null && mediaQuery.matches);
+      setTheme(shouldUseDark);
+    };
+
+    initializeTheme();
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const isDark = !htmlEl.classList.contains('dark');
+        setTheme(isDark, true);
+      });
+    });
+
+    mediaQuery.addEventListener('change', (event) => {
+      if (getStoredPreference() === null) {
+        setTheme(event.matches);
+      }
+    });
+  })();
+</script>
