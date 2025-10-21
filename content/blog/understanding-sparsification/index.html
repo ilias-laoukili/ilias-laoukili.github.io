@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ilias Laoukili">
+<meta name="dcterms.date" content="2025-10-19">
+<meta name="description" content="Graph sparsification is reframed as a curvature-aware intervention that relieves message-passing bottlenecks.">
+
+<title>Understanding Sparsification in Graph Neural Networks – Ilias Laoukili</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ccd3c9abcd45b51d691f0629e84fcf93.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="canonical" href="https://laoukili.com/content/blog/understanding-sparsification/">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ilias Laoukili</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#about"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#project"> 
+<span class="menu-text">Current Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#projects"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#skills"> 
+<span class="menu-text">Skills</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#contact"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../public/downloads/resume-us.pdf" target="_blank"> 
+<span class="menu-text">Download CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Understanding Sparsification in Graph Neural Networks</h1>
+                  <div>
+        <div class="description">
+          Graph sparsification is reframed as a curvature-aware intervention that relieves message-passing bottlenecks.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Graph Neural Networks</div>
+                <div class="quarto-category">Sparsification</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Ilias Laoukili </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 19, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#graphs-and-notation" id="toc-graphs-and-notation" class="nav-link" data-scroll-target="#graphs-and-notation">Graphs and Notation</a></li>
+  <li><a href="#message-passing-neural-networks" id="toc-message-passing-neural-networks" class="nav-link" data-scroll-target="#message-passing-neural-networks">Message Passing Neural Networks</a></li>
+  <li><a href="#representative-gnn-architectures" id="toc-representative-gnn-architectures" class="nav-link" data-scroll-target="#representative-gnn-architectures">Representative GNN Architectures</a></li>
+  <li><a href="#expressivity-and-connectivity" id="toc-expressivity-and-connectivity" class="nav-link" data-scroll-target="#expressivity-and-connectivity">Expressivity and Connectivity</a></li>
+  </ul></li>
+  <li><a href="#bottlenecks-in-graph-neural-networks" id="toc-bottlenecks-in-graph-neural-networks" class="nav-link" data-scroll-target="#bottlenecks-in-graph-neural-networks">Bottlenecks in Graph Neural Networks</a>
+  <ul class="collapse">
+  <li><a href="#oversmoothing" id="toc-oversmoothing" class="nav-link" data-scroll-target="#oversmoothing">Oversmoothing</a></li>
+  <li><a href="#oversquashing" id="toc-oversquashing" class="nav-link" data-scroll-target="#oversquashing">Oversquashing</a></li>
+  <li><a href="#topological-origin-of-bottlenecks" id="toc-topological-origin-of-bottlenecks" class="nav-link" data-scroll-target="#topological-origin-of-bottlenecks">Topological Origin of Bottlenecks</a></li>
+  <li><a href="#curvature-as-a-lens-on-bottlenecks" id="toc-curvature-as-a-lens-on-bottlenecks" class="nav-link" data-scroll-target="#curvature-as-a-lens-on-bottlenecks">Curvature as a Lens on Bottlenecks</a></li>
+  </ul></li>
+  <li><a href="#sparsification-as-a-geometric-solution" id="toc-sparsification-as-a-geometric-solution" class="nav-link" data-scroll-target="#sparsification-as-a-geometric-solution">Sparsification as a Geometric Solution</a>
+  <ul class="collapse">
+  <li><a href="#why-modify-the-graph-rather-than-the-model" id="toc-why-modify-the-graph-rather-than-the-model" class="nav-link" data-scroll-target="#why-modify-the-graph-rather-than-the-model">Why Modify the Graph Rather than the Model</a></li>
+  <li><a href="#sparsification-as-geometric-restructuring" id="toc-sparsification-as-geometric-restructuring" class="nav-link" data-scroll-target="#sparsification-as-geometric-restructuring">Sparsification as Geometric Restructuring</a></li>
+  <li><a href="#structural-vs.-topological-sparsification" id="toc-structural-vs.-topological-sparsification" class="nav-link" data-scroll-target="#structural-vs.-topological-sparsification">Structural vs.&nbsp;Topological Sparsification</a></li>
+  <li><a href="#curvature-guided-sparsification" id="toc-curvature-guided-sparsification" class="nav-link" data-scroll-target="#curvature-guided-sparsification">Curvature-Guided Sparsification</a></li>
+  <li><a href="#algorithmic-preview-from-curvature-to-reparameterization" id="toc-algorithmic-preview-from-curvature-to-reparameterization" class="nav-link" data-scroll-target="#algorithmic-preview-from-curvature-to-reparameterization">Algorithmic Preview: From Curvature to Reparameterization</a></li>
+  </ul></li>
+  <li><a href="#research-framework" id="toc-research-framework" class="nav-link" data-scroll-target="#research-framework">Research Framework</a>
+  <ul class="collapse">
+  <li><a href="#problem-scope-and-objectives" id="toc-problem-scope-and-objectives" class="nav-link" data-scroll-target="#problem-scope-and-objectives">Problem Scope and Objectives</a></li>
+  <li><a href="#what-is-evaluated-when-sparsifying" id="toc-what-is-evaluated-when-sparsifying" class="nav-link" data-scroll-target="#what-is-evaluated-when-sparsifying">What is Evaluated When Sparsifying</a></li>
+  <li><a href="#methodological-roadmap" id="toc-methodological-roadmap" class="nav-link" data-scroll-target="#methodological-roadmap">Methodological Roadmap</a></li>
+  <li><a href="#toward-future-work" id="toc-toward-future-work" class="nav-link" data-scroll-target="#toward-future-work">Toward Future Work</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a>
+  <ul class="collapse">
+  <li><a href="#theoretical-development" id="toc-theoretical-development" class="nav-link" data-scroll-target="#theoretical-development">Theoretical Development</a></li>
+  <li><a href="#methodological-development" id="toc-methodological-development" class="nav-link" data-scroll-target="#methodological-development">Methodological Development</a></li>
+  <li><a href="#empirical-evaluation" id="toc-empirical-evaluation" class="nav-link" data-scroll-target="#empirical-evaluation">Empirical Evaluation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p><strong>Abstract.</strong> This article introduces sparsification as a geometric restructuring technique for Graph Neural Networks, motivated by the role of graph curvature and message-passing bottlenecks. Rather than treating sparsification as a compression method, we frame it as a topology-level intervention that modifies information flow and inductive bias. This work establishes the theoretical foundations for a broader research program on curvature-aware graph reparameterization.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Graphs provide a natural and expressive way to model structured relationships in a wide range of domains, from molecules and biological networks to transportation systems, knowledge graphs, and social interactions. The recent surge of interest in Graph Neural Networks (GNNs) stems from their ability to learn meaningful representations directly from graph-structured data without relying on handcrafted features or explicit feature engineering. By operating on nodes, edges, and neighborhoods, GNNs generalize the success of deep learning to non-Euclidean domains.</p>
+<p>However, the very property that makes GNNs powerful—their ability to propagate and aggregate information across graph neighborhoods—also introduces fundamental challenges. As message passing layers deepen, the number of involved edges grows combinatorially, increasing computational cost, memory overhead, and training instability. This results in several well-documented bottlenecks such as <em>over-smoothing</em>, where node features become indistinguishable, and <em>over-squashing</em>, where exponential amounts of distant information are forced through a limited number of edges. These issues are not merely implementation artefacts; they arise from intrinsic geometric and topological properties of the underlying graph.</p>
+<p>The problem becomes particularly acute in real-world graphs that are large, heterogeneous, and highly irregular. In such settings, dense message passing does not necessarily correspond to useful learning. Many edges are redundant for representation learning, while a much smaller subset carries the informative structure required for prediction. This observation motivates a fundamental shift in how we design graph learning architectures: rather than focusing solely on “more expressivity” through deeper or more complex aggregation mechanisms, one may instead <em>restructure</em> the graph so that the signal of interest flows more efficiently.</p>
+<p>This is where sparsification enters the picture. Unlike pruning techniques in classical deep learning, sparsification is not merely about reducing model size or computation. It is about reshaping the graph’s geometry to improve information flow, mitigate curvature-induced bottlenecks, and highlight structural dependencies that matter for downstream inference. A well-sparsified graph can preserve—or even enhance—learning performance while significantly reducing topological and computational complexity.</p>
+<p>The purpose of this article is to provide a principled introduction to sparsification in the context of Graph Neural Networks, bridging the geometric insights developed in the Distill publications on message passing and GNN expressivity with emerging work on efficient graph reparameterization. Rather than approaching sparsification as a heuristic or post-processing technique, we position it as a first-class architectural tool that addresses the topological origins of GNN bottlenecks.</p>
+<p>This introductory post lays the foundation for the research direction explored in the associated project, which focuses on understanding <em>when</em>, <em>where</em>, and <em>how</em> sparsification improves GNN expressivity. Future posts will build on this foundation, covering theoretical perspectives (graph curvature, bottlenecks, and contraction), algorithmic strategies for structural and topological sparsification, and empirical validation on representative benchmarks.</p>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<section id="graphs-and-notation" class="level3">
+<h3 class="anchored" data-anchor-id="graphs-and-notation">Graphs and Notation</h3>
+<p>We consider a graph $ G = (V, E) $ where <span class="math inline">\(V\)</span> denotes the set of nodes with <span class="math inline">\(|V| = n\)</span> and <span class="math inline">\(E \subseteq V \times V\)</span> the set of edges with <span class="math inline">\(|E| = m\)</span>. Each node <span class="math inline">\(v \in V\)</span> may be associated with a feature vector <span class="math inline">\(x_v \in \mathbb{R}^d\)</span>, and the structure of the graph is represented through the adjacency relation <span class="math inline">\(A\)</span>. For each node <span class="math inline">\(v\)</span>, the neighborhood is defined by</p>
+<p><span class="math display">\[
+\mathcal{N}(v) = \{ u \in V : (u,v) \in E \}.
+\]</span></p>
+<p>Learning on graphs exploits this relational structure as an <em>inductive bias</em>: the topology of <span class="math inline">\(G\)</span> constrains which information can flow where and at what “speed” across successive GNN layers.</p>
+<p>In practical applications, graphs may be large, irregular, and heterogeneous. Some nodes have dozens or hundreds of neighbors, whereas others are nearly isolated. This heterogeneity means that <span class="math inline">\(\mathcal{N}(v)\)</span> is not only a local descriptor of structure but also determines the fidelity with which information from the graph can be represented, propagated, and aggregated.</p>
+</section>
+<section id="message-passing-neural-networks" class="level3">
+<h3 class="anchored" data-anchor-id="message-passing-neural-networks">Message Passing Neural Networks</h3>
+<p>Graph Neural Networks (GNNs) can be understood through the message passing paradigm. Each layer consists of two conceptual steps: (1) the computation of messages from neighbors, and (2) the aggregation and update of node embeddings. The general formulation of a message passing layer is:</p>
+<p><span class="math display">\[
+h_v^{(k+1)} = \mathrm{UPDATE}^{(k)}
+\Big(
+h_v^{(k)},\;
+\mathrm{AGGREGATE}^{(k)}
+(\{\mathrm{MESSAGE}^{(k)}(h_v^{(k)}, h_u^{(k)}, e_{uv}) : u \in \mathcal{N}(v)\})
+\Big),
+\]</span></p>
+<p>where <span class="math inline">\(h_v^{(k)}\)</span> is the representation of node <span class="math inline">\(v\)</span> at layer <span class="math inline">\(k\)</span>, and <span class="math inline">\(e_{uv}\)</span> may encode edge features.</p>
+<p>This framework captures a broad family of architectures. Intuitively, each node “asks” its neighbors for some representation of their state, combines those responses, and updates its embedding accordingly. Repeating this process over multiple layers allows information to propagate further in the graph, giving rise to a growing receptive field. However, this also implies growing dependency on the connectivity pattern of the graph itself.</p>
+</section>
+<section id="representative-gnn-architectures" class="level3">
+<h3 class="anchored" data-anchor-id="representative-gnn-architectures">Representative GNN Architectures</h3>
+<p>Several widely used architectures instantiate the general message passing scheme using different aggregation mechanisms:</p>
+<ul>
+<li><strong>GCN (Graph Convolutional Network):</strong> uses a normalized averaging operator over neighbors, which smooths node features along the graph structure. Computation can be written as</li>
+</ul>
+<p><span class="math display">\[
+H^{(k+1)} = \sigma(\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2} H^{(k)} W^{(k)}).
+\]</span></p>
+<pre><code>This highlights a diffusion-like interpretation.</code></pre>
+<ul>
+<li><strong>GraphSAGE:</strong> aggregates a <em>sampled</em> neighborhood using mean, max-pooling, or LSTM-based operators, enabling scalability to large graphs by controlling computational cost.</li>
+<li><strong>GAT (Graph Attention Network):</strong> assigns learned weights to edges through an attention mechanism, allowing the model to differentiate between neighbors based on feature relevance.</li>
+</ul>
+<p>Although their aggregation differs, these models share a reliance on the underlying graph topology: the expressive power and stability of the learned representation depend on the structure of <span class="math inline">\(\mathcal{N}(v)\)</span> and how information flows through <span class="math inline">\(E\)</span>.</p>
+</section>
+<section id="expressivity-and-connectivity" class="level3">
+<h3 class="anchored" data-anchor-id="expressivity-and-connectivity">Expressivity and Connectivity</h3>
+<p>The expressivity of message passing increases with the ability of a node to absorb informative signals from distant parts of the graph. However, information must travel along edges, and this imposes a structural constraint: distant information is compressed into a limited number of communication paths. This leads to two distinct regimes of degradation:</p>
+<ul>
+<li><em>over-smoothing</em>, where repeated aggregation causes node states to converge toward a low-rank subspace, reducing discriminative power;</li>
+<li><em>over-squashing</em>, where many distant signals are forced through too few structural “channels”, causing information bottlenecks.</li>
+</ul>
+<p>The key insight is that these limitations do not arise only from model design choices or insufficient training—they are rooted in the topology of the graph itself. Highly clustered or “negatively curved” regions create bottlenecks in which exponentially many node interactions are funneled through few edges. This geometric perspective foreshadows the role of graph curvature, which we will revisit in the next section as a structural explanation for why sparsification can improve GNN performance by modifying the graph rather than the model itself.</p>
+</section>
+</section>
+<section id="bottlenecks-in-graph-neural-networks" class="level2">
+<h2 class="anchored" data-anchor-id="bottlenecks-in-graph-neural-networks">Bottlenecks in Graph Neural Networks</h2>
+<section id="oversmoothing" class="level3">
+<h3 class="anchored" data-anchor-id="oversmoothing">Oversmoothing</h3>
+<p>Oversmoothing refers to the phenomenon where node embeddings become progressively indistinguishable as the number of GNN layers increases. In architectures based on neighborhood averaging, such as GCNs, each propagation step acts as a low-pass filter with respect to the graph Laplacian. After repeated applications, signals converge toward the principal eigenspaces of the Laplacian, which have limited discriminative capacity.</p>
+<p>Formally, for a normalized adjacency operator <span class="math inline">\(\tilde{A}\)</span>,</p>
+<p><span class="math display">\[
+H^{(k)} \approx \tilde{A}^k H^{(0)}.
+\]</span></p>
+<p>As <span class="math inline">\(k \to \infty\)</span>, <span class="math inline">\(\tilde{A}^k\)</span> tends toward a projection that contracts variation across connected components, driving <span class="math inline">\(h_v^{(k)} \approx h_u^{(k)}\)</span> for many nodes <span class="math inline">\(u, v\)</span>. In this regime, structural information becomes homogenized: deep GNNs do not fail because “too much” context is incorporated, but because information is <em>washed out</em> into a low-rank subspace. This is an inherently spectral limitation of diffusion-based aggregation.</p>
+</section>
+<section id="oversquashing" class="level3">
+<h3 class="anchored" data-anchor-id="oversquashing">Oversquashing</h3>
+<p>Oversquashing is a distinct bottleneck arising when a node must compress exponentially many distant signals into a fixed-size representation through a small number of connecting edges. Unlike oversmoothing, which concerns loss of discriminative variance, oversquashing concerns the <em>capacity of information flow</em> through the graph.</p>
+<p>To illustrate this effect, consider a rooted tree-like expansion around a target node <span class="math inline">\(v\)</span>. Suppose the branching factor is <span class="math inline">\(b\)</span>; then the number of nodes at distance <span class="math inline">\(k\)</span> from <span class="math inline">\(v\)</span> is <span class="math inline">\(O(b^k)\)</span>. Yet the “surface” through which this information must enter the 1-hop neighborhood of <span class="math inline">\(v\)</span> grows only linearly with <span class="math inline">\(b\)</span>. Thus, exponentially many signals must be funneled through the handful of edges <span class="math inline">\(\partial B_k(v)\)</span> that separate <span class="math inline">\(v\)</span> from its <span class="math inline">\(k\)</span>-hop neighborhood. When <span class="math inline">\(k\)</span> grows, the mismatch between the volume <span class="math inline">\(b^k\)</span> and the boundary size <span class="math inline">\(O(b)\)</span> creates congestion: the representation at <span class="math inline">\(v\)</span> cannot encode all relevant distant information.</p>
+<p>More generally, oversquashing occurs whenever the graph exhibits a rapidly expanding neighborhood volume but a narrow interface through which messages must propagate. This is not due to underparameterization or missing attention coefficients—rather, it is a topological limitation imposed by graph connectivity itself. Increasing the number of GNN layers does not fix the problem; it exacerbates it, because distant nodes contribute increasingly noisy and compressed signals.</p>
+</section>
+<section id="topological-origin-of-bottlenecks" class="level3">
+<h3 class="anchored" data-anchor-id="topological-origin-of-bottlenecks">Topological Origin of Bottlenecks</h3>
+<p>Both oversmoothing and oversquashing originate in structural constraints of the graph topology. Oversmoothing reflects the contraction induced by repeated diffusion over a graph, while oversquashing reflects bottlenecks in the combinatorial structure of neighborhoods. These effects persist even when modern architectural enhancements are added:</p>
+<ul>
+<li>attention mechanisms cannot create new communication channels;</li>
+<li>residual connections do not change structural boundary growth;</li>
+<li>deeper receptive fields worsen congestion rather than alleviating it.</li>
+</ul>
+<p>Thus, the limitations stem not from the design of the GNN, but from the geometry of the space in which message passing unfolds.</p>
+</section>
+<section id="curvature-as-a-lens-on-bottlenecks" class="level3">
+<h3 class="anchored" data-anchor-id="curvature-as-a-lens-on-bottlenecks">Curvature as a Lens on Bottlenecks</h3>
+<p>A more principled way to understand oversquashing is through graph curvature, and in particular through discrete Ricci curvature. Regions of a graph with negative Ricci curvature (loosely corresponding to “hyperbolic” expansion) amplify the mismatch between neighborhood volume and boundary flow, making message-passing bottlenecks inevitable. Intuitively, negatively curved regions create structural choke points that force many distant signals through few edges, directly causing oversquashing.</p>
+<p>This geometric interpretation is central: it reveals that alleviating GNN bottlenecks is not merely a matter of improving architectures, but may instead require <em>modifying the graph itself</em>. This motivates sparsification not as a compression technique, but as a <em>geometric intervention</em> aimed at reshaping connectivity to improve information flow—an idea developed in the next section.</p>
+</section>
+</section>
+<section id="sparsification-as-a-geometric-solution" class="level2">
+<h2 class="anchored" data-anchor-id="sparsification-as-a-geometric-solution">Sparsification as a Geometric Solution</h2>
+<section id="why-modify-the-graph-rather-than-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="why-modify-the-graph-rather-than-the-model">Why Modify the Graph Rather than the Model</h3>
+<p>The bottlenecks discussed in the previous section arise not from insufficient model capacity, but from structural constraints inherent to the graph itself. Oversmoothing reflects repeated diffusion through a fixed topology, and oversquashing reflects insufficient boundary growth relative to neighborhood volume. In both cases, message passing is limited not by how embeddings are processed, but by how information is able to move across the graph.</p>
+<p>This perspective implies that architectural improvements alone cannot resolve these issues. Attention layers can rescale signals, and residual connections can preserve intermediate states, but neither changes the underlying connectivity of the graph. Information must still flow through the same structural choke points. Thus, a more fundamental intervention targets the topology itself: if the geometry of the graph is responsible for restricting information, then modifying that geometry becomes a natural path to restoring expressive power.</p>
+</section>
+<section id="sparsification-as-geometric-restructuring" class="level3">
+<h3 class="anchored" data-anchor-id="sparsification-as-geometric-restructuring">Sparsification as Geometric Restructuring</h3>
+<p>In this context, sparsification does not mean “deleting edges” for the sake of efficiency. Instead, sparsification refers to the intentional reshaping of graph connectivity to improve information flow. The goal is not to make the graph smaller, but <em>better</em>: to restructure it so that message passing reflects meaningful signal pathways rather than raw adjacency.</p>
+<p>This distinction is crucial. Classical pruning removes edges based on heuristics such as degree, weight, or redundancy. Geometric sparsification, by contrast, is guided by an understanding of how curvature, congestion, or expansion properties influence the propagation of information. The objective is not simplification but <em>reparameterization</em>: constructing a functionally equivalent graph with reduced bottlenecks.</p>
+<p>Rather than asking <em>“Which edges can we safely remove?”</em>, geometric sparsification asks:</p>
+<blockquote class="blockquote">
+<p><em>Which edges contribute to efficient information flow, and how should the graph be reorganized to emphasize them?</em></p>
+</blockquote>
+<p>This reframing turns sparsification from a compression tool into a representational transformation.</p>
+</section>
+<section id="structural-vs.-topological-sparsification" class="level3">
+<h3 class="anchored" data-anchor-id="structural-vs.-topological-sparsification">Structural vs.&nbsp;Topological Sparsification</h3>
+<p>There are two complementary ways to interpret what sparsification modifies in a graph:</p>
+<ul>
+<li><strong>Structural sparsification</strong> preserves local patterns while reducing redundant or low-utility edges. It treats sparsification as a refinement of adjacency with respect to useful signal structure.</li>
+<li><strong>Topological sparsification</strong> reconfigures connectivity at a more global level by altering the graph’s large-scale organization, potentially modifying shortcuts, detours, and bottlenecks in the communication structure.</li>
+</ul>
+<p>Structural sparsification can be understood as improving the <em>local</em> inductive bias of the graph, whereas topological sparsification improves its <em>global</em> geometric capacity to propagate information. The latter is directly relevant for oversquashing, which is caused by a mismatch between expansion and interface size at large radii. In practice, both perspectives interact: reshaping local neighborhoods often improves global geometry, and conversely, controlling global bottlenecks clarifies local structure.</p>
+</section>
+<section id="curvature-guided-sparsification" class="level3">
+<h3 class="anchored" data-anchor-id="curvature-guided-sparsification">Curvature-Guided Sparsification</h3>
+<p>A geometric interpretation clarifies why sparsification can alleviate bottlenecks: regions of negative discrete Ricci curvature correspond to areas where volume grows faster than edge boundary size, creating information congestion. In such regions, oversquashing is not accidental but inevitable, because the topology forces exponentially many upstream signals through a small number of structural interfaces.</p>
+<p>Ricci curvature provides a quantitative way to diagnose where such bottlenecks occur. Edges with highly negative curvature typically connect regions that expand rapidly, indicating overloaded communication channels. Conversely, edges with positive curvature often correspond to redundant or low-information pathways, where multiple parallel edges convey similar signals. From this perspective, sparsification is a curvature-balancing transformation: it suppresses redundant positive-curvature edges and restructures negatively curved regions to widen or redistribute flow.</p>
+<p>The goal is therefore not to reduce connectivity, but to <em>optimize</em> it—to sculpt the graph into a geometry better aligned with the actual flow of information required by downstream tasks.</p>
+</section>
+<section id="algorithmic-preview-from-curvature-to-reparameterization" class="level3">
+<h3 class="anchored" data-anchor-id="algorithmic-preview-from-curvature-to-reparameterization">Algorithmic Preview: From Curvature to Reparameterization</h3>
+<p>Because curvature links structural topology with information flow, it also provides a guiding principle for algorithm design. Early sparsification methods stabilized training by reducing edge count, but modern approaches leverage curvature to selectively reorganize connectivity:</p>
+<ul>
+<li>some methods <em>remove or attenuate</em> overly redundant edges (positive curvature),</li>
+<li>others <em>rewire</em> the graph to relieve bottlenecks in negatively curved regions,</li>
+<li>and more advanced approaches apply <em>Ricci flow</em>, iteratively modifying edge weights or structure to balance curvature across the graph.</li>
+</ul>
+<p>This places sparsification inside a broader family of <em>geometric reparameterization techniques</em>: rather than optimizing the GNN alone, one optimizes the space in which the GNN learns. Sparsification thus becomes a form of architectural preconditioning: by modifying curvature, it creates a more learnable graph geometry before message passing begins.</p>
+<p>In the context of this project, sparsification will be studied not as a heuristic reduction procedure but as a geometric intervention motivated by graph curvature. The central research question is therefore not simply <em>“how to sparsify”</em> but rather:</p>
+<blockquote class="blockquote">
+<p><em>How should a graph be restructured so that its geometry improves information flow for learning?</em></p>
+</blockquote>
+<p>This shifts sparsification from a model-side technique to a topology-side transformation, establishing the foundation for curvature-aware graph refinement explored in the next stages of this work.</p>
+</section>
+</section>
+<section id="research-framework" class="level2">
+<h2 class="anchored" data-anchor-id="research-framework">Research Framework</h2>
+<section id="problem-scope-and-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="problem-scope-and-objectives">Problem Scope and Objectives</h3>
+<p>The objective of this project is to study sparsification not as a compression heuristic, but as a geometric intervention that modifies the topology of a graph to improve the flow of information in Graph Neural Networks. Rather than asking whether sparsification reduces computational cost, the central question is <em>when</em> and <em>under which geometric conditions</em> sparsification improves expressivity, stability, and learning performance.</p>
+<p>This perspective shifts the focus from architecture-driven improvements to geometry-driven restructuring. The goal is not to design a new GNN, but to understand how changing the graph itself affects the inductive bias and communication structure experienced by message passing networks.</p>
+</section>
+<section id="what-is-evaluated-when-sparsifying" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-evaluated-when-sparsifying">What is Evaluated When Sparsifying</h3>
+<p>Studying sparsification as a geometric transformation requires evaluating more than the final predictive performance of a model. The relevant quantities include:</p>
+<ul>
+<li><strong>topological quality</strong>, such as the presence or reduction of bottlenecks;</li>
+<li><strong>geometric alignment</strong>, i.e., whether the modified graph better reflects the task-relevant signal structure;</li>
+<li><strong>message passing efficiency</strong>, meaning the ability of information to propagate without collapse or congestion;</li>
+<li><strong>stability of representations</strong>, particularly with respect to oversmoothing or oversquashing.</li>
+</ul>
+<p>These criteria treat sparsification as a change in representational geometry rather than as an architectural or algorithmic trick.</p>
+</section>
+<section id="methodological-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="methodological-roadmap">Methodological Roadmap</h3>
+<p>Because this work concerns graph geometry rather than model engineering, the methodological approach is conceptually comparative rather than architecturally incremental. The investigation proceeds along three axes:</p>
+<ol type="1">
+<li><strong>Characterization:</strong> identify regions of a graph where curvature indicates communication bottlenecks or redundancy;</li>
+<li><strong>Transformation:</strong> apply sparsification strategies that restructure connectivity to relieve these bottlenecks;</li>
+<li><strong>Evaluation:</strong> measure changes in information flow, curvature distribution, and downstream learning behavior.</li>
+</ol>
+<p>This roadmap frames sparsification as a reparameterization problem: we do not attempt to “fix” the model, but to place the model in a more learnable geometric space. As such, the methodology is iterative at the graph level rather than the architectural level.</p>
+</section>
+<section id="toward-future-work" class="level3">
+<h3 class="anchored" data-anchor-id="toward-future-work">Toward Future Work</h3>
+<p>This introductory post establishes the theoretical motivation and research direction for the year-long investigation conducted under the Tremplin Recherche program. Subsequent stages will deepen this framework by:</p>
+<ul>
+<li>introducing curvature-based diagnostic tools for identifying bottlenecks,</li>
+<li>comparing different families of sparsification techniques,</li>
+<li>and eventually integrating curvature-guided rewiring into empirical evaluation.</li>
+</ul>
+<p>The next article in this series will focus on how discrete Ricci curvature is computed in practice, and why it provides a meaningful proxy for information flow in message-passing networks. This will bridge the gap between geometric theory and implementable sparsification strategies.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This article introduced the motivation for studying graph sparsification from a geometric perspective rather than as a compression technique. We reviewed how message passing in Graph Neural Networks is tightly constrained by the topology of the graph, and how these constraints produce oversmoothing and oversquashing phenomena that cannot be resolved by architectural modifications alone. The key observation is that these bottlenecks originate from the graph structure itself: improving learning therefore requires improving the geometry through which information flows.</p>
+<p>Framing sparsification as geometric restructuring rather than edge removal opens a broader research direction. Instead of asking how to reduce graph size, the relevant question becomes how to reshape the graph to alleviate structural bottlenecks and improve the inductive bias available to GNNs. This establishes the conceptual foundation for the research program developed in the following work, where sparsification will be analyzed as a topology-aware and curvature-informed transformation of graph structure.</p>
+</section>
+<section id="future-work" class="level2">
+<h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
+<p>This introduction establishes the motivation for treating sparsification as a geometric restructuring problem rather than a compression step. The next stages of this research will build on this foundation by making the link between curvature, graph topology, and learnability increasingly explicit. The year-long investigation will proceed along three complementary axes.</p>
+<section id="theoretical-development" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-development">Theoretical Development</h3>
+<p>The next step is to formalize the connection between discrete Ricci curvature and information flow in message passing. This involves examining how curvature quantifies congestion, and how curvature imbalances identify regions of the graph where bottlenecks arise. Multiple curvature notions (e.g., Ollivier-type transport curvature and Forman-type combinatorial curvature) will be compared to determine which most accurately predicts GNN degradation in practice.</p>
+</section>
+<section id="methodological-development" class="level3">
+<h3 class="anchored" data-anchor-id="methodological-development">Methodological Development</h3>
+<p>Once a curvature-based diagnostic perspective is established, sparsification strategies can be analyzed as geometric transformations. Future work will investigate families of approaches ranging from structural filtering to rewiring and curvature-balancing procedures. The emphasis will be on understanding how different sparsification regimes alter the effective graph geometry rather than on optimizing any particular algorithm.</p>
+</section>
+<section id="empirical-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="empirical-evaluation">Empirical Evaluation</h3>
+<p>The final stage consists of validating these geometric effects in learning settings. This will involve controlled experiments on representative graph families where curvature and expansion properties can be measured before training, as well as on benchmark datasets used in graph representation learning. The objective is not to achieve state-of-the-art performance, but to evaluate whether improvements in graph geometry correlate with improvements in information flow and downstream learning behavior.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

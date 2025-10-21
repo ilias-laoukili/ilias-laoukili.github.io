@@ -1,0 +1,47 @@
+/* css styles */
+
+#quarto-margin-sidebar {
+  top: 6.5rem;
+  position: sticky;
+}
+
+#title-block-header {
+  margin-top: 6.5rem;
+}
+
+.fixed.top-0.left-0.w-full a {
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.fixed.top-0.left-0.w-full a.text-teal-400:hover {
+  color: #0ea5e9;
+}
+
+.quarto-title-block .quarto-title-banner {
+  background: linear-gradient(135deg, #325d88, #1f2d3d);
+  color: #f8fafc;
+  border-bottom: none;
+}
+
+.quarto-title-block .quarto-title {
+  color: #ffffff;
+}
+
+.quarto-title-block .subtitle.lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.quarto-title-block .quarto-title-meta {
+  background-color: #f8fafc;
+  border-left: 4px solid #38bdf8;
+}
+
+.quarto-title-block .quarto-category {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
+}
+
+.quarto-title-block .description {
+  font-size: 1.05rem;
+  max-width: 42rem;
+}

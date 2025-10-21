@@ -1,0 +1,33 @@
+project:
+  type: website
+
+website:
+  title: "Ilias Laoukili"
+  navbar:
+    left:
+      - text: About
+        href: ../../../index.html#about
+      - text: Current Project
+        href: ../../../index.html#project
+      - text: Projects
+        href: ../../../index.html#projects
+      - text: Skills
+        href: ../../../index.html#skills
+      - text: Blog
+        href: ../../index.html
+      - text: Contact
+        href: ../../../index.html#contact
+    right:
+      - text: "Download CV"
+        href: ../../../public/downloads/resume-us.pdf
+        target: _blank
+
+format:
+  html:
+    theme:
+      - sandstone
+      - variables.scss
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    smooth-scroll: true

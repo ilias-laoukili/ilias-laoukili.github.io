@@ -2,9 +2,9 @@
   "name": "ilias-laoukili.github.io-main",
   "version": "1.0.0",
   "description": "",
-  "main": "tailwind.config.js",
+  "main": "config/tailwind.config.js",
   "scripts": {
-    "build:css": "tailwindcss -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify"
+    "build:css": "tailwindcss -c config/tailwind.config.js -i src/styles/tailwind-input.css -o public/css/tailwind.css --minify"
   },
   "keywords": [],
   "author": "",
