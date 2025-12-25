@@ -75,6 +75,17 @@ const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) 
 
                         <div className="prose prose-lg max-w-none font-sans text-g-500">
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content || ""}</ReactMarkdown>
+                            {article.extraImage && (
+                                <div className="my-12 flex justify-center">
+                                    <Image
+                                        src={article.extraImage}
+                                        alt={article.title + " research image"}
+                                        width={600}
+                                        height={400}
+                                        className="rounded-lg border border-g-100 shadow-md"
+                                    />
+                                </div>
+                            )}
                         </div>
 
                         <div className="mt-16 pt-8 border-t border-g-50">

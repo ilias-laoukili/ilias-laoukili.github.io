@@ -86,7 +86,7 @@ export const navigationFooter = [
             {
                 id: "1",
                 title: "GitHub",
-                url: "https://github.com/iliaslkl",
+                url: "https://github.com/ilias-laoukili",
                 external: true,
             },
         ],

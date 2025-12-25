@@ -7,6 +7,7 @@ export type BlogPost = {
     publishedAt?: string;
     tags?: string[];
     excerpt?: string;
+    extraImage?: string;
 };
 
 export type BlogCategory = {

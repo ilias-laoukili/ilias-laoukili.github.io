@@ -17,6 +17,7 @@ export function getSortedPostsData(): BlogPost[] {
         mainImage: project.imageUrl,
         tags: project.tags,
         content: "", // Content is not needed for the list view
+        extraImage: project.extraImage,
     })).sort((a, b) => ((a.publishedAt ?? "") < (b.publishedAt ?? "") ? 1 : -1));
 }
 
@@ -55,6 +56,7 @@ export async function getPostData(slug: string): Promise<{ article: BlogPost, si
         mainImage: project.imageUrl,
         tags: project.tags,
         content: content,
+        extraImage: project.extraImage,
     };
     
     const allPosts = getSortedPostsData();

@@ -45,6 +45,7 @@ export const PROJECTS = [
     excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.",
     imageUrl: "/projects/graph-sparsification.png",
     pdfUrl: "/projects/graph-sparsification.pdf",
+    extraImage: "/projects/graph-research.png",
   },
   {
     title: "Decoding Sound: AI Audio Analyzer",
