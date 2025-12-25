@@ -17,4 +17,42 @@ export const SKILLS = [ { category: "AI & Machine Learning - Intermediate", item
 
 export const RESEARCH_INTERESTS = [ { title: "Computer Vision Applications", description: "Exploring real-time object detection and image recognition systems using YOLO and deep learning frameworks. Focus on practical applications like fire detection, autonomous systems, and safety monitoring.", icon: "ComputerCloudIcon", }, { title: "AI Security & System Hardening", description: "Investigating vulnerabilities in AI systems and developing secure implementations. Combining cybersecurity principles with machine learning to build robust, tamper-resistant intelligent systems.", icon: "KnightShieldIcon", }, { title: "Software Architecture & OOP", description: "Designing scalable software solutions using object-oriented programming principles. Experience in building clean, maintainable codebases with proper design patterns and documentation.", icon: "SoftwareIcon", }, { title: "Educational Technology", description: "Passionate about making complex technical concepts accessible through tutoring and mentorship. Developing innovative teaching methods to improve learning outcomes in STEM fields.", icon: "Brain01Icon", }, ];
 
-export const PROJECTS = [ { title: "Drone Fire and Smoke Detection System", slug: "drone-fire-and-smoke-detection-system", date: "2025-11-06", category: "Projects", tags: ["Python", "YOLO", "ComputerVision", "MachineLearning", "AI"], excerpt: "A real-time fire and smoke detection system developed using a fine-tuned YOLO model. The project achieved 92% detection accuracy and was integrated with the drone navigation system, leading to a 30% reduction in false positives.", imageUrl: "https://cdn.sanity.io/images/3egxicgc/production/dd4183cf14a742ff48cadaf77ce4cae605830893-1024x1024.jpg", }, { title: "Echoes of Innocence 2D Java Game", slug: "echoes-of-innocence-2d-java-game", date: "2025-11-07", category: "Projects", tags: ["Java", "OOP", "Software Architecture", "Game Development"], excerpt: "A 2D game developed from scratch, emphasizing robust Object-Oriented Programming (OOP) principles and optimized software architecture. This project demonstrates strong proficiency in Java and efficient performance across more than five levels.", imageUrl: "https://cdn.sanity.io/images/3egxicgc/production/58f9f663a088e835d1d0f1b527e2bc513478457e-1919x1054.png", }, { title: "Graph Sparsification", slug: "graph-sparsification", date: "2025-11-17", category: "Research", tags: ["Graph Neural Networks", "Sparsification", "Graph Topology", "Tremplin Recherche"], excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.", imageUrl: "https://cdn.sanity.io/images/3egxicgc/production/b621e262614482d85d11b4b4c0a8a39fdd892d6f-1024x1024.png", pdfUrl: "https://cdn.sanity.io/files/3egxicgc/production/e4a521a48bc1092420413d8801c9c84b93a42913.pdf" }, { title: "Decoding Sound: AI Audio Analyzer", slug: "sentim-audio-emotion-analysis", date: "2025-11-20", category: "Projects", tags: ["Python", "DSP", "Machine Learning", "Streamlit"], excerpt: "Can a computer tell if you are happy or sad just by listening to your voice? I built an interactive web application to find out using Digital Signal Processing and Random Forest classifiers.", imageUrl: "https://cdn.sanity.io/images/3egxicgc/production/ccf969493860b6df5d899f048ae81fd10b860b32-1408x768.png", } ];
+export const PROJECTS = [
+  {
+    title: "Drone Fire and Smoke Detection System",
+    slug: "drone-fire-and-smoke-detection-system",
+    date: "2025-11-06",
+    category: "Projects",
+    tags: ["Python", "YOLO", "ComputerVision", "MachineLearning", "AI"],
+    excerpt: "A real-time fire and smoke detection system developed using a fine-tuned YOLO model. The project achieved 92% detection accuracy and was integrated with the drone navigation system, leading to a 30% reduction in false positives.",
+    imageUrl: "/projects/drone-detection.jpg",
+  },
+  {
+    title: "Echoes of Innocence 2D Java Game",
+    slug: "echoes-of-innocence-2d-java-game",
+    date: "2025-11-07",
+    category: "Projects",
+    tags: ["Java", "OOP", "Software Architecture", "Game Development"],
+    excerpt: "A 2D game developed from scratch, emphasizing robust Object-Oriented Programming (OOP) principles and optimized software architecture. This project demonstrates strong proficiency in Java and efficient performance across more than five levels.",
+    imageUrl: "/projects/echoes-game.png",
+  },
+  {
+    title: "Graph Sparsification",
+    slug: "graph-sparsification",
+    date: "2025-11-17",
+    category: "Research",
+    tags: ["Graph Neural Networks", "Sparsification", "Graph Topology", "Tremplin Recherche"],
+    excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.",
+    imageUrl: "/projects/graph-sparsification.png",
+    pdfUrl: "/projects/graph-sparsification.pdf",
+  },
+  {
+    title: "Decoding Sound: AI Audio Analyzer",
+    slug: "sentim-audio-emotion-analysis",
+    date: "2025-11-20",
+    category: "Projects",
+    tags: ["Python", "DSP", "Machine Learning", "Streamlit"],
+    excerpt: "Can a computer tell if you are happy or sad just by listening to your voice? I built an interactive web application to find out using Digital Signal Processing and Random Forest classifiers.",
+    imageUrl: "/projects/audio-analyzer.png",
+  },
+];
