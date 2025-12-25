@@ -1,18 +1,10 @@
-import { useState } from "react";
-import { default as NextImage, ImageProps } from "next/image";
 
-const Image = ({ className, ...props }: ImageProps) => {
-    const [loaded, setLoaded] = useState<boolean>(false);
+import ExportedImage from 'next-image-export-optimizer';
+import type { ExportedImageProps } from 'next-image-export-optimizer';
 
-    return (
-        <NextImage
-            className={`inline-block align-top opacity-0 transition-opacity ${
-                loaded && "opacity-100"
-            } ${className || ""}`}
-            onLoad={() => setLoaded(true)}
-            {...props}
-        />
-    );
+// Drop-in replacement for Next.js Image for static export
+const Image = (props: ExportedImageProps) => {
+  return <ExportedImage {...props} />;
 };
 
 export default Image;

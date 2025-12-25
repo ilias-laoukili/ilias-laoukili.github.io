@@ -19,6 +19,18 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: "Ilias Laoukili - Portfolio",
     description: "Portfolio of Ilias Laoukili",
+    keywords: [
+        "Ilias Laoukili",
+        "Portfolio",
+        "AI",
+        "Cybersecurity",
+        "Engineering",
+        "Student",
+        "Web Developer",
+        "Machine Learning",
+        "Next.js",
+        "TailwindCSS"
+    ],
 };
 
 export default function RootLayout({
@@ -65,23 +77,7 @@ export default function RootLayout({
                     content="Ilias Laoukili - Portfolio"
                 />
 
-                <meta
-                    property="og:title"
-                    content="Ilias Laoukili - Portfolio"
-                />
-                <meta
-                    property="og:description"
-                    content="Ilias Laoukili - Portfolio"
-                />
-
-                <meta
-                    property="og:title"
-                    content="Ilias Laoukili - Portfolio"
-                />
-                <meta
-                    property="og:description"
-                    content="Ilias Laoukili - Portfolio"
-                />
+                {/* Removed duplicate OG tags */}
             </head>
             <body
                 className={`${inter.variable} ${interTight.variable} bg-white font-sans text-paragraph font-medium text-g-500 antialiased md:text-body`}

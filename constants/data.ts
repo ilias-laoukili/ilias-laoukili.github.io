@@ -25,7 +25,7 @@ export const PROJECTS = [
     category: "Projects",
     tags: ["Python", "YOLO", "ComputerVision", "MachineLearning", "AI"],
     excerpt: "A real-time fire and smoke detection system developed using a fine-tuned YOLO model. The project achieved 92% detection accuracy and was integrated with the drone navigation system, leading to a 30% reduction in false positives.",
-    imageUrl: "/projects/drone-detection.jpg",
+    imageUrl: "/images/projects/drone-detection.jpg",
   },
   {
     title: "Echoes of Innocence 2D Java Game",
@@ -34,7 +34,7 @@ export const PROJECTS = [
     category: "Projects",
     tags: ["Java", "OOP", "Software Architecture", "Game Development"],
     excerpt: "A 2D game developed from scratch, emphasizing robust Object-Oriented Programming (OOP) principles and optimized software architecture. This project demonstrates strong proficiency in Java and efficient performance across more than five levels.",
-    imageUrl: "/projects/echoes-game.png",
+    imageUrl: "/images/projects/echoes-game.png",
   },
   {
     title: "Graph Sparsification",
@@ -43,9 +43,9 @@ export const PROJECTS = [
     category: "Research",
     tags: ["Graph Neural Networks", "Sparsification", "Graph Topology", "Tremplin Recherche"],
     excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.",
-    imageUrl: "/projects/graph-research.png",
-    pdfUrl: "/projects/graph-sparsification.pdf",
-    extraImage: "/projects/graph-research.png",
+    imageUrl: "/images/projects/graph-research.png",
+    pdfUrl: "/images/projects/graph-sparsification.pdf",
+    extraImage: "/images/projects/graph-research.png",
   },
   {
     title: "Decoding Sound: AI Audio Analyzer",
@@ -54,6 +54,6 @@ export const PROJECTS = [
     category: "Projects",
     tags: ["Python", "DSP", "Machine Learning", "Streamlit"],
     excerpt: "Can a computer tell if you are happy or sad just by listening to your voice? I built an interactive web application to find out using Digital Signal Processing and Random Forest classifiers.",
-    imageUrl: "/projects/audio-analyzer.png",
+    imageUrl: "/images/projects/audio-analyzer.png",
   },
 ];

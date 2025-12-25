@@ -3,7 +3,13 @@
 import Button from "@/components/Button";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { motion } from "motion/react";
-import ColorBends from "../hero";
+import dynamic from "next/dynamic";
+
+// Dynamically import the heavy 3D component
+const ColorBends = dynamic(() => import("../hero"), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-white" />,
+});
 import type { HomeSettings } from "@/types/index";
 
 type MainProps = {
