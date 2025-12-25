@@ -43,7 +43,7 @@ export const PROJECTS = [
     category: "Research",
     tags: ["Graph Neural Networks", "Sparsification", "Graph Topology", "Tremplin Recherche"],
     excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.",
-    imageUrl: "/projects/graph-sparsification.png",
+    imageUrl: "/projects/graph-research.png",
     pdfUrl: "/projects/graph-sparsification.pdf",
     extraImage: "/projects/graph-research.png",
   },
