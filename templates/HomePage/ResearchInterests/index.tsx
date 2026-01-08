@@ -1,36 +1,47 @@
 "use client";
 
 import * as Icons from "@/utils/icons";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { CardContainer, CardItem } from "@/components/ui/3d-card";
 import { StripedPattern } from "@/components/magicui/striped-pattern";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import type { ResearchInterest } from "@/types";
+import { useTranslations } from "@/lib/i18n/client";
 
-type ResearchInterestsProps = {
-    researchInterests: ResearchInterest[];
+type ResearchInterest = {
+    id: string;
+    icon: string;
+    titleKey: string;
+    descriptionKey: string;
 };
 
-const ResearchInterests = ({ researchInterests }: ResearchInterestsProps) => {
+const ResearchInterests = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const { t } = useTranslations('home.research');
+
+    const researchInterests: ResearchInterest[] = [
+        { id: "1", icon: "ComputerCloudIcon", titleKey: "interests.computerVision.title", descriptionKey: "interests.computerVision.description" },
+        { id: "2", icon: "KnightShieldIcon", titleKey: "interests.aiSecurity.title", descriptionKey: "interests.aiSecurity.description" },
+        { id: "3", icon: "SoftwareIcon", titleKey: "interests.software.title", descriptionKey: "interests.software.description" },
+        { id: "4", icon: "Brain01Icon", titleKey: "interests.education.title", descriptionKey: "interests.education.description" },
+    ];
 
     return (
         <div className="relative py150 bg-[#FAFAFA] overflow-hidden">
             <StripedPattern className="absolute inset-0 [mask-image:radial-gradient(800px_circle_at_center,white,transparent)] opacity-20" />
             
             <div className="container relative z-10" id="research">
-                <div className="mb-2 label">Research</div>
+                <div className="mb-2 label">{t('sectionTitle')}</div>
                 <div className="mb-12 text-h1 2xl:mb-25">
-                    Research Areas <br />& Areas of Interest
+                    {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
                 </div>
 
                 <div ref={ref} className="grid grid-cols-2 gap-8 lg:grid-cols-1">
-                    {researchInterests?.map((interest, index) => {
+                    {researchInterests.map((interest, index) => {
                         const IconComponent = Icons[interest.icon as keyof typeof Icons] as React.ComponentType<{ className?: string, variant?: string }>;
                         return (
                         <motion.div
-                            key={interest._id}
+                            key={interest.id}
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                             transition={{
@@ -50,11 +61,11 @@ const ResearchInterests = ({ researchInterests }: ResearchInterestsProps) => {
                             </div>
 
                             <CardItem translateZ="50" className="mb-4 text-h3 text-g-500">
-                                {interest.title}
+                                {t(interest.titleKey)}
                             </CardItem>
 
                             <p className="relative text-body text-g-100 leading-relaxed">
-                                {interest.description}
+                                {t(interest.descriptionKey)}
                             </p>
                         </div>
                     </CardContainer>

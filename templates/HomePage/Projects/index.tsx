@@ -4,22 +4,28 @@ import Image from "@/components/Image";
 import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { useRef } from "react";
+import { useTranslations } from "@/lib/i18n/client";
 import type { BlogPost } from "@/types/index";
+import type { Locale } from "@/lib/i18n";
 
 type ProjectsProps = {
     blogPosts: BlogPost[];
+    locale: Locale;
 };
 
-const Projects = ({ blogPosts }: ProjectsProps) => {
+const Projects = ({ blogPosts, locale }: ProjectsProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const { t } = useTranslations('home.projects');
+
+    const blogPath = locale === 'en' ? '/blog' : `/${locale}/blog`;
 
     return (
         <div className="py-20 md:py-32">
             <div className="container" id="projects">
-                <div className="mb-2 label">Projects</div>
+                <div className="mb-2 label">{t('title')}</div>
                 <div className="mb-12 text-h1 2xl:mb-25">
-                    Research Projects <br />& Technical Achievements
+                    {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
                 </div>
 
                 <div ref={ref}>
@@ -37,7 +43,7 @@ const Projects = ({ blogPosts }: ProjectsProps) => {
                             className="w-full h-full"
                         >
                             <Link
-                                href={`/blog/${article.slug}`}
+                                href={`${blogPath}/${article.slug}`}
                                 className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all flex flex-col w-full h-full"
                             >
                                 <div className="relative h-48 overflow-hidden bg-g-50">
@@ -46,7 +52,9 @@ const Projects = ({ blogPosts }: ProjectsProps) => {
                                         src={article.mainImage || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"}
                                         width={400}
                                         height={200}
-                                        alt={article.title}
+                                        alt={`Cover image for ${article.title}`}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <div className="p-6 flex flex-col flex-grow">
@@ -66,7 +74,7 @@ const Projects = ({ blogPosts }: ProjectsProps) => {
                                         )}
                                     </AnimatePresence>
                                     <span>
-                                        {new Date(article.publishedAt || Date.now()).toLocaleDateString("fr-FR", {
+                                        {new Date(article.publishedAt || Date.now()).toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
                                             year: "numeric",
                                             month: "long",
                                             day: "numeric",
@@ -110,10 +118,10 @@ const Projects = ({ blogPosts }: ProjectsProps) => {
                     }}
                 >
                     <Link
-                        href="/blog"
+                        href={blogPath}
                         className="px-8 py-4 bg-g-500 text-white rounded-full text-body font-medium hover:bg-g-400 transition-colors"
                     >
-                        Show all projects
+                        {t('viewAll')}
                     </Link>
                 </motion.div>
             </div>

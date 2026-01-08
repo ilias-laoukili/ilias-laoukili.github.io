@@ -2,48 +2,64 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { headerNavigation } from "@/constants/navigation";
-import { Mail01Icon } from "@/utils/icons/icons/Mail01Icon";
+import { Mail01Icon } from "@/utils/icons";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "@/lib/i18n/client";
+import type { Locale } from "@/lib/i18n";
 
-const FloatingNav = () => {
+type FloatingNavProps = {
+    locale?: Locale;
+};
+
+const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [activeSection, setActiveSection] = useState<string>("#home");
     const pathname = usePathname();
     const router = useRouter();
+    const { t } = useTranslations('common.navigation');
+
+    const basePath = locale === 'en' ? '' : `/${locale}`;
+    const blogPath = `${basePath}/blog`;
+
+    const headerNavigation = [
+        { id: "0", title: t('home'), url: "#home" },
+        { id: "1", title: t('about'), url: "#about" },
+        { id: "2", title: t('skills'), url: "#skills" },
+        { id: "3", title: t('projects'), url: "#projects" },
+        { id: "4", title: t('research'), url: "#research" },
+        { id: "5", title: t('blog'), url: blogPath },
+    ];
     
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
             setIsVisible(offset > 300);
             if (pathname.includes("/blog")) {
-                setActiveSection("#blog");
+                setActiveSection(blogPath);
             }
 
-            const sections = headerNavigation.map(nav => nav.url);
+            const sections = ["#home", "#about", "#skills", "#projects", "#research"];
             for (const section of sections) {
-                if(section.startsWith("#")) {
-                    const element = document.querySelector(section);
-                    if (element) {
-                        const rect = element.getBoundingClientRect();
-                        if (rect.top <= 150 && rect.bottom >= 150) {
-                            setActiveSection(section);
-                            break;
-                        }
+                const element = document.querySelector(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        setActiveSection(section);
+                        break;
                     }
                 }
             }
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [pathname]);
+    }, [pathname, blogPath]);
 
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
         e.preventDefault();
         if(url.startsWith("#")) {
             if(pathname.includes("/blog")) {
-                router.push('/' + url)
+                router.push(basePath + '/' + url)
             }
             const element = document.querySelector(url);
             if (element) {
@@ -72,23 +88,23 @@ const FloatingNav = () => {
             >
                 <Link
                     className="shrink-0 md:relative md:z-3 font-bold text-sm md:block hidden"
-                    href="/"
+                    href={basePath || '/'}
                     onClick={(e) => handleSmoothScroll(e, "#home")}
                 >
                     Ilias Laoukili
                 </Link>
-                {headerNavigation.map((link) => !link.url.startsWith("#contact") && (
+                {headerNavigation.map((link) => (
                     <Link
                         key={link.id}
                         href={link.url}
                         onClick={(e) => handleSmoothScroll(e, link.url)}
                         className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full md:hidden ${
-                            activeSection === link.url || (pathname === "/blog" && link.url === "/blog")
+                            activeSection === link.url || (pathname.includes("/blog") && link.url === blogPath)
                                 ? "text-gray-900"
                                 : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
                         }`}
                     >
-                        {(activeSection === link.url || (pathname.includes("/blog") && link.url === "/blog")) && (
+                        {(activeSection === link.url || (pathname.includes("/blog") && link.url === blogPath)) && (
                             <span
                                 className="absolute inset-0 bg-gray-100 border border-gray-200 rounded-full -z-10"
                                 style={{

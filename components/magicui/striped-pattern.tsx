@@ -1,6 +1,6 @@
 import React, { useId } from "react"
 
-import { cn } from "@/components/lib/utils"
+import { cn } from "@/lib/utils"
 
 interface StripedPatternProps extends React.SVGProps<SVGSVGElement> {
   direction?: "left" | "right"

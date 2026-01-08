@@ -37,3 +37,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Build cache
+tsconfig.tsbuildinfo
+
+# Lighthouse reports
+*.report.html

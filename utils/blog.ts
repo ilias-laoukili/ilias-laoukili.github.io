@@ -3,10 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import type { BlogPost } from "@/types";
 import { PROJECTS } from "@/constants/data";
+import type { Locale } from "@/lib/i18n";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
 
-export function getSortedPostsData(): BlogPost[] {
+export function getSortedPostsData(locale: Locale = 'en'): BlogPost[] {
     // Use PROJECTS from data.ts as the source of truth for the list
     return PROJECTS.map(project => ({
         slug: project.slug,
@@ -21,7 +22,7 @@ export function getSortedPostsData(): BlogPost[] {
     })).sort((a, b) => ((a.publishedAt ?? "") < (b.publishedAt ?? "") ? 1 : -1));
 }
 
-export async function getPostData(slug: string): Promise<{ article: BlogPost, similarArticles: BlogPost[] }> {
+export async function getPostData(slug: string, locale: Locale = 'en'): Promise<{ article: BlogPost, similarArticles: BlogPost[] }> {
     // Find the project metadata
     const project = PROJECTS.find(p => p.slug === slug);
 
@@ -29,13 +30,21 @@ export async function getPostData(slug: string): Promise<{ article: BlogPost, si
         throw new Error(`Post with slug "${slug}" not found in data.ts.`);
     }
 
-    // Read the markdown file for content
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
+    // Try to read the localized markdown file first, then fall back to default
+    const localizedPath = path.join(postsDirectory, locale, `${slug}.md`);
+    const defaultPath = path.join(postsDirectory, `${slug}.md`);
     let content = "";
     
     try {
-        if (fs.existsSync(fullPath)) {
-            const fileContents = fs.readFileSync(fullPath, "utf8");
+        // First try localized version
+        if (fs.existsSync(localizedPath)) {
+            const fileContents = fs.readFileSync(localizedPath, "utf8");
+            const matterResult = matter(fileContents);
+            content = matterResult.content;
+        } 
+        // Fall back to default (English) version
+        else if (fs.existsSync(defaultPath)) {
+            const fileContents = fs.readFileSync(defaultPath, "utf8");
             const matterResult = matter(fileContents);
             content = matterResult.content;
         } else {
@@ -59,7 +68,7 @@ export async function getPostData(slug: string): Promise<{ article: BlogPost, si
         extraImage: project.extraImage,
     };
     
-    const allPosts = getSortedPostsData();
+    const allPosts = getSortedPostsData(locale);
     
     // Prioritize articles in the same category
     let similarArticles = allPosts

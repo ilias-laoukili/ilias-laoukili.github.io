@@ -1,36 +1,84 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
 const interTight = Inter_Tight({
     weight: ["500"],
     subsets: ["latin"],
-    display: "block",
+    display: "swap",
     variable: "--font-inter-tight",
+    preload: true,
 });
 
 const inter = Inter({
     weight: ["400", "500", "600"],
     subsets: ["latin"],
-    display: "block",
+    display: "swap",
     variable: "--font-inter",
+    preload: true,
 });
 
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#ffffff",
+};
+
 export const metadata: Metadata = {
-    title: "Ilias Laoukili - Portfolio",
-    description: "Portfolio of Ilias Laoukili",
+    metadataBase: new URL("https://ilias-laoukili.github.io"),
+    title: {
+        default: "Ilias Laoukili - AI & Cybersecurity Engineer",
+        template: "%s | Ilias Laoukili",
+    },
+    description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris. Expertise in Machine Learning, Computer Vision, and secure system design.",
     keywords: [
         "Ilias Laoukili",
         "Portfolio",
-        "AI",
+        "AI Engineer",
         "Cybersecurity",
-        "Engineering",
-        "Student",
-        "Web Developer",
         "Machine Learning",
-        "Next.js",
-        "TailwindCSS"
+        "Computer Vision",
+        "YOLO",
+        "Python",
+        "ESIEE Paris",
+        "Software Engineer"
     ],
+    authors: [{ name: "Ilias Laoukili", url: "https://ilias-laoukili.github.io" }],
+    creator: "Ilias Laoukili",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    openGraph: {
+        title: "Ilias Laoukili - AI & Cybersecurity Engineer",
+        description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris",
+        siteName: "Ilias Laoukili Portfolio",
+        type: "website",
+        locale: "en_US",
+        url: "https://ilias-laoukili.github.io",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Ilias Laoukili - AI & Cybersecurity Engineer",
+        description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris",
+    },
+    alternates: {
+        canonical: "https://ilias-laoukili.github.io",
+        languages: {
+            "en": "https://ilias-laoukili.github.io/en",
+            "fr": "https://ilias-laoukili.github.io/fr",
+            "de": "https://ilias-laoukili.github.io/de",
+            "es": "https://ilias-laoukili.github.io/es",
+            "nl": "https://ilias-laoukili.github.io/nl",
+        },
+    },
 };
 
 export default function RootLayout({
@@ -39,50 +87,29 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning className={`${inter.variable} ${interTight.variable}`}>
             <head>
-                <meta
-                    name="description"
-                    content="Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student"
-                />
-
-                <meta
-                    name="product-name"
-                    content="Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student"
-                />
-
-                <meta name="twitter:card" content="summary" />
-                <meta name="twitter:site" content="@ui8" />
-                <meta
-                    name="twitter:title"
-                    content="Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student"
-                />
-                <meta
-                    name="twitter:description"
-                    content="Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student"
-                />
-                <meta name="twitter:creator" content="@ui8" />
-
-                <meta
-                    property="og:title"
-                    content="Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student"
-                />
-                <meta property="og:type" content="Article" />
-                <meta
-                    property="og:description"
-                    content="Ilias Laoukili - Portfolio"
-                />
-                <meta
-                    property="og:site_name"
-                    content="Ilias Laoukili - Portfolio"
-                />
-
-                {/* Removed duplicate OG tags */}
+                {/* Preload critical fonts handled by next/font */}
+                {/* Preload LCP-critical styles */}
+                <style dangerouslySetInnerHTML={{ __html: `
+                    /* Critical CSS for LCP - inline hero text styles */
+                    .text-display { font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 500; line-height: 1.1; }
+                    .text-h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); font-weight: 500; }
+                    .text-h6 { font-size: clamp(1rem, 2vw, 1.25rem); }
+                ` }} />
             </head>
             <body
-                className={`${inter.variable} ${interTight.variable} bg-white font-sans text-paragraph font-medium text-g-500 antialiased md:text-body`}
+                className="bg-white font-sans text-paragraph font-medium text-g-500 antialiased md:text-body"
             >
-                {children}
+                <a
+                    href="#main-content"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    Skip to main content
+                </a>
+                <main id="main-content">
+                    {children}
+                </main>
             </body>
         </html>
     );

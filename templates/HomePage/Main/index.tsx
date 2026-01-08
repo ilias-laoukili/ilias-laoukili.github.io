@@ -4,106 +4,93 @@ import Button from "@/components/Button";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "@/lib/i18n/client";
+import { useState, useEffect } from "react";
 
-// Dynamically import the heavy 3D component
+// Dynamically import the heavy 3D component - defer loading until after LCP
 const ColorBends = dynamic(() => import("../hero"), {
     ssr: false,
-    loading: () => <div className="absolute inset-0 bg-white" />,
+    loading: () => null,
 });
-import type { HomeSettings } from "@/types/index";
 
-type MainProps = {
-    homeSettings: HomeSettings;
-};
+const Main = () => {
+    const { t } = useTranslations('home.hero');
+    const [show3D, setShow3D] = useState(false);
+    
+    // Defer 3D background loading until after initial paint
+    useEffect(() => {
+        // Use requestIdleCallback for non-critical 3D loading
+        if ('requestIdleCallback' in window) {
+            (window as any).requestIdleCallback(() => setShow3D(true), { timeout: 1000 });
+        } else {
+            // Fallback for Safari
+            setTimeout(() => setShow3D(true), 100);
+        }
+    }, []);
+    
+    return (
+        <div className="relative min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50">
+            {/* Deferred 3D background - loads after LCP */}
+            {show3D && (
+                <div className="absolute inset-0 z-0 w-full animate-fade-in">
+                    <ColorBends
+                        colors={["#00ff00", "#32cd32", "#7fff88"]}
+                        rotation={30}
+                        speed={0.3}
+                        scale={1.2}
+                        frequency={1.43}
+                        warpStrength={1.2}
+                        mouseInfluence={0.8}
+                        parallax={-0.6}
+                        noise={0.08}
+                    />
+                </div>
+            )}
+            <div className="container relative z-10 flex items-center justify-center min-h-[54.3125rem] 2xl:min-h-[48rem] md:min-h-screen">
+                <div className="max-w-[70rem] text-center justify-center flex flex-col items-center">
+                    {/* LCP Element - Role subtitle - NO animation delay */}
+                    <div className="text-h3 text-gray-700">
+                        {t('role')}
+                    </div>
+                    {/* LCP Element - Main title - render immediately with NO delay */}
+                    <h1 className="flex flex-col items-center justify-center flex-wrap max-w-[50rem]">
+                        <span className="text-display text-gray-900">{t('title')}</span>
+                    </h1>
+                    {/* Description - NO delay */}
+                    <p className="mb-8 text-h6 text-gray-600 font-sans">
+                        {t('description')}
+                    </p>
 
-const Main = ({ homeSettings }: MainProps) => (
-    <div className="relative min-h-screen bg-white">
-        <div className="absolute inset-0 z-0 w-full">
-            <ColorBends
-                colors={["#00ff00", "#32cd32", "#7fff88"]}
-                rotation={30}
-                speed={0.3}
-                scale={1.2}
-                frequency={1.43}
-                warpStrength={1.2}
-                mouseInfluence={0.8}
-                parallax={-0.6}
-                noise={0.08}
-            />
-        </div>
-        <div className="container relative z-10 flex items-center justify-center min-h-[54.3125rem] 2xl:min-h-[48rem] md:min-h-screen">
-            <div className="max-w-[70rem] text-center justify-center flex flex-col items-center">
-                <motion.div 
-                    className="text-h3 text-gray-700"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        delay: 0.2,
-                        ease: [0.25, 0.4, 0.25, 1],
-                    }}
-                >
-                    {homeSettings.role}
-                </motion.div>
-                <motion.div 
-                    className="flex flex-col items-center justify-center flex-wrap max-w-[50rem]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        delay: 0.4,
-                        ease: [0.25, 0.4, 0.25, 1],
-                    }}
-                >
-                    <span className="text-display text-gray-900">{homeSettings.title}</span><br/>
-                    {/* <ContainerTextFlip
-                        words={profileData.titleFlipWords}
-                        interval={2500}
-                        // className="text-h1 !py-2 !px-6 md:!text-h3"
-                        textClassName="text-gray-900 font-inter-tight"
-                    /> */}
-                </motion.div>
-                <motion.div 
-                    className="mb-8 text-h6 text-gray-600 font-sans"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        delay: 0.6,
-                        ease: [0.25, 0.4, 0.25, 1],
-                    }}
-                >
-                    {homeSettings.description}
-                </motion.div>
-
+                {/* CTA buttons - animate after LCP */}
                 <motion.div 
                     className="flex gap-4 justify-center md:flex-col md:items-center"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                        duration: 0.6,
-                        delay: 0.8,
-                        ease: [0.25, 0.4, 0.25, 1],
+                        duration: 0.4,
+                        delay: 0.1,
+                        ease: "easeOut",
                     }}
                 >
                     <Button
                         className="!border-gray-900 hover:!bg-gray-900 hover:!text-white"
-                        title="Download CV"
+                        title={t('downloadCv')}
                         arrow
-                        href={homeSettings.cvPath || '/US_Ilias_Laoukili_CV.pdf'}
+                        href={'/US_Ilias_Laoukili_CV.pdf'}
                     />
                     <HoverBorderGradient
                         containerClassName="rounded-full"
                         as="button"
                         className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
-                        onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')}
+                        onClick={() => window.open('mailto:ilias.laoukili@outlook.com', '_blank')}
                     >
-                        <span>Contact Me</span>
+                        <span>{t('contactMe')}</span>
                     </HoverBorderGradient>
                 </motion.div>
             </div>
         </div>
     </div>
-);
+    );
+};
 
 export default Main;

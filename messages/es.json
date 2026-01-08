@@ -1,0 +1,123 @@
+{
+  "common": {
+    "readMore": "Leer más",
+    "backToHome": "Volver al inicio",
+    "subscribe": "Suscribirse",
+    "email": "Correo electrónico",
+    "navigation": {
+      "home": "Inicio",
+      "about": "Sobre mí",
+      "skills": "Habilidades",
+      "projects": "Proyectos",
+      "research": "Investigación",
+      "blog": "Blog"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hola, soy Ilias Laoukili",
+      "role": "Estudiante de IA y Ciberseguridad",
+      "title": "Ilias Laoukili",
+      "description": "Apasionado por la inteligencia artificial, la ciberseguridad y la construcción de soluciones innovadoras.",
+      "downloadCv": "Descargar CV",
+      "contactMe": "Contáctame"
+    },
+    "introduction": {
+      "sectionTitle": "Sobre mí",
+      "seeProjects": "Ver mis proyectos",
+      "content": "Soy estudiante de Ingeniería en IA y Ciberseguridad en ESIEE Paris, impulsado por la pasión de desarrollar soluciones innovadoras. Aprovecho mi experiencia práctica en Visión por Computadora, Machine Learning (YOLO) y diseño de sistemas seguros para resolver problemas complejos y construir soluciones prácticas con impacto real. Actualmente busco una pasantía de 4 meses entre mayo y agosto de 2026."
+    },
+    "projects": {
+      "title": "Proyectos",
+      "subtitle": "Proyectos de Investigación y Logros Técnicos",
+      "viewAll": "Ver todos los proyectos"
+    },
+    "skills": {
+      "sectionTitle": "Experiencia",
+      "subtitle": "Habilidades Técnicas y Áreas de Experiencia",
+      "categories": {
+        "aiMl": "IA & Machine Learning",
+        "webDev": "Desarrollo Web",
+        "cloudDevops": "Cloud & DevOps",
+        "languages": "Lenguajes de Programación"
+      }
+    },
+    "stats": {
+      "academic": {
+        "label": "Mejora del Rendimiento Académico",
+        "value": "45%",
+        "description": "Mejora promedio para más de 45 estudiantes tutorizados en STEM"
+      },
+      "detection": {
+        "label": "Precisión de Detección",
+        "value": "92%",
+        "description": "Lograda en sistema de detección de fuego y humo en tiempo real"
+      },
+      "years": {
+        "label": "Años de Estudio Riguroso en STEM",
+        "value": "4+",
+        "description": "Clases Preparatorias selectivas completadas y actualmente cursando Máster de Ingeniería"
+      },
+      "falsePositive": {
+        "label": "Reducción de Falsos Positivos",
+        "value": "30%",
+        "description": "Lograda mediante la integración del modelo YOLO con navegación de drones"
+      }
+    },
+    "research": {
+      "sectionTitle": "Investigación",
+      "subtitle": "Áreas de Investigación e Interés",
+      "interests": {
+        "computerVision": {
+          "title": "Aplicaciones de Visión por Computadora",
+          "description": "Exploración de sistemas de detección de objetos y reconocimiento de imágenes en tiempo real usando YOLO y frameworks de deep learning. Enfoque en aplicaciones prácticas como detección de incendios, sistemas autónomos y monitoreo de seguridad."
+        },
+        "aiSecurity": {
+          "title": "Seguridad IA y Endurecimiento de Sistemas",
+          "description": "Investigación de vulnerabilidades en sistemas de IA y desarrollo de implementaciones seguras. Combinación de principios de ciberseguridad con machine learning para construir sistemas inteligentes robustos y resistentes a manipulaciones."
+        },
+        "software": {
+          "title": "Arquitectura de Software y POO",
+          "description": "Diseño de soluciones de software escalables usando principios de programación orientada a objetos. Experiencia en construir bases de código limpias y mantenibles con patrones de diseño apropiados y documentación."
+        },
+        "education": {
+          "title": "Tecnología Educativa",
+          "description": "Apasionado por hacer accesibles conceptos técnicos complejos a través de tutoría y mentoría. Desarrollo de métodos de enseñanza innovadores para mejorar resultados de aprendizaje en campos STEM."
+        }
+      }
+    },
+    "contact": {
+      "title": "Mantente informado sobre mis últimos proyectos y logros",
+      "description": "Contáctame y recibe actualizaciones sobre mis últimos proyectos, trabajos de investigación y nuevas publicaciones de blog sobre IA, ciberseguridad y desarrollo de software. Únete a mí en este viaje de aprendizaje continuo e innovación.",
+      "button": "Contáctame"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "heroTitle": "Investigación y Artículos",
+    "subtitle": "Publicaciones científicas, análisis técnicos y reflexiones sobre IA y ciberseguridad",
+    "searchPlaceholder": "Buscar artículos por título...",
+    "allArticles": "Todos los artículos",
+    "readTime": "min de lectura",
+    "publishedOn": "Publicado el",
+    "noArticles": "No se encontraron artículos",
+    "tryAdjusting": "Intenta ajustar tu búsqueda o filtros de categoría.",
+    "backToArticles": "Volver a los artículos",
+    "similarArticles": "Artículos similares"
+  },
+  "notFound": {
+    "title": "Lo sentimos, no pudimos encontrar la página que buscas.",
+    "description": "Vuelve a la página de inicio y descubre más sobre mi trabajo",
+    "backHome": "Volver al inicio"
+  },
+  "footer": {
+    "tagline": "Estudiante de ingeniería apasionado por la IA y la ciberseguridad, creando soluciones innovadoras para un futuro digital más seguro",
+    "contactMe": "Contáctame",
+    "copyright": "©2026 Ilias Laoukili. Todos los derechos reservados.",
+    "location": "ESIEE Paris, Noisy-le-Grand, Francia",
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "social": "Redes sociales",
+    "downloadCV": "Descargar CV"
+  }
+}

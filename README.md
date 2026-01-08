@@ -6,11 +6,13 @@ Welcome to my personal portfolio website, showcasing my projects and research in
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Next.js (Static Export)
+- **Framework:** Next.js 14 (Static Export)
 - **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
+- **Animations:** Motion (formerly Framer Motion)
 - **Language:** TypeScript
-- **Icons:** Lucide React
+- **Icons:** Lucide React + Custom SVGs
+- **3D Graphics:** Three.js
+- **i18n:** Custom solution (5 languages)
 - **Deployment:** GitHub Pages
 
 ## 🏃‍♂️ Running Locally

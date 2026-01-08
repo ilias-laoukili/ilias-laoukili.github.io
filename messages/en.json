@@ -1,0 +1,123 @@
+{
+  "common": {
+    "readMore": "Read More",
+    "backToHome": "Back to Home",
+    "subscribe": "Subscribe",
+    "email": "Email",
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "research": "Research",
+      "blog": "Blog"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm Ilias Laoukili",
+      "role": "AI & Cybersecurity Engineering Student",
+      "title": "Ilias Laoukili",
+      "description": "Passionate about artificial intelligence, cybersecurity, and building innovative solutions.",
+      "downloadCv": "Download CV",
+      "contactMe": "Contact Me"
+    },
+    "introduction": {
+      "sectionTitle": "About Me",
+      "seeProjects": "See my projects",
+      "content": "I am an AI & Cybersecurity Engineering Student at ESIEE Paris, driven by a passion for developing innovative solutions. I leverage hands-on expertise in Computer Vision, Machine Learning (YOLO), and secure system design to solve complex problems and build practical solutions that make a real-world impact. I am currently seeking a 4-month internship between May and August 2026."
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "Research Projects & Technical Achievements",
+      "viewAll": "Show all projects"
+    },
+    "skills": {
+      "sectionTitle": "Expertise",
+      "subtitle": "Technical Skills & Areas of Expertise",
+      "categories": {
+        "aiMl": "AI & Machine Learning",
+        "webDev": "Web Development",
+        "cloudDevops": "Cloud & DevOps",
+        "languages": "Programming Languages"
+      }
+    },
+    "stats": {
+      "academic": {
+        "label": "Academic Performance Boost",
+        "value": "45%",
+        "description": "Average improvement for 45+ students tutored in STEM"
+      },
+      "detection": {
+        "label": "Detection Accuracy",
+        "value": "92%",
+        "description": "Achieved in real-time fire and smoke detection system"
+      },
+      "years": {
+        "label": "Years of Rigorous STEM Study",
+        "value": "4+",
+        "description": "Completed selective Preparatory Classes and currently pursuing an Engineering Master's"
+      },
+      "falsePositive": {
+        "label": "False Positive Reduction",
+        "value": "30%",
+        "description": "Achieved by integrating the YOLO model with drone navigation"
+      }
+    },
+    "research": {
+      "sectionTitle": "Research",
+      "subtitle": "Research Areas & Areas of Interest",
+      "interests": {
+        "computerVision": {
+          "title": "Computer Vision Applications",
+          "description": "Exploring real-time object detection and image recognition systems using YOLO and deep learning frameworks. Focus on practical applications like fire detection, autonomous systems, and safety monitoring."
+        },
+        "aiSecurity": {
+          "title": "AI Security & System Hardening",
+          "description": "Investigating vulnerabilities in AI systems and developing secure implementations. Combining cybersecurity principles with machine learning to build robust, tamper-resistant intelligent systems."
+        },
+        "software": {
+          "title": "Software Architecture & OOP",
+          "description": "Designing scalable software solutions using object-oriented programming principles. Experience in building clean, maintainable codebases with proper design patterns and documentation."
+        },
+        "education": {
+          "title": "Educational Technology",
+          "description": "Passionate about making complex technical concepts accessible through tutoring and mentorship. Developing innovative teaching methods to improve learning outcomes in STEM fields."
+        }
+      }
+    },
+    "contact": {
+      "title": "Stay updated on my latest projects and achievements",
+      "description": "Contact me and receive updates about my latest projects, research work, and new blog posts about AI, cybersecurity, and software development. Join me on this journey of continuous learning and innovation.",
+      "button": "Contact Me"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "heroTitle": "Research & Articles",
+    "subtitle": "Scientific publications, technical analyses and reflections on AI and cybersecurity",
+    "searchPlaceholder": "Search for an article by title...",
+    "allArticles": "All articles",
+    "readTime": "min read",
+    "publishedOn": "Published on",
+    "noArticles": "No articles found",
+    "tryAdjusting": "Try adjusting your search or category filters.",
+    "backToArticles": "Back to articles",
+    "similarArticles": "Similar Articles"
+  },
+  "notFound": {
+    "title": "Sorry, we couldn't find the page you were looking for.",
+    "description": "Return to home and discover more about my work",
+    "backHome": "Back to homepage"
+  },
+  "footer": {
+    "tagline": "Engineering student passionate about AI and cybersecurity, building innovative solutions for a safer digital future",
+    "contactMe": "Contact Me",
+    "copyright": "©2026 Ilias Laoukili. All rights reserved.",
+    "location": "ESIEE Paris, Noisy-le-Grand, France",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "social": "Social",
+    "downloadCV": "Download CV"
+  }
+}

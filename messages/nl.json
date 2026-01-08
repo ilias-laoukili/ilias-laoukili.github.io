@@ -1,0 +1,123 @@
+{
+  "common": {
+    "readMore": "Lees meer",
+    "backToHome": "Terug naar home",
+    "subscribe": "Abonneren",
+    "email": "E-mail",
+    "navigation": {
+      "home": "Home",
+      "about": "Over mij",
+      "skills": "Vaardigheden",
+      "projects": "Projecten",
+      "research": "Onderzoek",
+      "blog": "Blog"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hallo, ik ben Ilias Laoukili",
+      "role": "AI & Cybersecurity Engineering Student",
+      "title": "Ilias Laoukili",
+      "description": "Gepassioneerd door kunstmatige intelligentie, cyberbeveiliging en het bouwen van innovatieve oplossingen.",
+      "downloadCv": "CV downloaden",
+      "contactMe": "Neem contact op"
+    },
+    "introduction": {
+      "sectionTitle": "Over mij",
+      "seeProjects": "Bekijk mijn projecten",
+      "content": "Ik ben een AI & Cybersecurity Engineering Student aan ESIEE Paris, gedreven door een passie voor het ontwikkelen van innovatieve oplossingen. Ik benut praktische expertise in Computer Vision, Machine Learning (YOLO) en veilig systeemontwerp om complexe problemen op te lossen en praktische oplossingen te bouwen met echte impact. Ik zoek momenteel een 4-maands stage tussen mei en augustus 2026."
+    },
+    "projects": {
+      "title": "Projecten",
+      "subtitle": "Onderzoeksprojecten & Technische Prestaties",
+      "viewAll": "Alle projecten bekijken"
+    },
+    "skills": {
+      "sectionTitle": "Expertise",
+      "subtitle": "Technische Vaardigheden & Expertisegebieden",
+      "categories": {
+        "aiMl": "AI & Machine Learning",
+        "webDev": "Webontwikkeling",
+        "cloudDevops": "Cloud & DevOps",
+        "languages": "Programmeertalen"
+      }
+    },
+    "stats": {
+      "academic": {
+        "label": "Academische Prestatieverbetering",
+        "value": "45%",
+        "description": "Gemiddelde verbetering voor 45+ begeleide STEM-studenten"
+      },
+      "detection": {
+        "label": "Detectienauwkeurigheid",
+        "value": "92%",
+        "description": "Behaald in real-time brand- en rookdetectiesysteem"
+      },
+      "years": {
+        "label": "Jaren Rigoureuze STEM-studie",
+        "value": "4+",
+        "description": "Selectieve voorbereidende klassen afgerond en momenteel bezig met Engineering Master"
+      },
+      "falsePositive": {
+        "label": "Reductie van Valse Positieven",
+        "value": "30%",
+        "description": "Bereikt door integratie van YOLO-model met dronenavigatie"
+      }
+    },
+    "research": {
+      "sectionTitle": "Onderzoek",
+      "subtitle": "Onderzoeksgebieden & Interessegebieden",
+      "interests": {
+        "computerVision": {
+          "title": "Computer Vision Toepassingen",
+          "description": "Verkenning van real-time objectdetectie en beeldherkenningssystemen met YOLO en deep learning frameworks. Focus op praktische toepassingen zoals branddetectie, autonome systemen en veiligheidsmonitoring."
+        },
+        "aiSecurity": {
+          "title": "AI-beveiliging & Systeemverharding",
+          "description": "Onderzoek naar kwetsbaarheden in AI-systemen en ontwikkeling van veilige implementaties. Combinatie van cybersecurityprincipes met machine learning om robuuste, manipulatiebestendige intelligente systemen te bouwen."
+        },
+        "software": {
+          "title": "Software Architectuur & OOP",
+          "description": "Ontwerp van schaalbare softwareoplossingen met objectgeoriënteerde programmeerprincipes. Ervaring met het bouwen van schone, onderhoudbare codebases met juiste design patterns en documentatie."
+        },
+        "education": {
+          "title": "Onderwijstechnologie",
+          "description": "Gepassioneerd over het toegankelijk maken van complexe technische concepten door tutoring en mentorschap. Ontwikkeling van innovatieve leermethoden om leerresultaten in STEM-vakken te verbeteren."
+        }
+      }
+    },
+    "contact": {
+      "title": "Blijf op de hoogte van mijn laatste projecten en prestaties",
+      "description": "Neem contact met me op en ontvang updates over mijn laatste projecten, onderzoekswerk en nieuwe blogposts over AI, cybersecurity en softwareontwikkeling. Doe mee op deze reis van continu leren en innovatie.",
+      "button": "Neem contact op"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "heroTitle": "Onderzoek & Artikelen",
+    "subtitle": "Wetenschappelijke publicaties, technische analyses en gedachten over AI en cybersecurity",
+    "searchPlaceholder": "Zoek artikelen op titel...",
+    "allArticles": "Alle artikelen",
+    "readTime": "min lezen",
+    "publishedOn": "Gepubliceerd op",
+    "noArticles": "Geen artikelen gevonden",
+    "tryAdjusting": "Probeer je zoekopdracht of categoriefilters aan te passen.",
+    "backToArticles": "Terug naar artikelen",
+    "similarArticles": "Vergelijkbare artikelen"
+  },
+  "notFound": {
+    "title": "Sorry, we konden de pagina die je zocht niet vinden.",
+    "description": "Ga terug naar de homepagina en ontdek meer over mijn werk",
+    "backHome": "Terug naar home"
+  },
+  "footer": {
+    "tagline": "Engineering student met een passie voor AI en cybersecurity, die innovatieve oplossingen creëert voor een veiligere digitale toekomst",
+    "contactMe": "Neem contact op",
+    "copyright": "©2026 Ilias Laoukili. Alle rechten voorbehouden.",
+    "location": "ESIEE Paris, Noisy-le-Grand, Frankrijk",
+    "navigation": "Navigatie",
+    "contact": "Contact",
+    "social": "Sociaal",
+    "downloadCV": "CV downloaden"
+  }
+}

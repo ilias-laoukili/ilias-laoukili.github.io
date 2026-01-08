@@ -23,14 +23,14 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@/lib/*": [
+        "lib/*"
+      ],
       "@/components/*": [
         "components/*"
       ],
       "@/templates/*": [
         "templates/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
       ],
       "@/constants/*": [
         "constants/*"

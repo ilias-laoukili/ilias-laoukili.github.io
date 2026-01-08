@@ -3,27 +3,48 @@
 import { CardPattern, generateRandomString } from "@/components/ui/evervault-card";
 import { useMotionValue, motion, useInView } from "motion/react";
 import { useState, useEffect, useRef } from "react";
-import type { SkillGroup } from "@/types";
+import { useTranslations } from "@/lib/i18n/client";
 
-type SkillsProps = {
-    skills: SkillGroup[];
+type SkillCategory = {
+    categoryKey: string;
+    items: string[];
 };
 
-const Skills = ({ skills }: SkillsProps) => {
+const SKILL_CATEGORIES: SkillCategory[] = [
+    {
+        categoryKey: "aiMl",
+        items: ["Python", "TensorFlow", "PyTorch", "scikit-learn", "Keras", "NumPy", "Pandas", "OpenCV", "Hugging Face"],
+    },
+    {
+        categoryKey: "webDev",
+        items: ["React", "Next.js", "TypeScript", "Node.js", "TailwindCSS", "HTML/CSS", "REST APIs", "GraphQL"],
+    },
+    {
+        categoryKey: "cloudDevops",
+        items: ["AWS", "Docker", "Kubernetes", "CI/CD", "Git", "Linux", "Terraform", "MongoDB", "PostgreSQL"],
+    },
+    {
+        categoryKey: "languages",
+        items: ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "Bash", "R"],
+    },
+];
+
+const Skills = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const { t } = useTranslations('home.skills');
 
     return (
         <div className="py150 bg-[#FAFAFA]">
             <div className="container" id="skills">
-                <div className="mb-2 label">Expertise</div>
+                <div className="mb-2 label">{t('sectionTitle')}</div>
                 <div className="mb-12 text-h1 2xl:mb-25">
-                    Technical Skills <br />& Areas of Expertise
+                    {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
                 </div>
                 <div ref={ref} className="grid grid-cols-2 gap-10 lg:grid-cols-1 lg:gap-8">
-                    {skills.map((skillGroup, index) => (
+                    {SKILL_CATEGORIES.map((skillGroup, index) => (
                         <SkillCard 
-                            key={skillGroup._id || index} 
+                            key={skillGroup.categoryKey} 
                             skillGroup={skillGroup}
                             index={index}
                             isInView={isInView}
@@ -40,10 +61,11 @@ const SkillCard = ({
     index,
     isInView 
 }: { 
-    skillGroup: SkillGroup; 
+    skillGroup: SkillCategory; 
     index: number;
     isInView: boolean;
 }) => {
+    const { t } = useTranslations('home.skills.categories');
     let mouseX = useMotionValue(0);
     let mouseY = useMotionValue(0);
     const [randomString, setRandomString] = useState("");
@@ -78,11 +100,11 @@ const SkillCard = ({
 
             <div className="relative z-10">
                 <div className="mb-6 text-h3 text-g-500">
-                    {skillGroup.category}
+                    {t(skillGroup.categoryKey)}
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                    {skillGroup.items?.map((skill: string) => (
+                    {skillGroup.items.map((skill: string) => (
                         <div
                             key={skill}
                             className="px-4 py-2 text-sm bg-g-20 backdrop-blur-sm border border-gray-200 rounded-full text-body text-g-500 font-medium transition-colors group-hover/card:bg-white/50"

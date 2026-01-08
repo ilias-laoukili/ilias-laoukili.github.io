@@ -1,0 +1,123 @@
+{
+  "common": {
+    "readMore": "Weiterlesen",
+    "backToHome": "Zurück zur Startseite",
+    "subscribe": "Abonnieren",
+    "email": "E-Mail",
+    "navigation": {
+      "home": "Startseite",
+      "about": "Über mich",
+      "skills": "Fähigkeiten",
+      "projects": "Projekte",
+      "research": "Forschung",
+      "blog": "Blog"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hallo, ich bin Ilias Laoukili",
+      "role": "Student für KI und Cybersicherheit",
+      "title": "Ilias Laoukili",
+      "description": "Leidenschaftlich für künstliche Intelligenz, Cybersicherheit und den Aufbau innovativer Lösungen.",
+      "downloadCv": "Lebenslauf herunterladen",
+      "contactMe": "Kontaktieren Sie mich"
+    },
+    "introduction": {
+      "sectionTitle": "Über mich",
+      "seeProjects": "Meine Projekte ansehen",
+      "content": "Ich bin Student für KI & Cybersicherheit an der ESIEE Paris, angetrieben von der Leidenschaft, innovative Lösungen zu entwickeln. Ich nutze praktische Expertise in Computer Vision, Machine Learning (YOLO) und sicherem Systemdesign, um komplexe Probleme zu lösen und praktische Lösungen mit realem Impact zu entwickeln. Ich suche derzeit ein 4-monatiges Praktikum zwischen Mai und August 2026."
+    },
+    "projects": {
+      "title": "Projekte",
+      "subtitle": "Forschungsprojekte & Technische Erfolge",
+      "viewAll": "Alle Projekte anzeigen"
+    },
+    "skills": {
+      "sectionTitle": "Expertise",
+      "subtitle": "Technische Fähigkeiten & Fachgebiete",
+      "categories": {
+        "aiMl": "KI & Machine Learning",
+        "webDev": "Webentwicklung",
+        "cloudDevops": "Cloud & DevOps",
+        "languages": "Programmiersprachen"
+      }
+    },
+    "stats": {
+      "academic": {
+        "label": "Akademische Leistungssteigerung",
+        "value": "45%",
+        "description": "Durchschnittliche Verbesserung für 45+ betreute STEM-Studenten"
+      },
+      "detection": {
+        "label": "Erkennungsgenauigkeit",
+        "value": "92%",
+        "description": "Erreicht im Echtzeit-Feuer- und Raucherkennungssystem"
+      },
+      "years": {
+        "label": "Jahre rigoroser STEM-Studien",
+        "value": "4+",
+        "description": "Selektive Vorbereitungsklassen abgeschlossen und aktuell im Ingenieur-Master"
+      },
+      "falsePositive": {
+        "label": "Reduktion von Fehlalarmen",
+        "value": "30%",
+        "description": "Erreicht durch Integration des YOLO-Modells mit Drohnennavigation"
+      }
+    },
+    "research": {
+      "sectionTitle": "Forschung",
+      "subtitle": "Forschungsbereiche & Interessengebiete",
+      "interests": {
+        "computerVision": {
+          "title": "Computer Vision Anwendungen",
+          "description": "Erforschung von Echtzeit-Objekterkennung und Bilderkennungssystemen mit YOLO und Deep-Learning-Frameworks. Fokus auf praktische Anwendungen wie Branderkennung, autonome Systeme und Sicherheitsüberwachung."
+        },
+        "aiSecurity": {
+          "title": "KI-Sicherheit & Systemhärtung",
+          "description": "Untersuchung von Schwachstellen in KI-Systemen und Entwicklung sicherer Implementierungen. Kombination von Cybersicherheitsprinzipien mit Machine Learning zum Aufbau robuster, manipulationssicherer intelligenter Systeme."
+        },
+        "software": {
+          "title": "Softwarearchitektur & OOP",
+          "description": "Design skalierbarer Softwarelösungen mit objektorientierten Programmierprinzipien. Erfahrung im Aufbau sauberer, wartbarer Codebasen mit geeigneten Design Patterns und Dokumentation."
+        },
+        "education": {
+          "title": "Bildungstechnologie",
+          "description": "Leidenschaftlich daran, komplexe technische Konzepte durch Nachhilfe und Mentoring zugänglich zu machen. Entwicklung innovativer Lehrmethoden zur Verbesserung der Lernergebnisse in STEM-Fächern."
+        }
+      }
+    },
+    "contact": {
+      "title": "Bleiben Sie über meine neuesten Projekte und Erfolge informiert",
+      "description": "Kontaktieren Sie mich und erhalten Sie Updates zu meinen neuesten Projekten, Forschungsarbeiten und neuen Blogbeiträgen über KI, Cybersicherheit und Softwareentwicklung. Begleiten Sie mich auf dieser Reise des kontinuierlichen Lernens und der Innovation.",
+      "button": "Kontaktieren Sie mich"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "heroTitle": "Forschung & Artikel",
+    "subtitle": "Wissenschaftliche Veröffentlichungen, technische Analysen und Gedanken zu KI und Cybersicherheit",
+    "searchPlaceholder": "Artikel nach Titel suchen...",
+    "allArticles": "Alle Artikel",
+    "readTime": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am",
+    "noArticles": "Keine Artikel gefunden",
+    "tryAdjusting": "Versuchen Sie, Ihre Suche oder Kategoriefilter anzupassen.",
+    "backToArticles": "Zurück zu den Artikeln",
+    "similarArticles": "Ähnliche Artikel"
+  },
+  "notFound": {
+    "title": "Entschuldigung, wir konnten die gesuchte Seite nicht finden.",
+    "description": "Kehren Sie zur Startseite zurück und erfahren Sie mehr über meine Arbeit",
+    "backHome": "Zurück zur Startseite"
+  },
+  "footer": {
+    "tagline": "Ingenieurstudent mit Leidenschaft für KI und Cybersicherheit, der innovative Lösungen für eine sicherere digitale Zukunft entwickelt",
+    "contactMe": "Kontaktieren Sie mich",
+    "copyright": "©2026 Ilias Laoukili. Alle Rechte vorbehalten.",
+    "location": "ESIEE Paris, Noisy-le-Grand, Frankreich",
+    "navigation": "Navigation",
+    "contact": "Kontakt",
+    "social": "Soziale Medien",
+    "downloadCV": "Lebenslauf herunterladen"
+  }
+}

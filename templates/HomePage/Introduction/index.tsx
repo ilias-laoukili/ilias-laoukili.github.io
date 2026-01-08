@@ -1,32 +1,41 @@
 "use client";
 
-import Image from "@/components/Image";
 import Button from "@/components/Button";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import type { HomeSettings, Stat } from "@/types";
+import { useTranslations } from "@/lib/i18n/client";
 
-type IntroductionProps = {
-    homeSettings: HomeSettings;
+type Stat = {
+    label: string;
+    value: string;
+    description: string;
 };
 
-const Introduction = ({ homeSettings }: IntroductionProps) => {
+const Introduction = () => {
     const statsRef = useRef(null);
     const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
+    const { t } = useTranslations('home');
+
+    const stats: Stat[] = [
+        { label: t('stats.academic.label'), value: t('stats.academic.value'), description: t('stats.academic.description') },
+        { label: t('stats.detection.label'), value: t('stats.detection.value'), description: t('stats.detection.description') },
+        { label: t('stats.years.label'), value: t('stats.years.value'), description: t('stats.years.description') },
+        { label: t('stats.falsePositive.label'), value: t('stats.falsePositive.value'), description: t('stats.falsePositive.description') },
+    ];
 
     return (
         <div className="pt150 pb-19 bg-[#FAFAFA] md:pb-0 md:bg-transparent">
             <div className="container" id="about">
                 <div className="flex mb-32 xl:mb-25 lg:block">
                     <div className="label shrink-0 w-[27.19rem] 2xl:w-[18rem] lg:w-full lg:mb-16">
-                        About Me
+                        {t('introduction.sectionTitle')}
                     </div>
                     <div className="grow">
                         <div className="mb-8 text-h1">
-                            {homeSettings.introduction}
+                            {t('introduction.content')}
                         </div>
                         <Button
-                            title="See my projects"
+                            title={t('introduction.seeProjects')}
                             arrow
                             href="#projects"
                         />
@@ -34,7 +43,7 @@ const Introduction = ({ homeSettings }: IntroductionProps) => {
                 </div>
 
                 <div ref={statsRef} className="grid grid-cols-4 gap-6 mb-16 xl:mb-25 md:grid-cols-2 md:gap-4">
-                    {homeSettings.stats?.map((stat: Stat, index: number) => (
+                    {stats.map((stat: Stat, index: number) => (
                         <motion.div
                             key={stat.label}
                             initial={{ opacity: 0, scale: 0.8, y: 20 }}

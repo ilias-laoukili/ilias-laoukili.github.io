@@ -1,7 +1,10 @@
-export { Icon } from './Icon'
+export type IconProps = {
+  className?: string;
+  variant?: 'stroke' | 'solid' | 'duotone';
+};
 
-export * from './icons/Mail01Icon';
-export * from './icons/Brain01Icon';
-export * from './icons/ComputerCloudIcon';
-export * from './icons/KnightShieldIcon';
-export * from './icons/SoftwareIcon';
+export { Brain01Icon } from './Brain01Icon';
+export { ComputerCloudIcon } from './ComputerCloudIcon';
+export { KnightShieldIcon } from './KnightShieldIcon';
+export { Mail01Icon } from './Mail01Icon';
+export { SoftwareIcon } from './SoftwareIcon';

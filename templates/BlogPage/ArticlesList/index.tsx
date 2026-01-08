@@ -1,16 +1,24 @@
 import { useMemo } from "react";
 import Link from "next/link";
 import Image from "@/components/Image";
+import { useTranslations } from "@/lib/i18n/client";
 import type { BlogPost, BlogCategory } from "@/types/index";
+import type { Locale } from "@/lib/i18n";
 
 type ArticlesListProps = {
     blogPosts: BlogPost[];
     selectedCategory: string;
     searchQuery: string;
     categories: BlogCategory[];
+    locale: Locale;
 };
 
-const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories }: ArticlesListProps) => {
+const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories, locale }: ArticlesListProps) => {
+    const { t } = useTranslations('blog');
+    const { t: ct } = useTranslations('common');
+
+    const blogPath = locale === 'en' ? '/blog' : `/${locale}/blog`;
+
     const filteredPosts = useMemo(() => {
         const selectedCategoryTitle = categories.find(c => c.id === selectedCategory)?.title;
 
@@ -24,8 +32,8 @@ const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories }: 
     if (filteredPosts.length === 0) {
         return (
             <div className="py-20 text-center">
-                <h3 className="text-h3 text-g-500">No articles found</h3>
-                <p className="text-body text-g-100 mt-2">Try adjusting your search or category filters.</p>
+                <h3 className="text-h3 text-g-500">{t('noArticles')}</h3>
+                <p className="text-body text-g-100 mt-2">{t('tryAdjusting')}</p>
             </div>
         );
     }
@@ -37,7 +45,7 @@ const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories }: 
                     {filteredPosts.map((post) => (
                         <Link
                             key={post.slug}
-                            href={`/blog/${post.slug}`}
+                            href={`${blogPath}/${post.slug}`}
                             className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all flex flex-col w-full h-full"
                         >
                             <div className="relative h-48 overflow-hidden bg-g-50">
@@ -46,13 +54,15 @@ const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories }: 
                                     src={post.mainImage || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"}
                                     width={400}
                                     height={200}
-                                    alt={post.title}
+                                    alt={`Cover image for ${post.title}`}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                                    loading="lazy"
                                 />
                             </div>
                             <div className="p-6 flex flex-col flex-grow">
                                 <h3 className="text-xl font-semibold text-g-900 mb-3 transition-colors line-clamp-2">{post.title}</h3>
                                 <p className="text-body text-g-500 mb-4 line-clamp-3 flex-grow">{post.excerpt}</p>
-                                <div className="mt-auto pt-4 border-t border-g-50 text-sm text-blue-500 font-medium">Read more</div>
+                                <div className="mt-auto pt-4 border-t border-g-50 text-sm text-blue-500 font-medium">{ct('readMore')}</div>
                             </div>
                         </Link>
                     ))}

@@ -5,16 +5,24 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "@/components/Image";
 import Link from "next/link";
+import { useTranslations } from "@/lib/i18n/client";
 import type { BlogPost } from "@/types/index";
+import type { Locale } from "@/lib/i18n";
 
 type BlogDetailPageProps = {
     article: BlogPost;
     similarArticles?: BlogPost[];
+    locale: Locale;
 };
 
-const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) => {
+const BlogDetailPage = ({ article, similarArticles = [], locale }: BlogDetailPageProps) => {
+    const { t } = useTranslations('blog');
+    const { t: ct } = useTranslations('common');
+
+    const blogPath = locale === 'en' ? '/blog' : `/${locale}/blog`;
+
     return (
-        <Layout classHeader="!absolute top-0 left-0 right-0 z-5" lightHeader>
+        <Layout classHeader="!absolute top-0 left-0 right-0 z-5" lightHeader locale={locale}>
             <div className="relative w-full h-[300px] bg-g-900">
                 <Image
                     className="w-full h-full object-cover opacity-40"
@@ -45,7 +53,7 @@ const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) 
                             
                             <div className="flex items-center justify-center gap-4 text-body text-g-100">
                                 {article.publishedAt && <span>
-                                    {new Date(article.publishedAt).toLocaleDateString("en-US",
+                                    {new Date(article.publishedAt).toLocaleDateString(locale === 'en' ? 'en-US' : locale,
                                         {
                                             year: "numeric",
                                             month: "long",
@@ -90,7 +98,7 @@ const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) 
 
                         <div className="mt-16 pt-8 border-t border-g-50">
                             <Link
-                                href="/blog"
+                                href={blogPath}
                                 className="inline-flex items-center gap-2 text-body text-blue-500 hover:text-blue-600 transition-colors"
                             >
                                 <svg
@@ -106,7 +114,7 @@ const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) 
                                         d="M10 19l-7-7m0 0l7-7m-7 7h18"
                                     />
                                 </svg>
-                                Back to articles
+                                {t('backToArticles')}
                             </Link>
                         </div>
                     </div>
@@ -118,14 +126,14 @@ const BlogDetailPage = ({ article, similarArticles = [] }: BlogDetailPageProps) 
                     <div className="container">
                         <div className="max-w-6xl mx-auto">
                             <h2 className="text-h2 mb-12 text-center">
-                                Similar Articles
+                                {t('similarArticles')}
                             </h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {similarArticles.map((similarArticle) => (
                                     <Link
                                         key={similarArticle.slug}
-                                        href={`/blog/${similarArticle.slug}`}
+                                        href={`${blogPath}/${similarArticle.slug}`}
                                         className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all"
                                     >
                                         <div className="relative h-48 overflow-hidden bg-g-50">
