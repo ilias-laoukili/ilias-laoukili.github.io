@@ -25,7 +25,7 @@
     "introduction": {
       "sectionTitle": "Über mich",
       "seeProjects": "Meine Projekte ansehen",
-      "content": "Ich bin Student für KI & Cybersicherheit an der ESIEE Paris, angetrieben von der Leidenschaft, innovative Lösungen zu entwickeln. Ich nutze praktische Expertise in Computer Vision, Machine Learning (YOLO) und sicherem Systemdesign, um komplexe Probleme zu lösen und praktische Lösungen mit realem Impact zu entwickeln. Ich suche derzeit ein 4-monatiges Praktikum zwischen Mai und August 2026."
+      "content": "Ich bin Student für KI & Cybersicherheit an der ESIEE Paris, angetrieben von der Leidenschaft, innovative Lösungen zu entwickeln. Ich nutze praktische Expertise in Graph Neural Networks, Digitaler Signalverarbeitung und Machine-Learning-Pipelines, um komplexe Probleme zu lösen und praktische Lösungen mit realem Impact zu entwickeln. Ich suche derzeit ein 4-monatiges Praktikum zwischen Mai und August 2026."
     },
     "projects": {
       "title": "Projekte",
@@ -48,37 +48,37 @@
         "value": "45%",
         "description": "Durchschnittliche Verbesserung für 45+ betreute STEM-Studenten"
       },
-      "detection": {
-        "label": "Erkennungsgenauigkeit",
-        "value": "92%",
-        "description": "Erreicht im Echtzeit-Feuer- und Raucherkennungssystem"
+      "modelAccuracy": {
+        "label": "Modellgenauigkeit",
+        "value": "85%",
+        "description": "Erreicht bei Audio-Emotionsklassifikation mit DSP und Random Forest"
       },
       "years": {
         "label": "Jahre rigoroser STEM-Studien",
         "value": "4+",
         "description": "Selektive Vorbereitungsklassen abgeschlossen und aktuell im Ingenieur-Master"
       },
-      "falsePositive": {
-        "label": "Reduktion von Fehlalarmen",
-        "value": "30%",
-        "description": "Erreicht durch Integration des YOLO-Modells mit Drohnennavigation"
+      "graphCompression": {
+        "label": "Graph-Kompression",
+        "value": "40%",
+        "description": "Erreicht durch geometrische Sparsifikation in der GNN-Forschung"
       }
     },
     "research": {
       "sectionTitle": "Forschung",
       "subtitle": "Forschungsbereiche & Interessengebiete",
       "interests": {
-        "computerVision": {
-          "title": "Computer Vision Anwendungen",
-          "description": "Erforschung von Echtzeit-Objekterkennung und Bilderkennungssystemen mit YOLO und Deep-Learning-Frameworks. Fokus auf praktische Anwendungen wie Branderkennung, autonome Systeme und Sicherheitsüberwachung."
+        "graphNetworks": {
+          "title": "Graph Neural Networks",
+          "description": "Erforschung geometrischer Ansätze zur Graph-Sparsifikation und Topologie-Optimierung. Fokus auf Verbesserung der GNN-Leistung durch Modifikation der Graphstruktur statt einfacher Kompression."
         },
-        "aiSecurity": {
-          "title": "KI-Sicherheit & Systemhärtung",
-          "description": "Untersuchung von Schwachstellen in KI-Systemen und Entwicklung sicherer Implementierungen. Kombination von Cybersicherheitsprinzipien mit Machine Learning zum Aufbau robuster, manipulationssicherer intelligenter Systeme."
+        "signalProcessing": {
+          "title": "Digitale Signalverarbeitung",
+          "description": "Entwicklung maßgeschneiderter DSP-Pipelines für Audioanalyse, einschließlich Vocoder und Feature-Extraktion. Anwendung von Signalverarbeitungstechniken für Machine Learning auf Audiodaten."
         },
-        "software": {
-          "title": "Softwarearchitektur & OOP",
-          "description": "Design skalierbarer Softwarelösungen mit objektorientierten Programmierprinzipien. Erfahrung im Aufbau sauberer, wartbarer Codebasen mit geeigneten Design Patterns und Dokumentation."
+        "mlPipelines": {
+          "title": "Skalierbare ML-Pipelines",
+          "description": "Design von End-to-End Machine-Learning-Systemen mit sauberer Architektur. Aufbau wartbarer, produktionsreifer Pipelines für Datenvorverarbeitung, Modelltraining und Deployment."
         },
         "education": {
           "title": "Bildungstechnologie",

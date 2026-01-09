@@ -8,3 +8,5 @@ export { ComputerCloudIcon } from './ComputerCloudIcon';
 export { KnightShieldIcon } from './KnightShieldIcon';
 export { Mail01Icon } from './Mail01Icon';
 export { SoftwareIcon } from './SoftwareIcon';
+export { StructureFoldIcon } from './StructureFoldIcon';
+export { WaveformIcon } from './WaveformIcon';

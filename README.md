@@ -1,44 +1,23 @@
 # Ilias Laoukili - Portfolio
 
-Welcome to my personal portfolio website, showcasing my projects and research in AI, Cybersecurity, and Software Engineering.
+The source code for my personal portfolio and blog, hosted at [laoukili.com](https://ilias-laoukili.github.io).
 
-🚀 **Live Demo:** [https://ilias-laoukili.github.io](https://ilias-laoukili.github.io)
+## 🚀 Overview
+This project showcases my academic research in **Graph Neural Networks** and **Digital Signal Processing**. It is built with a focus on performance, accessibility, and clean architecture.
 
-## 🛠️ Tech Stack
+## 🛠️ Built With
+* **Framework:** Next.js 14 (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS + Framer Motion
+* **Deployment:** GitHub Actions (CI/CD)
 
-- **Framework:** Next.js 14 (Static Export)
-- **Styling:** Tailwind CSS
-- **Animations:** Motion (formerly Framer Motion)
-- **Language:** TypeScript
-- **Icons:** Lucide React + Custom SVGs
-- **3D Graphics:** Three.js
-- **i18n:** Custom solution (5 languages)
-- **Deployment:** GitHub Pages
+## 📂 Project Structuresss
+* `/constants`: Content management (Projects, Research Interests).
+* `/messages`: Internationalization (i18n) JSON files.
+* `/components`: Reusable UI components (3D cards, animated buttons).
 
-## 🏃‍♂️ Running Locally
-
-Clone the repository:
+## 🏃‍♂️ Run Locally
 ```bash
-git clone https://github.com/ilias-laoukili/ilias-laoukili.github.io.git
-cd ilias-laoukili.github.io
-```
-
-Install dependencies:
-```bash
+git clone [https://github.com/ilias-laoukili/ilias-laoukili.github.io.git](https://github.com/ilias-laoukili/ilias-laoukili.github.io.git)
 npm install
-```
-
-Run the development server:
-```bash
 npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## 🏗️ Building for Production
-
-To simulate the production build locally:
-```bash
-npm run build
-npx serve@latest out
-```

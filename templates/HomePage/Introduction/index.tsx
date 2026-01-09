@@ -18,9 +18,9 @@ const Introduction = () => {
 
     const stats: Stat[] = [
         { label: t('stats.academic.label'), value: t('stats.academic.value'), description: t('stats.academic.description') },
-        { label: t('stats.detection.label'), value: t('stats.detection.value'), description: t('stats.detection.description') },
+        { label: t('stats.modelAccuracy.label'), value: t('stats.modelAccuracy.value'), description: t('stats.modelAccuracy.description') },
         { label: t('stats.years.label'), value: t('stats.years.value'), description: t('stats.years.description') },
-        { label: t('stats.falsePositive.label'), value: t('stats.falsePositive.value'), description: t('stats.falsePositive.description') },
+        { label: t('stats.graphCompression.label'), value: t('stats.graphCompression.value'), description: t('stats.graphCompression.description') },
     ];
 
     return (

@@ -25,7 +25,7 @@
     "introduction": {
       "sectionTitle": "Sobre mí",
       "seeProjects": "Ver mis proyectos",
-      "content": "Soy estudiante de Ingeniería en IA y Ciberseguridad en ESIEE Paris, impulsado por la pasión de desarrollar soluciones innovadoras. Aprovecho mi experiencia práctica en Visión por Computadora, Machine Learning (YOLO) y diseño de sistemas seguros para resolver problemas complejos y construir soluciones prácticas con impacto real. Actualmente busco una pasantía de 4 meses entre mayo y agosto de 2026."
+      "content": "Soy estudiante de Ingeniería en IA y Ciberseguridad en ESIEE Paris, impulsado por la pasión de desarrollar soluciones innovadoras. Aprovecho mi experiencia práctica en Redes Neuronales de Grafos, Procesamiento Digital de Señales y pipelines de Machine Learning para resolver problemas complejos y construir soluciones prácticas con impacto real. Actualmente busco una pasantía de 4 meses entre mayo y agosto de 2026."
     },
     "projects": {
       "title": "Proyectos",
@@ -48,37 +48,37 @@
         "value": "45%",
         "description": "Mejora promedio para más de 45 estudiantes tutorizados en STEM"
       },
-      "detection": {
-        "label": "Precisión de Detección",
-        "value": "92%",
-        "description": "Lograda en sistema de detección de fuego y humo en tiempo real"
+      "modelAccuracy": {
+        "label": "Precisión del Modelo",
+        "value": "85%",
+        "description": "Lograda en clasificación de emociones de audio con DSP y Random Forest"
       },
       "years": {
         "label": "Años de Estudio Riguroso en STEM",
         "value": "4+",
         "description": "Clases Preparatorias selectivas completadas y actualmente cursando Máster de Ingeniería"
       },
-      "falsePositive": {
-        "label": "Reducción de Falsos Positivos",
-        "value": "30%",
-        "description": "Lograda mediante la integración del modelo YOLO con navegación de drones"
+      "graphCompression": {
+        "label": "Compresión de Grafos",
+        "value": "40%",
+        "description": "Lograda mediante esparsificación geométrica en investigación de GNN"
       }
     },
     "research": {
       "sectionTitle": "Investigación",
       "subtitle": "Áreas de Investigación e Interés",
       "interests": {
-        "computerVision": {
-          "title": "Aplicaciones de Visión por Computadora",
-          "description": "Exploración de sistemas de detección de objetos y reconocimiento de imágenes en tiempo real usando YOLO y frameworks de deep learning. Enfoque en aplicaciones prácticas como detección de incendios, sistemas autónomos y monitoreo de seguridad."
+        "graphNetworks": {
+          "title": "Redes Neuronales de Grafos",
+          "description": "Investigación de enfoques geométricos para esparsificación y optimización de topología de grafos. Enfoque en mejorar el rendimiento de GNN modificando la estructura del grafo en lugar de solo comprimirla."
         },
-        "aiSecurity": {
-          "title": "Seguridad IA y Endurecimiento de Sistemas",
-          "description": "Investigación de vulnerabilidades en sistemas de IA y desarrollo de implementaciones seguras. Combinación de principios de ciberseguridad con machine learning para construir sistemas inteligentes robustos y resistentes a manipulaciones."
+        "signalProcessing": {
+          "title": "Procesamiento Digital de Señales",
+          "description": "Desarrollo de pipelines DSP personalizados para análisis de audio, incluyendo vocoders y extracción de características. Aplicación de técnicas de procesamiento de señales para machine learning en datos de audio."
         },
-        "software": {
-          "title": "Arquitectura de Software y POO",
-          "description": "Diseño de soluciones de software escalables usando principios de programación orientada a objetos. Experiencia en construir bases de código limpias y mantenibles con patrones de diseño apropiados y documentación."
+        "mlPipelines": {
+          "title": "Pipelines ML Escalables",
+          "description": "Diseño de sistemas de machine learning de extremo a extremo con arquitectura limpia. Construcción de pipelines mantenibles y listos para producción para preprocesamiento de datos, entrenamiento y despliegue."
         },
         "education": {
           "title": "Tecnología Educativa",

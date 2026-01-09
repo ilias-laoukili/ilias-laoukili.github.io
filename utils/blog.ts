@@ -18,7 +18,8 @@ export function getSortedPostsData(locale: Locale = 'en'): BlogPost[] {
         mainImage: project.imageUrl,
         tags: project.tags,
         content: "", // Content is not needed for the list view
-        extraImage: project.extraImage,
+        extraImage: (project as { extraImage?: string }).extraImage,
+        demoUrl: (project as { demoUrl?: string }).demoUrl,
     })).sort((a, b) => ((a.publishedAt ?? "") < (b.publishedAt ?? "") ? 1 : -1));
 }
 
@@ -65,7 +66,8 @@ export async function getPostData(slug: string, locale: Locale = 'en'): Promise<
         mainImage: project.imageUrl,
         tags: project.tags,
         content: content,
-        extraImage: project.extraImage,
+        extraImage: (project as { extraImage?: string }).extraImage,
+        demoUrl: (project as { demoUrl?: string }).demoUrl,
     };
     
     const allPosts = getSortedPostsData(locale);

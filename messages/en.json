@@ -25,7 +25,7 @@
     "introduction": {
       "sectionTitle": "About Me",
       "seeProjects": "See my projects",
-      "content": "I am an AI & Cybersecurity Engineering Student at ESIEE Paris, driven by a passion for developing innovative solutions. I leverage hands-on expertise in Computer Vision, Machine Learning (YOLO), and secure system design to solve complex problems and build practical solutions that make a real-world impact. I am currently seeking a 4-month internship between May and August 2026."
+      "content": "I am an AI & Cybersecurity Engineering Student at ESIEE Paris, driven by a passion for developing innovative solutions. I leverage hands-on expertise in Graph Neural Networks, Digital Signal Processing, and Machine Learning pipelines to solve complex problems and build practical solutions that make a real-world impact. I am currently seeking a 4-month internship between May and August 2026."
     },
     "projects": {
       "title": "Projects",
@@ -48,37 +48,37 @@
         "value": "45%",
         "description": "Average improvement for 45+ students tutored in STEM"
       },
-      "detection": {
-        "label": "Detection Accuracy",
-        "value": "92%",
-        "description": "Achieved in real-time fire and smoke detection system"
+      "modelAccuracy": {
+        "label": "Model Accuracy",
+        "value": "85%",
+        "description": "Achieved in audio emotion classification using DSP and Random Forest"
       },
       "years": {
         "label": "Years of Rigorous STEM Study",
         "value": "4+",
         "description": "Completed selective Preparatory Classes and currently pursuing an Engineering Master's"
       },
-      "falsePositive": {
-        "label": "False Positive Reduction",
-        "value": "30%",
-        "description": "Achieved by integrating the YOLO model with drone navigation"
+      "graphCompression": {
+        "label": "Graph Compression",
+        "value": "40%",
+        "description": "Achieved through geometric sparsification in Graph Neural Network research"
       }
     },
     "research": {
       "sectionTitle": "Research",
       "subtitle": "Research Areas & Areas of Interest",
       "interests": {
-        "computerVision": {
-          "title": "Computer Vision Applications",
-          "description": "Exploring real-time object detection and image recognition systems using YOLO and deep learning frameworks. Focus on practical applications like fire detection, autonomous systems, and safety monitoring."
+        "graphNetworks": {
+          "title": "Graph Neural Networks",
+          "description": "Researching geometric approaches to graph sparsification and topology optimization. Focused on improving GNN performance by modifying graph structure rather than just compressing it."
         },
-        "aiSecurity": {
-          "title": "AI Security & System Hardening",
-          "description": "Investigating vulnerabilities in AI systems and developing secure implementations. Combining cybersecurity principles with machine learning to build robust, tamper-resistant intelligent systems."
+        "signalProcessing": {
+          "title": "Digital Signal Processing",
+          "description": "Developing custom DSP pipelines for audio analysis, including vocoders and feature extraction. Applying signal processing techniques to enable machine learning on audio data."
         },
-        "software": {
-          "title": "Software Architecture & OOP",
-          "description": "Designing scalable software solutions using object-oriented programming principles. Experience in building clean, maintainable codebases with proper design patterns and documentation."
+        "mlPipelines": {
+          "title": "Scalable ML Pipelines",
+          "description": "Designing end-to-end machine learning systems with clean architecture. Building maintainable, production-ready pipelines for data preprocessing, model training, and deployment."
         },
         "education": {
           "title": "Educational Technology",

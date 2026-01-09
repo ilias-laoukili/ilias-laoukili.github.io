@@ -25,7 +25,7 @@
     "introduction": {
       "sectionTitle": "Over mij",
       "seeProjects": "Bekijk mijn projecten",
-      "content": "Ik ben een AI & Cybersecurity Engineering Student aan ESIEE Paris, gedreven door een passie voor het ontwikkelen van innovatieve oplossingen. Ik benut praktische expertise in Computer Vision, Machine Learning (YOLO) en veilig systeemontwerp om complexe problemen op te lossen en praktische oplossingen te bouwen met echte impact. Ik zoek momenteel een 4-maands stage tussen mei en augustus 2026."
+      "content": "Ik ben een AI & Cybersecurity Engineering Student aan ESIEE Paris, gedreven door een passie voor het ontwikkelen van innovatieve oplossingen. Ik benut praktische expertise in Graph Neural Networks, Digitale Signaalverwerking en Machine Learning-pipelines om complexe problemen op te lossen en praktische oplossingen te bouwen met echte impact. Ik zoek momenteel een 4-maands stage tussen mei en augustus 2026."
     },
     "projects": {
       "title": "Projecten",
@@ -48,37 +48,37 @@
         "value": "45%",
         "description": "Gemiddelde verbetering voor 45+ begeleide STEM-studenten"
       },
-      "detection": {
-        "label": "Detectienauwkeurigheid",
-        "value": "92%",
-        "description": "Behaald in real-time brand- en rookdetectiesysteem"
+      "modelAccuracy": {
+        "label": "Modelnauwkeurigheid",
+        "value": "85%",
+        "description": "Behaald bij audio-emotieclassificatie met DSP en Random Forest"
       },
       "years": {
         "label": "Jaren Rigoureuze STEM-studie",
         "value": "4+",
         "description": "Selectieve voorbereidende klassen afgerond en momenteel bezig met Engineering Master"
       },
-      "falsePositive": {
-        "label": "Reductie van Valse Positieven",
-        "value": "30%",
-        "description": "Bereikt door integratie van YOLO-model met dronenavigatie"
+      "graphCompression": {
+        "label": "Graafcompressie",
+        "value": "40%",
+        "description": "Bereikt door geometrische sparsificatie in GNN-onderzoek"
       }
     },
     "research": {
       "sectionTitle": "Onderzoek",
       "subtitle": "Onderzoeksgebieden & Interessegebieden",
       "interests": {
-        "computerVision": {
-          "title": "Computer Vision Toepassingen",
-          "description": "Verkenning van real-time objectdetectie en beeldherkenningssystemen met YOLO en deep learning frameworks. Focus op praktische toepassingen zoals branddetectie, autonome systemen en veiligheidsmonitoring."
+        "graphNetworks": {
+          "title": "Graph Neural Networks",
+          "description": "Onderzoek naar geometrische benaderingen voor graaf-sparsificatie en topologie-optimalisatie. Focus op verbetering van GNN-prestaties door graafstructuur te wijzigen in plaats van alleen te comprimeren."
         },
-        "aiSecurity": {
-          "title": "AI-beveiliging & Systeemverharding",
-          "description": "Onderzoek naar kwetsbaarheden in AI-systemen en ontwikkeling van veilige implementaties. Combinatie van cybersecurityprincipes met machine learning om robuuste, manipulatiebestendige intelligente systemen te bouwen."
+        "signalProcessing": {
+          "title": "Digitale Signaalverwerking",
+          "description": "Ontwikkeling van aangepaste DSP-pipelines voor audio-analyse, inclusief vocoders en feature-extractie. Toepassing van signaalverwerkingstechnieken voor machine learning op audiodata."
         },
-        "software": {
-          "title": "Software Architectuur & OOP",
-          "description": "Ontwerp van schaalbare softwareoplossingen met objectgeoriënteerde programmeerprincipes. Ervaring met het bouwen van schone, onderhoudbare codebases met juiste design patterns en documentatie."
+        "mlPipelines": {
+          "title": "Schaalbare ML-Pipelines",
+          "description": "Ontwerp van end-to-end machine learning systemen met schone architectuur. Bouwen van onderhoudbare, productie-klare pipelines voor datavoorverwerking, modeltraining en deployment."
         },
         "education": {
           "title": "Onderwijstechnologie",

@@ -8,6 +8,7 @@ export type BlogPost = {
     tags?: string[];
     excerpt?: string;
     extraImage?: string;
+    demoUrl?: string;
 };
 
 export type BlogCategory = {

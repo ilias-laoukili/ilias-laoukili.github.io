@@ -25,7 +25,7 @@
     "introduction": {
       "sectionTitle": "À propos de moi",
       "seeProjects": "Voir mes projets",
-      "content": "Je suis étudiant ingénieur en IA & Cybersécurité à l'ESIEE Paris, animé par la passion de développer des solutions innovantes. J'exploite mon expertise pratique en Vision par Ordinateur, Machine Learning (YOLO) et conception de systèmes sécurisés pour résoudre des problèmes complexes et construire des solutions pratiques ayant un impact réel. Je recherche actuellement un stage de 4 mois entre mai et août 2026."
+      "content": "Je suis étudiant ingénieur en IA & Cybersécurité à l'ESIEE Paris, animé par la passion de développer des solutions innovantes. J'exploite mon expertise pratique en Réseaux de Neurones sur Graphes, Traitement du Signal Numérique et pipelines de Machine Learning pour résoudre des problèmes complexes et construire des solutions pratiques ayant un impact réel. Je recherche actuellement un stage de 4 mois entre mai et août 2026."
     },
     "projects": {
       "title": "Projets",
@@ -48,37 +48,37 @@
         "value": "45%",
         "description": "Amélioration moyenne pour plus de 45 étudiants tutorés en STEM"
       },
-      "detection": {
-        "label": "Précision de Détection",
-        "value": "92%",
-        "description": "Atteinte dans le système de détection de feu et fumée en temps réel"
+      "modelAccuracy": {
+        "label": "Précision du Modèle",
+        "value": "85%",
+        "description": "Atteinte en classification d'émotions audio avec DSP et Random Forest"
       },
       "years": {
         "label": "Années d'Études STEM Rigoureuses",
         "value": "4+",
         "description": "Classes Préparatoires sélectives complétées et Master d'Ingénieur en cours"
       },
-      "falsePositive": {
-        "label": "Réduction des Faux Positifs",
-        "value": "30%",
-        "description": "Obtenue par l'intégration du modèle YOLO avec la navigation drone"
+      "graphCompression": {
+        "label": "Compression de Graphe",
+        "value": "40%",
+        "description": "Obtenue par sparsification géométrique dans la recherche sur les GNN"
       }
     },
     "research": {
       "sectionTitle": "Recherche",
       "subtitle": "Domaines de Recherche & Centres d'Intérêt",
       "interests": {
-        "computerVision": {
-          "title": "Applications de Vision par Ordinateur",
-          "description": "Exploration des systèmes de détection d'objets et de reconnaissance d'images en temps réel utilisant YOLO et les frameworks de deep learning. Focus sur les applications pratiques comme la détection d'incendies, les systèmes autonomes et la surveillance de sécurité."
+        "graphNetworks": {
+          "title": "Réseaux de Neurones sur Graphes",
+          "description": "Recherche sur les approches géométriques de sparsification et d'optimisation de topologie des graphes. Focus sur l'amélioration des performances des GNN en modifiant la structure du graphe plutôt qu'en la compressant simplement."
         },
-        "aiSecurity": {
-          "title": "Sécurité IA & Durcissement Système",
-          "description": "Investigation des vulnérabilités dans les systèmes d'IA et développement d'implémentations sécurisées. Combinaison des principes de cybersécurité avec le machine learning pour construire des systèmes intelligents robustes et inviolables."
+        "signalProcessing": {
+          "title": "Traitement du Signal Numérique",
+          "description": "Développement de pipelines DSP personnalisés pour l'analyse audio, incluant vocodeurs et extraction de caractéristiques. Application des techniques de traitement du signal pour le machine learning sur données audio."
         },
-        "software": {
-          "title": "Architecture Logicielle & POO",
-          "description": "Conception de solutions logicielles évolutives utilisant les principes de programmation orientée objet. Expérience dans la construction de bases de code propres et maintenables avec des design patterns appropriés et de la documentation."
+        "mlPipelines": {
+          "title": "Pipelines ML Évolutifs",
+          "description": "Conception de systèmes de machine learning de bout en bout avec une architecture propre. Construction de pipelines maintenables et prêts pour la production pour le prétraitement des données, l'entraînement et le déploiement."
         },
         "education": {
           "title": "Technologie Éducative",

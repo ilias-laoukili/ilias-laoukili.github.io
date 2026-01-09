@@ -20,9 +20,9 @@ const ResearchInterests = () => {
     const { t } = useTranslations('home.research');
 
     const researchInterests: ResearchInterest[] = [
-        { id: "1", icon: "ComputerCloudIcon", titleKey: "interests.computerVision.title", descriptionKey: "interests.computerVision.description" },
-        { id: "2", icon: "KnightShieldIcon", titleKey: "interests.aiSecurity.title", descriptionKey: "interests.aiSecurity.description" },
-        { id: "3", icon: "SoftwareIcon", titleKey: "interests.software.title", descriptionKey: "interests.software.description" },
+        { id: "1", icon: "StructureFoldIcon", titleKey: "interests.graphNetworks.title", descriptionKey: "interests.graphNetworks.description" },
+        { id: "2", icon: "WaveformIcon", titleKey: "interests.signalProcessing.title", descriptionKey: "interests.signalProcessing.description" },
+        { id: "3", icon: "SoftwareIcon", titleKey: "interests.mlPipelines.title", descriptionKey: "interests.mlPipelines.description" },
         { id: "4", icon: "Brain01Icon", titleKey: "interests.education.title", descriptionKey: "interests.education.description" },
     ];
 

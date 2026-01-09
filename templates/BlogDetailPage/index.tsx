@@ -33,10 +33,10 @@ const BlogDetailPage = ({ article, similarArticles = [], locale }: BlogDetailPag
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="container">
-                        <div className="max-w-4xl mx-auto text-center text-white">
+                        <div className="max-w-4xl mx-auto text-center">
                             {article.category && (
                                 <div
-                                    className="inline-block px-4 py-1 mb-6 backdrop-blur-xl rounded-lg text-body font-medium text-white"
+                                    className="inline-block px-4 py-1 mb-6 backdrop-blur-xl rounded-lg text-body font-medium"
                                     style={{
                                         backgroundColor: "#3b82f633",
                                         borderColor: "#3b82f6",
@@ -47,11 +47,11 @@ const BlogDetailPage = ({ article, similarArticles = [], locale }: BlogDetailPag
                                 </div>
                             )}
                             
-                            <h1 className="mb-6 text-h1">
+                            <h1 className="mb-6 text-h1 text-g-900">
                                 {article.title}
                             </h1>
                             
-                            <div className="flex items-center justify-center gap-4 text-body text-g-100">
+                            <div className="flex items-center justify-center gap-4 text-body text-g-500">
                                 {article.publishedAt && <span>
                                     {new Date(article.publishedAt).toLocaleDateString(locale === 'en' ? 'en-US' : locale,
                                         {
@@ -80,6 +80,23 @@ const BlogDetailPage = ({ article, similarArticles = [], locale }: BlogDetailPag
                                 </span>
                             ))}
                         </div>}
+
+                        {article.demoUrl && (
+                            <div className="mb-12">
+                                <a
+                                    href={article.demoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-full text-body font-medium hover:bg-blue-600 transition-colors"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Try Live Demo
+                                </a>
+                            </div>
+                        )}
 
                         <div className="prose prose-lg max-w-none font-sans text-g-500">
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content || ""}</ReactMarkdown>

@@ -1,32 +1,13 @@
 export const PROJECTS = [
   {
-    title: "Drone Fire and Smoke Detection System",
-    slug: "drone-fire-and-smoke-detection-system",
-    date: "2025-11-06",
-    category: "Projects",
-    tags: ["Python", "YOLO", "ComputerVision", "MachineLearning", "AI"],
-    excerpt: "A real-time fire and smoke detection system developed using a fine-tuned YOLO model. The project achieved 92% detection accuracy and was integrated with the drone navigation system, leading to a 30% reduction in false positives.",
-    imageUrl: "/images/projects/drone-detection.jpg",
-  },
-  {
-    title: "Echoes of Innocence 2D Java Game",
-    slug: "echoes-of-innocence-2d-java-game",
-    date: "2025-11-07",
-    category: "Projects",
-    tags: ["Java", "OOP", "Software Architecture", "Game Development"],
-    excerpt: "A 2D game developed from scratch, emphasizing robust Object-Oriented Programming (OOP) principles and optimized software architecture. This project demonstrates strong proficiency in Java and efficient performance across more than five levels.",
-    imageUrl: "/images/projects/echoes-game.png",
-  },
-  {
     title: "Graph Sparsification",
     slug: "graph-sparsification",
     date: "2025-11-17",
     category: "Research",
     tags: ["Graph Neural Networks", "Sparsification", "Graph Topology", "Tremplin Recherche"],
-    excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it.",
+    excerpt: "My Tremplin Recherche project takes a different approach: if the geometry of the graph is the problem, the only real solution is to modify the geometry itself. This research reframes sparsification as a geometric intervention to fix the graph, not just compress it—reducing computational costs by up to 40% for large-scale networks while preserving critical structural properties.",
     imageUrl: "/images/projects/graph-research.png",
     pdfUrl: "/images/projects/graph-research.pdf",
-    extraImage: "/images/projects/graph-research.png",
   },
   {
     title: "Decoding Sound: AI Audio Analyzer",
@@ -34,7 +15,8 @@ export const PROJECTS = [
     date: "2025-11-20",
     category: "Projects",
     tags: ["Python", "DSP", "Machine Learning", "Streamlit"],
-    excerpt: "Can a computer tell if you are happy or sad just by listening to your voice? I built an interactive web application to find out using Digital Signal Processing and Random Forest classifiers.",
+    excerpt: "Can a computer tell if you are happy or sad just by listening to your voice? I built an interactive web application featuring a Custom DSP Vocoder for audio feature extraction and a Random Forest Classifier for emotion prediction, achieving 85% accuracy.",
     imageUrl: "/images/projects/audio-analyzer.png",
+    demoUrl: "https://sentim-app.streamlit.app/",
   },
 ];
