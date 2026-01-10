@@ -19,14 +19,14 @@ const Hero = ({
     const { t } = useTranslations('blog');
 
     return (
-        <div className="py-19 bg-[#FAFAFA]">
+        <div className="py-19 bg-[#FAFAFA] dark:bg-gray-900">
             <div className="container">
                 <div className="mb-16">
-                    <div className="label mb-8">{t('title')}</div>
-                    <h1 className="text-display text-g-500 mb-6">
+                    <div className="label mb-8 dark:text-gray-400">{t('title')}</div>
+                    <h1 className="text-display text-g-500 dark:text-white mb-6">
                         {t('heroTitle')}
                     </h1>
-                    <p className="text-h5 text-g-100 max-w-3xl">
+                    <p className="text-h5 text-g-100 dark:text-gray-400 max-w-3xl">
                         {t('subtitle')}
                     </p>
                 </div>
@@ -38,9 +38,9 @@ const Hero = ({
                             placeholder={t('searchPlaceholder')}
                             value={searchQuery}
                             onChange={(e) => onSearchChange(e.target.value)}
-                            className="w-full px-6 py-4 pr-12 rounded-full border border-g-100 bg-white text-body text-g-500 placeholder:text-g-100 focus:outline-none focus:border-g-300 focus:ring-2 focus:ring-g-100 transition-all"
+                            className="w-full px-6 py-4 pr-12 rounded-full border border-g-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-body text-g-500 dark:text-white placeholder:text-g-100 dark:placeholder:text-gray-500 focus:outline-none focus:border-g-300 dark:focus:border-gray-500 focus:ring-2 focus:ring-g-100 dark:focus:ring-gray-600 transition-all"
                         />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-g-100">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-g-100 dark:text-gray-400">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -64,8 +64,8 @@ const Hero = ({
                         onClick={() => onCategoryChange("all")}
                         className={`px-6 py-3 rounded-full text-body font-medium transition-all ${
                             selectedCategory === "all"
-                                ? "bg-g-500 text-white"
-                                : "bg-white text-g-500 hover:bg-g-50"
+                                ? "bg-g-500 dark:bg-white text-white dark:text-gray-900"
+                                : "bg-white dark:bg-gray-800 text-g-500 dark:text-gray-300 hover:bg-g-50 dark:hover:bg-gray-700"
                         }`}
                     >
                         {t('allArticles')}
@@ -77,8 +77,8 @@ const Hero = ({
                             onClick={() => onCategoryChange(category.id)}
                             className={`px-6 py-3 rounded-full text-body font-medium transition-all ${
                                 selectedCategory === category.id
-                                    ? "bg-g-500 text-white"
-                                    : "bg-white text-g-500 hover:bg-g-50"
+                                    ? "bg-g-500 dark:bg-white text-white dark:text-gray-900"
+                                    : "bg-white dark:bg-gray-800 text-g-500 dark:text-gray-300 hover:bg-g-50 dark:hover:bg-gray-700"
                             }`}
                         >
                             {category.title}

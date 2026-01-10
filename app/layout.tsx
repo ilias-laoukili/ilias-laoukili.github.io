@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const interTight = Inter_Tight({
     weight: ["500"],
@@ -91,6 +92,24 @@ export default function RootLayout({
             <head>
                 {/* Preload critical fonts handled by next/font */}
                 {/* Preload LCP-critical styles */}
+                {/* Prevent flash of wrong theme */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var theme = localStorage.getItem('theme');
+                                    if (!theme) {
+                                        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                                    }
+                                    if (theme === 'dark') {
+                                        document.documentElement.classList.add('dark');
+                                    }
+                                } catch (e) {}
+                            })();
+                        `,
+                    }}
+                />
                 <style dangerouslySetInnerHTML={{ __html: `
                     /* Critical CSS for LCP - inline hero text styles */
                     .text-display { font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 500; line-height: 1.1; }
@@ -99,17 +118,19 @@ export default function RootLayout({
                 ` }} />
             </head>
             <body
-                className="bg-white font-sans text-paragraph font-medium text-g-500 antialiased md:text-body"
+                className="bg-white dark:bg-gray-950 font-sans text-paragraph font-medium text-g-500 dark:text-gray-300 antialiased md:text-body transition-colors duration-300"
             >
-                <a
-                    href="#main-content"
-                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    Skip to main content
-                </a>
-                <main id="main-content">
-                    {children}
-                </main>
+                <ThemeProvider>
+                    <a
+                        href="#main-content"
+                        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:bg-gray-800 dark:focus:text-white"
+                    >
+                        Skip to main content
+                    </a>
+                    <main id="main-content">
+                        {children}
+                    </main>
+                </ThemeProvider>
             </body>
         </html>
     );

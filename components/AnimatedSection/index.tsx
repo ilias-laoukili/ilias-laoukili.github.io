@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
-import { useRef, ReactNode } from "react";
+import { motion } from "motion/react";
+import { ReactNode, useMemo } from "react";
 
 type AnimatedSectionProps = {
     children: ReactNode;
@@ -16,38 +16,30 @@ const AnimatedSection = ({
     delay = 0,
     direction = "up" 
 }: AnimatedSectionProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { 
-        once: true, 
-        amount: 0.2 
-    });
-
-    const directions = {
-        up: { y: 60, x: 0 },
-        down: { y: -60, x: 0 },
-        left: { y: 0, x: 60 },
-        right: { y: 0, x: -60 },
-    };
-
-    const initialPosition = directions[direction];
+    const initialPosition = useMemo(() => {
+        const directions = {
+            up: { y: 40, x: 0 },
+            down: { y: -40, x: 0 },
+            left: { y: 0, x: 40 },
+            right: { y: 0, x: -40 },
+        };
+        return directions[direction];
+    }, [direction]);
 
     return (
         <motion.div
-            ref={ref}
             initial={{ 
                 opacity: 0, 
                 ...initialPosition 
             }}
-            animate={isInView ? { 
+            whileInView={{ 
                 opacity: 1, 
                 y: 0,
                 x: 0 
-            } : {
-                opacity: 0,
-                ...initialPosition
             }}
+            viewport={{ once: true, amount: 0.15, margin: "-50px" }}
             transition={{
-                duration: 0.7,
+                duration: 0.5,
                 delay: delay,
                 ease: [0.25, 0.4, 0.25, 1], 
             }}

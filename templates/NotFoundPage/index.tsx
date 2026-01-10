@@ -10,13 +10,13 @@ const NotFoundPage = () => {
 
     return (
         <Layout>
-            <div className="pt-22 text-center">
+            <div className="pt-22 text-center dark:bg-gray-950">
                 <div className="container">
                     <div>
-                        <div className="max-w-[35rem] mx-auto mb-4 text-h2">
+                        <div className="max-w-[35rem] mx-auto mb-4 text-h2 dark:text-white">
                             {t('title')}
                         </div>
-                        <div className="max-w-[29rem] mx-auto mb-8 text-g-100">
+                        <div className="max-w-[29rem] mx-auto mb-8 text-g-100 dark:text-gray-400">
                             {t('description')}
                         </div>
                         <Button title={t('backHome')} href="/" />

@@ -5,6 +5,7 @@ import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Link from "next/link";
 import Button from "@/components/Button";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useTranslations } from "@/lib/i18n/client";
 
 import { usePathname } from "next/navigation";
@@ -70,7 +71,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
         <header className={`relative z-[9999] ${className || ""}`}>
             <div className="container flex items-center h-20 md:h-17">
                 <Link
-                    className="shrink-0 md:relative md:z-3 font-bold text-xl"
+                    className="shrink-0 md:relative md:z-3 font-bold text-xl dark:text-white"
                     href={basePath || '/'}
                     onClick={(e) => handleSmoothScroll(e, "#home")}
                 >
@@ -78,7 +79,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                 </Link>
                 <div
                     className={`flex items-center grow md:fixed md:z-2 md:inset-0 md:flex-col md:items-start md:pt-24 md:px-5 md:pb-8 md:transition-all ${
-                        "md:bg-white"
+                        "md:bg-white md:dark:bg-gray-950"
                     } ${visible ? "" : "md:invisible md:opacity-0"}`}
                 >
                     <nav className="flex mx-auto space-x-6 md:flex-col md:mx-0 md:space-x-0 md:space-y-8 md:mb-auto">
@@ -90,7 +91,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                             
                             return (
                                 <Link
-                                    className={`text-base font-medium ${isActive ? "text-gray-900" : "text-gray-500 hover:text-gray-600"} transition-colors lg:text-caption md:text-h5`}
+                                    className={`text-base font-medium ${isActive ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"} transition-colors lg:text-caption md:text-h5`}
                                     href={isBlogPage && link.url.startsWith("#") ? `${basePath}/${link.url}` : link.url}
                                     key={link.id}
                                     onClick={(e) => handleSmoothScroll(e, link.url)}
@@ -101,9 +102,10 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                         })}
                     </nav>
                     <div className="flex items-center gap-4">
+                        <ThemeToggle />
                         <LanguageSwitcher locale={locale} />
                         <Button
-                            className="!border-gray-900 hover:!bg-gray-900 hover:!text-white"
+                            className="!border-gray-900 !bg-transparent !text-gray-900 hover:!bg-gray-900 hover:!text-white dark:!border-white dark:!text-white dark:hover:!bg-white dark:hover:!text-gray-900"
                             title="Contact"
                             href="mailto:ilias.laoukili@proton.me"
                             arrow
@@ -117,7 +119,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                             ? "before:rotate-45 before:translate-y-[0.37rem] after:-rotate-45 after:-translate-y-[0.37rem]"
                             : ""
                     } ${
-                        "bg-white before:bg-g-500 after:bg-g-500"
+                        "bg-white dark:bg-gray-800 before:bg-g-500 dark:before:bg-gray-300 after:bg-g-500 dark:after:bg-gray-300"
                     }`}
                     onClick={toggleMenu}
                     aria-label={visible ? "Close menu" : "Open menu"}
@@ -126,7 +128,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                     <span
                         className={`w-4 h-0.5 my-1 rounded-full transition-all ${
                             visible ? "w-0 opacity-0" : ""
-                        } ${"bg-g-500" }`}
+                        } ${"bg-g-500 dark:bg-gray-300" }`}
                     ></span>
                 </button>
             </div>

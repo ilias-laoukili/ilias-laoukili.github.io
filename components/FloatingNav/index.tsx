@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Mail01Icon } from "@/utils/icons";
+import ThemeToggle from "@/components/ThemeToggle";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "@/lib/i18n/client";
@@ -79,7 +80,7 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
             }`}
         >
             <div 
-                className="flex items-center gap-1 px-5 py-2.5 rounded-full bg-white/75 shadow-2xl border border-white/40 hover:shadow-3xl transition-all duration-300"
+                className="flex items-center gap-1 px-5 py-2.5 rounded-full bg-white/75 dark:bg-gray-900/80 shadow-2xl border border-white/40 dark:border-gray-700/50 hover:shadow-3xl transition-all duration-300"
                 style={{
                     backdropFilter: "blur(28px) saturate(180%)",
                     WebkitBackdropFilter: "blur(28px) saturate(180%)",
@@ -87,7 +88,7 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
                 }}
             >
                 <Link
-                    className="shrink-0 md:relative md:z-3 font-bold text-sm md:block hidden"
+                    className="shrink-0 md:relative md:z-3 font-bold text-sm md:block hidden dark:text-white"
                     href={basePath || '/'}
                     onClick={(e) => handleSmoothScroll(e, "#home")}
                 >
@@ -100,13 +101,13 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
                         onClick={(e) => handleSmoothScroll(e, link.url)}
                         className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full md:hidden ${
                             activeSection === link.url || (pathname.includes("/blog") && link.url === blogPath)
-                                ? "text-gray-900"
-                                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/50"
+                                ? "text-gray-900 dark:text-white"
+                                : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
                         }`}
                     >
                         {(activeSection === link.url || (pathname.includes("/blog") && link.url === blogPath)) && (
                             <span
-                                className="absolute inset-0 bg-gray-100 border border-gray-200 rounded-full -z-10"
+                                className="absolute inset-0 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-full -z-10"
                                 style={{
                                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                                     backgroundSize: "200% 100%",
@@ -118,7 +119,9 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
                     </Link>
                 ))}
                 
-                <div className="w-px h-5 bg-gradient-to-b from-transparent via-gray-300 to-transparent mx-1 md:mx-10" />
+                <div className="w-px h-5 bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-600 to-transparent mx-1 md:mx-10" />
+                
+                <ThemeToggle className="!w-8 !h-8" />
                 
                 <a
                     href="mailto:ilias.laoukili@proton.me"

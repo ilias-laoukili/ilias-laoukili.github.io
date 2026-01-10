@@ -27,13 +27,14 @@ const Footer = ({ locale = 'en' }: FooterProps) => {
             title: "Social",
             links: [
                 { id: "0", title: "GitHub", url: "https://github.com/ilias-laoukili", external: true },
-                { id: "1", title: "LinkedIn", url: "https://www.linkedin.com/in/ilias-laoukili", external: true },
+                { id: "1", title: "GitLab", url: "https://gitlab.com/ilias-laoukili", external: true },
+                { id: "2", title: "LinkedIn", url: "https://www.linkedin.com/in/ilias-laoukili", external: true },
             ],
         },
     ];
 
     return (
-        <footer className="mt-[6.875rem] py-20 bg-black text-w-50 lg:mt-25 md:py-12">
+        <footer className="mt-[6.875rem] py-20 bg-black dark:bg-gray-950 text-w-50 lg:mt-25 md:py-12 border-t border-transparent dark:border-gray-800">
             <div className="container">
                 <div className="flex justify-between lg:block">
                     <div className="max-w-[27rem] mr-10 xl:max-w-[22rem] lg:max-w-full lg:mr-0 lg:mb-25">
