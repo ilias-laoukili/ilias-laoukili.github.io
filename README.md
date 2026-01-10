@@ -11,7 +11,7 @@ This project showcases my academic research in **Graph Neural Networks** and **D
 * **Styling:** Tailwind CSS + Framer Motion
 * **Deployment:** GitHub Actions (CI/CD)
 
-## 📂 Project Structuresss
+## 📂 Project Structures
 * `/constants`: Content management (Projects, Research Interests).
 * `/messages`: Internationalization (i18n) JSON files.
 * `/components`: Reusable UI components (3D cards, animated buttons).
