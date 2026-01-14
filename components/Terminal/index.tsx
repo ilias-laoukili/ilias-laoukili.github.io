@@ -166,18 +166,37 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
             (p) => p.slug.toLowerCase() === slug.toLowerCase()
           );
           if (project) {
+            // Helper to truncate and pad strings to fixed width
+            const fitText = (text: string, width: number) =>
+              text.length > width ? text.slice(0, width - 3) + "..." : text.padEnd(width);
+
+            const boxWidth = 48;
+            const tagsText = project.tags.slice(0, 3).join(", ");
+
+            // Word-wrap excerpt into lines
+            const words = project.excerpt.split(" ");
+            const excerptLines: string[] = [];
+            let currentLine = "";
+            for (const word of words) {
+              if ((currentLine + " " + word).trim().length <= boxWidth) {
+                currentLine = (currentLine + " " + word).trim();
+              } else {
+                if (currentLine) excerptLines.push(currentLine);
+                currentLine = word.length > boxWidth ? word.slice(0, boxWidth - 3) + "..." : word;
+              }
+            }
+            if (currentLine) excerptLines.push(currentLine);
+
             const details = [
-              `┌${"─".repeat(50)}┐`,
-              `│ ${project.title.padEnd(48)} │`,
-              `├${"─".repeat(50)}┤`,
-              `│ Category: ${project.category.padEnd(38)} │`,
-              `│ Date: ${project.date.padEnd(42)} │`,
-              `│ Tags: ${project.tags.slice(0, 3).join(", ").padEnd(42)} │`,
-              `├${"─".repeat(50)}┤`,
-              `│ ${project.excerpt.slice(0, 48).padEnd(48)} │`,
-              `│ ${project.excerpt.slice(48, 96).padEnd(48)} │`,
-              `│ ${project.excerpt.slice(96, 144).padEnd(48)} │`,
-              `└${"─".repeat(50)}┘`,
+              `+${"-".repeat(boxWidth + 2)}+`,
+              `| ${fitText(project.title, boxWidth)} |`,
+              `+${"-".repeat(boxWidth + 2)}+`,
+              `| Category: ${fitText(project.category, boxWidth - 10)} |`,
+              `| Date: ${fitText(project.date, boxWidth - 6)} |`,
+              `| Tags: ${fitText(tagsText, boxWidth - 6)} |`,
+              `+${"-".repeat(boxWidth + 2)}+`,
+              ...excerptLines.map(line => `| ${line.padEnd(boxWidth)} |`),
+              `+${"-".repeat(boxWidth + 2)}+`,
             ].join("\n");
             addToHistory({ type: "output", content: details });
           } else {
@@ -379,7 +398,7 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          className="fixed inset-0 z-[9999] flex flex-col bg-black/95 backdrop-blur-sm"
+          className="fixed inset-0 z-[10000] flex flex-col bg-black"
           onClick={handleTerminalClick}
         >
           {/* Header */}
@@ -443,7 +462,8 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
                     value={currentInput}
                     onChange={(e) => setCurrentInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="flex-1 bg-transparent outline-none border-none text-green-400 font-mono caret-green-400"
+                    className="flex-1 bg-transparent outline-none text-green-400 font-mono caret-green-400 focus:outline-none focus:ring-0 focus:border-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    style={{ border: 'none', boxShadow: 'none' }}
                     autoComplete="off"
                     autoCapitalize="off"
                     spellCheck={false}

@@ -41,7 +41,7 @@ const ArticlesList = ({ blogPosts, selectedCategory, searchQuery, categories, lo
     return (
         <div className="py-20 dark:bg-gray-950">
             <div className="container">
-                <div className="grid grid-cols-3 max-md:grid-cols-1 gap-8">
+                <div className="grid grid-cols-3 md:grid-cols-1 gap-8">
                     {filteredPosts.map((post) => (
                         <Link
                             key={post.slug}

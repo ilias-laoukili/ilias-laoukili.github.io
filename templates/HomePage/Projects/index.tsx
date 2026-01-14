@@ -138,7 +138,7 @@ const Projects = ({ blogPosts, locale }: ProjectsProps) => {
                     {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
                 </div>
 
-                <div className="grid grid-cols-3 max-md:grid-cols-1 gap-8">
+                <div className="grid grid-cols-3 md:grid-cols-1 gap-8">
                     {visiblePosts.map((article, index) => (
                         <ProjectCard
                             key={article.slug}

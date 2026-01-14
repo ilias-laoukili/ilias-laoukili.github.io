@@ -43,3 +43,4 @@ tsconfig.tsbuildinfo
 
 # Lighthouse reports
 *.report.html
+.claude/

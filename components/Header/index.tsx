@@ -78,17 +78,16 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                     Ilias Laoukili
                 </Link>
                 <div
-                    className={`flex items-center grow md:fixed md:z-2 md:inset-0 md:flex-col md:items-start md:pt-24 md:px-5 md:pb-8 md:transition-all ${
+                    className={`flex items-center grow justify-center md:fixed md:z-2 md:inset-0 md:flex-col md:items-start md:pt-24 md:px-5 md:pb-8 md:transition-all ${
                         "md:bg-white md:dark:bg-gray-950"
                     } ${visible ? "" : "md:invisible md:opacity-0"}`}
                 >
-                    <nav className="flex mx-auto space-x-6 md:flex-col md:mx-0 md:space-x-0 md:space-y-8 md:mb-auto">
+                    <nav className="flex absolute left-1/2 -translate-x-1/2 space-x-6 md:relative md:left-0 md:translate-x-0 md:flex-col md:space-x-0 md:space-y-8 md:mb-auto">
                         {headerNavigation.map((link) => {
-                            const isActive = 
-                                (link.url === '#home' && isHomePage && !isBlogPage) ||
+                            const isActive =
                                 (link.url === blogPath && isBlogPage) ||
-                                (link.url.startsWith('#') && isHomePage);
-                            
+                                (!isBlogPage && isHomePage);
+
                             return (
                                 <Link
                                     className={`text-base font-medium ${isActive ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"} transition-colors lg:text-caption md:text-h5`}
@@ -101,7 +100,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                             );
                         })}
                     </nav>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 ml-auto md:ml-0">
                         <ThemeToggle />
                         <LanguageSwitcher locale={locale} />
                         <Button

@@ -181,6 +181,7 @@ const config: Config = {
     	}
     },
     plugins: [
+        require("@tailwindcss/typography"),
         require("@headlessui/tailwindcss")({ prefix: "ui" }),
         plugin(function ({ addBase, addComponents, addUtilities }) {
             addBase({
