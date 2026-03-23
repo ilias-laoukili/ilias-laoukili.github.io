@@ -32,9 +32,9 @@ const ProjectCard = memo(({ article, blogPath, locale, index }: ProjectCardProps
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2, margin: "-50px" }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true }}
             transition={{
                 duration: 0.5,
                 delay: index * 0.1,
@@ -134,9 +134,9 @@ const Projects = ({ blogPosts, locale }: ProjectsProps) => {
         <section className="py-20 md:py-32 dark:bg-gray-950">
             <div className="container" id="projects">
                 <div className="mb-2 label dark:text-gray-400">{t('title')}</div>
-                <div className="mb-12 text-h1 2xl:mb-25 dark:text-white">
+                <h2 className="mb-12 text-h1 2xl:mb-25 dark:text-white">
                     {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
-                </div>
+                </h2>
 
                 <div className="grid grid-cols-3 md:grid-cols-1 gap-8">
                     {visiblePosts.map((article, index) => (
@@ -150,11 +150,11 @@ const Projects = ({ blogPosts, locale }: ProjectsProps) => {
                     ))}
                 </div>
 
-                <motion.div 
+                <motion.div
                     className="flex justify-center mt-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
+                    initial={{ y: 20 }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
                     transition={{
                         duration: 0.5,
                         delay: 0.2,

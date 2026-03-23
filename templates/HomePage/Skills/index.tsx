@@ -36,9 +36,9 @@ const Skills = () => {
         <div className="py150 bg-[#FAFAFA] dark:bg-gray-900">
             <div className="container" id="skills">
                 <div className="mb-2 label dark:text-gray-400">{t('sectionTitle')}</div>
-                <div className="mb-12 text-h1 2xl:mb-25 dark:text-white">
+                <h2 className="mb-12 text-h1 2xl:mb-25 dark:text-white">
                     {t('subtitle').split(' & ')[0]} <br />& {t('subtitle').split(' & ')[1]}
-                </div>
+                </h2>
                 <div className="grid grid-cols-2 gap-10 lg:grid-cols-1 lg:gap-8">
                     {SKILL_CATEGORIES.map((skillGroup, index) => (
                         <SkillCard 
@@ -90,9 +90,9 @@ const SkillCard = ({
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true }}
             transition={{
                 duration: 0.5,
                 delay: index * 0.1,

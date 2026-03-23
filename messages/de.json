@@ -4,13 +4,15 @@
     "backToHome": "Zurück zur Startseite",
     "subscribe": "Abonnieren",
     "email": "E-Mail",
+    "tryLiveDemo": "Live-Demo testen",
     "navigation": {
       "home": "Startseite",
       "about": "Über mich",
       "skills": "Fähigkeiten",
       "projects": "Projekte",
       "research": "Forschung",
-      "blog": "Blog"
+      "blog": "Blog",
+      "contact": "Kontakt"
     }
   },
   "home": {

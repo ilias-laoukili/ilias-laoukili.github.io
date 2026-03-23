@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Link from "next/link";
 import Button from "@/components/Button";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useTranslations } from "@/lib/i18n/client";
-
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 
 type HeaderProps = {
@@ -36,13 +34,21 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
         { id: "5", title: t('blog'), url: blogPath },
     ];
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setVisible(false);
+        enablePageScroll();
+    }, [pathname]);
+
     const toggleMenu = () => {
-        setVisible(!visible);
-        if (visible) {
-            enablePageScroll();
-        } else {
-            disablePageScroll();
-        }
+        setVisible((prev) => {
+            if (prev) {
+                enablePageScroll();
+            } else {
+                disablePageScroll();
+            }
+            return !prev;
+        });
     };
 
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
@@ -81,12 +87,13 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                     className={`flex items-center grow justify-center md:fixed md:z-2 md:inset-0 md:flex-col md:items-start md:pt-24 md:px-5 md:pb-8 md:transition-all ${
                         "md:bg-white md:dark:bg-gray-950"
                     } ${visible ? "" : "md:invisible md:opacity-0"}`}
+                    {...(visible ? { role: "dialog", "aria-modal": true } : {})}
                 >
-                    <nav className="flex absolute left-1/2 -translate-x-1/2 space-x-6 md:relative md:left-0 md:translate-x-0 md:flex-col md:space-x-0 md:space-y-8 md:mb-auto">
+                    <nav aria-label="Main navigation" className="flex absolute left-1/2 -translate-x-1/2 space-x-6 md:relative md:left-0 md:translate-x-0 md:flex-col md:space-x-0 md:space-y-8 md:mb-auto">
                         {headerNavigation.map((link) => {
                             const isActive =
                                 (link.url === blogPath && isBlogPage) ||
-                                (!isBlogPage && isHomePage);
+                                (!isBlogPage && isHomePage && link.url.startsWith("#"));
 
                             return (
                                 <Link
@@ -105,7 +112,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                         <LanguageSwitcher locale={locale} />
                         <Button
                             className="!border-gray-900 !bg-transparent !text-gray-900 hover:!bg-gray-900 hover:!text-white dark:!border-white dark:!text-white dark:hover:!bg-white dark:hover:!text-gray-900"
-                            title="Contact"
+                            title={t('contact')}
                             href="mailto:ilias.laoukili@proton.me"
                             arrow
                             onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')}
@@ -125,6 +132,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                     aria-expanded={visible}
                 >
                     <span
+                        aria-hidden="true"
                         className={`w-4 h-0.5 my-1 rounded-full transition-all ${
                             visible ? "w-0 opacity-0" : ""
                         } ${"bg-g-500 dark:bg-gray-300" }`}

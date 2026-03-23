@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Mail01Icon } from "@/utils/icons";
 import ThemeToggle from "@/components/ThemeToggle";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "@/lib/i18n/client";
 import type { Locale } from "@/lib/i18n";
 
@@ -31,7 +30,7 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
         { id: "4", title: t('research'), url: "#research" },
         { id: "5", title: t('blog'), url: blogPath },
     ];
-    
+
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
@@ -73,13 +72,14 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
 
     return (
         <nav
+            aria-label="Floating navigation"
             className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-out ${
                 isVisible
                     ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 -translate-y-10 scale-95 pointer-events-none"
+                    : "opacity-0 -translate-y-10 scale-95 pointer-events-none invisible"
             }`}
         >
-            <div 
+            <div
                 className="flex items-center gap-1 px-5 py-2.5 rounded-full bg-white/75 dark:bg-gray-900/80 shadow-2xl border border-white/40 dark:border-gray-700/50 hover:shadow-3xl transition-all duration-300"
                 style={{
                     backdropFilter: "blur(28px) saturate(180%)",
@@ -118,16 +118,16 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
                         <span className="relative z-10">{link.title}</span>
                     </Link>
                 ))}
-                
+
                 <div className="w-px h-5 bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-600 to-transparent mx-1 md:mx-10" />
-                
+
                 <ThemeToggle className="!w-8 !h-8" />
-                
+
                 <a
                     href="mailto:ilias.laoukili@proton.me"
                     className="relative px-5 py-2 text-sm font-semibold text-white rounded-full hover:scale-105 transition-all duration-300 overflow-hidden group"
                 >
-                    <span 
+                    <span
                         className="absolute inset-0 bg-black -z-10"
                         style={{
                             backgroundSize: "200% 100%",
@@ -135,12 +135,12 @@ const FloatingNav = ({ locale = 'en' }: FloatingNavProps) => {
                         }}
                     />
                     <span className="relative z-10 flex items-center gap-2 justify-center md:justify-start min-w-26">
-                        Contact
+                        {t('contact')}
                         <Mail01Icon variant="duotone" className="w-4 h-4" />
                     </span>
                 </a>
             </div>
-            
+
             <style jsx>{`
                 @keyframes gradient-shift {
                     0%, 100% {

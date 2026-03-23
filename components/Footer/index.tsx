@@ -1,7 +1,23 @@
 import Link from "next/link";
 import Button from "@/components/Button";
+import { Github, Linkedin, Mail, FileDown } from "lucide-react";
 import { useTranslations } from "@/lib/i18n/client";
 import type { Locale } from "@/lib/i18n";
+import type { ReactNode } from "react";
+
+const GitLabIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.65 14.39 12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+    </svg>
+);
+
+type FooterLink = {
+    id: string;
+    title: string;
+    url: string;
+    external: boolean;
+    icon?: ReactNode;
+};
 
 type FooterProps = {
     locale?: Locale;
@@ -20,16 +36,24 @@ const Footer = ({ locale = 'en' }: FooterProps) => {
             links: [
                 { id: "0", title: "Home", url: basePath || "/", external: false },
                 { id: "1", title: "Blog", url: blogPath, external: false },
-            ],
+            ] as FooterLink[],
         },
         {
             id: "1",
+            title: "Contact",
+            links: [
+                { id: "0", title: "Email", url: "mailto:ilias.laoukili@proton.me", external: true, icon: <Mail className="w-5 h-5" /> },
+                { id: "1", title: t('downloadCV'), url: "/US_Ilias_Laoukili_CV.pdf", external: true, icon: <FileDown className="w-5 h-5" /> },
+            ] as FooterLink[],
+        },
+        {
+            id: "2",
             title: "Social",
             links: [
-                { id: "0", title: "GitHub", url: "https://github.com/ilias-laoukili", external: true },
-                { id: "1", title: "GitLab", url: "https://gitlab.com/ilias-laoukili", external: true },
-                { id: "2", title: "LinkedIn", url: "https://www.linkedin.com/in/ilias-laoukili", external: true },
-            ],
+                { id: "0", title: "GitHub", url: "https://github.com/ilias-laoukili", external: true, icon: <Github className="w-5 h-5" /> },
+                { id: "1", title: "GitLab", url: "https://gitlab.com/ilias-laoukili", external: true, icon: <GitLabIcon className="w-5 h-5" /> },
+                { id: "2", title: "LinkedIn", url: "https://www.linkedin.com/in/ilias-laoukili", external: true, icon: <Linkedin className="w-5 h-5" /> },
+            ] as FooterLink[],
         },
     ];
 
@@ -58,12 +82,13 @@ const Footer = ({ locale = 'en' }: FooterProps) => {
                                         {group.links.map((link) =>
                                             link.external ? (
                                                 <a
-                                                    className="text-w-50 transition-opacity hover:opacity-80"
+                                                    className="flex items-center gap-2 text-w-50 transition-opacity hover:opacity-80"
                                                     href={link.url}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     key={link.id}
                                                 >
+                                                    {link.icon}
                                                     {link.title}
                                                 </a>
                                             ) : (

@@ -3,7 +3,6 @@
 import Layout from "@/components/Layout";
 import ContactCTA from "@/components/ContactCTA";
 import FloatingNav from "@/components/FloatingNav";
-import AnimatedSection from "@/components/AnimatedSection";
 import dynamic from "next/dynamic";
 import Main from "./Main";
 import Introduction from "./Introduction";
@@ -24,36 +23,14 @@ const HomePage = ({ blogPosts, locale }: HomePageProps) => {
     return (
         <Layout classHeader="!absolute top-0 left-0 right-0 z-5" lightHeader locale={locale}>
             <FloatingNav locale={locale} />
-            {/* Hero section - critical for LCP */}
             <div id="home">
                 <Main />
             </div>
-            {/* Below-fold content with content-visibility optimization */}
-            <div className="content-visibility-auto">
-                <AnimatedSection delay={0.1}>
-                    <Introduction />
-                </AnimatedSection>
-            </div>
-            <div className="content-visibility-auto">
-                <AnimatedSection delay={0.1}>
-                    <Skills />
-                </AnimatedSection>
-            </div>
-            <div className="content-visibility-auto">
-                <AnimatedSection delay={0.1}>
-                    <Projects blogPosts={blogPosts} locale={locale} />
-                </AnimatedSection>
-            </div>
-            <div className="content-visibility-auto">
-                <AnimatedSection delay={0.1}>
-                    <ResearchInterests />
-                </AnimatedSection>
-            </div>
-            <div className="content-visibility-auto">
-                <AnimatedSection delay={0.1}>
-                    <ContactCTA />
-                </AnimatedSection>
-            </div>
+            <Introduction />
+            <Skills />
+            <Projects blogPosts={blogPosts} locale={locale} />
+            <ResearchInterests />
+            <ContactCTA />
         </Layout>
     );
 };

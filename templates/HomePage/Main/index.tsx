@@ -62,10 +62,10 @@ const Main = () => {
                     </p>
 
                 {/* CTA buttons - animate after LCP */}
-                <motion.div 
+                <motion.div
                     className="flex gap-4 justify-center md:flex-col md:items-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ y: 10 }}
+                    animate={{ y: 0 }}
                     transition={{
                         duration: 0.4,
                         delay: 0.1,
@@ -82,7 +82,7 @@ const Main = () => {
                         containerClassName="rounded-full"
                         as="button"
                         className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
-                        onClick={() => window.open('mailto:ilias.laoukili@outlook.com', '_blank')}
+                        onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')}
                     >
                         <span>{t('contactMe')}</span>
                     </HoverBorderGradient>

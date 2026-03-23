@@ -22,7 +22,10 @@ const inter = Inter({
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
-    themeColor: "#ffffff",
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+        { media: "(prefers-color-scheme: dark)", color: "#030712" },
+    ],
 };
 
 export const metadata: Metadata = {
@@ -64,11 +67,20 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://ilias-laoukili.github.io",
+        images: [
+            {
+                url: "/images/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Ilias Laoukili - AI & Cybersecurity Engineer",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "Ilias Laoukili - AI & Cybersecurity Engineer",
         description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris",
+        images: ["/images/og-image.png"],
     },
     alternates: {
         canonical: "https://ilias-laoukili.github.io",
@@ -90,8 +102,6 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning className={`${inter.variable} ${interTight.variable}`}>
             <head>
-                {/* Preload critical fonts handled by next/font */}
-                {/* Preload LCP-critical styles */}
                 {/* Prevent flash of wrong theme */}
                 <script
                     dangerouslySetInnerHTML={{

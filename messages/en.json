@@ -4,13 +4,15 @@
     "backToHome": "Back to Home",
     "subscribe": "Subscribe",
     "email": "Email",
+    "tryLiveDemo": "Try Live Demo",
     "navigation": {
       "home": "Home",
       "about": "About",
       "skills": "Skills",
       "projects": "Projects",
       "research": "Research",
-      "blog": "Blog"
+      "blog": "Blog",
+      "contact": "Contact"
     }
   },
   "home": {

@@ -37,7 +37,7 @@ const AnimatedSection = ({
                 y: 0,
                 x: 0 
             }}
-            viewport={{ once: true, amount: 0.15, margin: "-50px" }}
+            viewport={{ once: true, amount: 0, margin: "0px 0px -100px 0px" }}
             transition={{
                 duration: 0.5,
                 delay: delay,

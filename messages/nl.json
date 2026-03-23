@@ -4,13 +4,15 @@
     "backToHome": "Terug naar home",
     "subscribe": "Abonneren",
     "email": "E-mail",
+    "tryLiveDemo": "Live demo proberen",
     "navigation": {
       "home": "Home",
       "about": "Over mij",
       "skills": "Vaardigheden",
       "projects": "Projecten",
       "research": "Onderzoek",
-      "blog": "Blog"
+      "blog": "Blog",
+      "contact": "Contact"
     }
   },
   "home": {

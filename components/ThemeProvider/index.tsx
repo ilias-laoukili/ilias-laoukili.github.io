@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
 
 type Theme = "light" | "dark";
 
@@ -25,34 +25,61 @@ type ThemeProviderProps = {
     defaultTheme?: Theme;
 };
 
+function getStoredTheme(): Theme | null {
+    try {
+        return localStorage.getItem("theme") as Theme | null;
+    } catch {
+        return null;
+    }
+}
+
+function storeTheme(theme: Theme) {
+    try {
+        localStorage.setItem("theme", theme);
+    } catch {
+        // localStorage unavailable (e.g. private browsing)
+    }
+}
+
 export function ThemeProvider({ children, defaultTheme = "light" }: ThemeProviderProps) {
     const [theme, setThemeState] = useState<Theme>(defaultTheme);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        // Check for saved theme preference or system preference
-        const savedTheme = localStorage.getItem("theme") as Theme | null;
+        const savedTheme = getStoredTheme();
         const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         const initialTheme = savedTheme || systemPreference;
         setThemeState(initialTheme);
         document.documentElement.classList.toggle("dark", initialTheme === "dark");
+
+        // Listen for OS theme changes
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (!getStoredTheme()) {
+                const newTheme = e.matches ? "dark" : "light";
+                setThemeState(newTheme);
+                document.documentElement.classList.toggle("dark", newTheme === "dark");
+            }
+        };
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
     useEffect(() => {
         if (mounted) {
             document.documentElement.classList.toggle("dark", theme === "dark");
-            localStorage.setItem("theme", theme);
+            storeTheme(theme);
         }
     }, [theme, mounted]);
 
-    const toggleTheme = () => {
+    const toggleTheme = useCallback(() => {
         setThemeState((prev) => (prev === "light" ? "dark" : "light"));
-    };
+    }, []);
 
-    const setTheme = (newTheme: Theme) => {
+    const setTheme = useCallback((newTheme: Theme) => {
         setThemeState(newTheme);
-    };
+    }, []);
 
     // Prevent flash of wrong theme
     if (!mounted) {

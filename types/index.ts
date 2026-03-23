@@ -1,3 +1,16 @@
+export type Project = {
+    title: string;
+    slug: string;
+    date: string;
+    category: string;
+    tags: string[];
+    excerpt: string;
+    imageUrl: string;
+    pdfUrl?: string;
+    demoUrl?: string;
+    extraImage?: string;
+};
+
 export type BlogPost = {
     slug: string;
     title: string;

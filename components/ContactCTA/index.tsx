@@ -20,14 +20,14 @@ const ContactCTA = () => {
                         sizes="100vw"
                     />
                     <div className="relative z-3 flex lg:block">
-                        <div className="shrink-0 w-[35.625rem] text-h1 text-w-50 2xl:w-[30rem] xl:w-[24rem] lg:w-full lg:mb-4">
+                        <h2 className="shrink-0 w-[35.625rem] text-h1 text-w-50 2xl:w-[30rem] xl:w-[24rem] lg:w-full lg:mb-4">
                             {t('title')}
-                        </div>
+                        </h2>
                         <div className="grow pl-30 2xl:pl-12 lg:pl-0">
                             <div className="mb-8 text-w-50">
                                 {t('description')}
                             </div>
-                            <Button title={t('button')} light arrow onClick={() => window.open('mailto:ilias.laoukili@outlook.com', '_blank')} />
+                            <Button title={t('button')} light arrow onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')} />
                         </div>
                     </div>
                 </div>

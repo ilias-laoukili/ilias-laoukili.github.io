@@ -29,9 +29,9 @@ const Introduction = () => {
                         {t('introduction.sectionTitle')}
                     </div>
                     <div className="grow">
-                        <div className="mb-8 text-h1 dark:text-white">
+                        <h2 className="mb-8 text-h1 dark:text-white">
                             {t('introduction.content')}
-                        </div>
+                        </h2>
                         <Button
                             title={t('introduction.seeProjects')}
                             arrow
@@ -44,13 +44,12 @@ const Introduction = () => {
                     {stats.map((stat: Stat, index: number) => (
                         <motion.div
                             key={stat.label}
-                            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                            whileInView={{ 
-                                opacity: 1, 
-                                scale: 1, 
-                                y: 0 
+                            initial={{ scale: 0.97, y: 15 }}
+                            whileInView={{
+                                scale: 1,
+                                y: 0
                             }}
-                            viewport={{ once: true, amount: 0.3 }}
+                            viewport={{ once: true }}
                             transition={{
                                 duration: 0.4,
                                 delay: index * 0.05,

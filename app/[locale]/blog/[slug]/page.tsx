@@ -2,7 +2,7 @@ import { getSortedPostsData, getPostData } from "@/utils/blog";
 import BlogDetailPage from "@/templates/BlogDetailPage";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { locales, type Locale } from "@/lib/i18n";
+import { locales, isValidLocale, type Locale } from "@/lib/i18n";
 
 type Props = {
     params: {
@@ -74,11 +74,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const PostPage = async ({ params }: Props) => {
+    const locale: Locale = isValidLocale(params.locale) ? params.locale : 'en';
 
     try {
-        const { article, similarArticles } = await getPostData(params.slug, params.locale as Locale);
-        return <BlogDetailPage article={article} similarArticles={similarArticles} locale={params.locale as Locale} />;
+        const { article, similarArticles } = await getPostData(params.slug, locale);
+        return <BlogDetailPage article={article} similarArticles={similarArticles} locale={locale} />;
     } catch (error) {
+        console.error(`Failed to load post "${params.slug}":`, error);
         notFound();
     }
 };
