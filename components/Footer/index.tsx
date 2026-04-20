@@ -43,7 +43,7 @@ const Footer = ({ locale = 'en' }: FooterProps) => {
             title: "Contact",
             links: [
                 { id: "0", title: "Email", url: "mailto:ilias.laoukili@proton.me", external: true, icon: <Mail className="w-5 h-5" /> },
-                { id: "1", title: t('downloadCV'), url: "/US_Ilias_Laoukili_CV.pdf", external: true, icon: <FileDown className="w-5 h-5" /> },
+                { id: "1", title: t('downloadCV'), url: "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry.pdf", external: true, icon: <FileDown className="w-5 h-5" /> },
             ] as FooterLink[],
         },
         {

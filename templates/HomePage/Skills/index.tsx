@@ -4,6 +4,29 @@ import { CardPattern, generateRandomString } from "@/components/ui/evervault-car
 import { useMotionValue, motion } from "motion/react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations } from "@/lib/i18n/client";
+import { SiPython, SiPytorch, SiScikitlearn, SiDocker, SiGit, SiLinux, SiMongodb, SiStreamlit, SiRust, SiC } from "react-icons/si";
+import { Database } from "lucide-react";
+import type { IconType } from "react-icons";
+
+const SKILL_ICONS: Record<string, IconType> = {
+    "Python":             SiPython,
+    "PyTorch Geometric":  SiPytorch,
+    "scikit-learn":       SiScikitlearn,
+    "Git":                SiGit,
+    "Docker":             SiDocker,
+    "Linux":              SiLinux,
+    "MongoDB":            SiMongodb,
+    "Streamlit":          SiStreamlit,
+    "Rust":               SiRust,
+    "C":                  SiC,
+    "SQL":                Database as unknown as IconType,
+};
+
+const SKILL_FLAGS: Record<string, string> = {
+    "French (Native)":    "🇫🇷",
+    "English (Proficient)": "🇬🇧",
+    "German (C1)":        "🇩🇪",
+};
 
 type SkillCategory = {
     categoryKey: string;
@@ -13,19 +36,19 @@ type SkillCategory = {
 const SKILL_CATEGORIES: SkillCategory[] = [
     {
         categoryKey: "aiMl",
-        items: ["Python", "TensorFlow", "PyTorch", "scikit-learn", "Keras", "NumPy", "Pandas", "OpenCV", "Hugging Face"],
+        items: ["Python", "PyTorch Geometric", "scikit-learn", "GNNs", "RAG / LLM", "Librosa"],
     },
     {
-        categoryKey: "webDev",
-        items: ["React", "Next.js", "TypeScript", "Node.js", "TailwindCSS", "HTML/CSS", "REST APIs", "GraphQL"],
+        categoryKey: "humanLanguages",
+        items: ["French (Native)", "English (Proficient)", "German (C1)"],
     },
     {
         categoryKey: "cloudDevops",
-        items: ["AWS", "Docker", "Kubernetes", "CI/CD", "Git", "Linux", "Terraform", "MongoDB", "PostgreSQL"],
+        items: ["Git", "Docker", "Streamlit", "Linux", "MongoDB"],
     },
     {
         categoryKey: "languages",
-        items: ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "Bash", "R"],
+        items: ["Python", "C", "Rust", "SQL"],
     },
 ];
 
@@ -109,14 +132,20 @@ const SkillCard = ({
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                    {skillGroup.items.map((skill: string) => (
-                        <div
-                            key={skill}
-                            className="px-4 py-2 text-sm bg-g-20 dark:bg-gray-700 backdrop-blur-sm border border-gray-200 dark:border-gray-600 rounded-full text-body text-g-500 dark:text-gray-200 font-medium transition-colors group-hover/card:bg-white/50 dark:group-hover/card:bg-gray-600/50"
-                        >
-                            {skill}
-                        </div>
-                    ))}
+                    {skillGroup.items.map((skill: string) => {
+                        const Icon = SKILL_ICONS[skill];
+                        const flag = SKILL_FLAGS[skill];
+                        return (
+                            <div
+                                key={skill}
+                                className="flex items-center gap-1.5 px-4 py-2 text-sm bg-g-20 dark:bg-gray-700 backdrop-blur-sm border border-gray-200 dark:border-gray-600 rounded-full text-body text-g-500 dark:text-gray-200 font-medium transition-colors group-hover/card:bg-white/50 dark:group-hover/card:bg-gray-600/50"
+                            >
+                                {flag && <span className="text-sm leading-none">{flag}</span>}
+                                {Icon && !flag && <Icon className="w-3.5 h-3.5 shrink-0" />}
+                                {skill}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </motion.div>

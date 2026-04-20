@@ -19,6 +19,7 @@ export function getSortedPostsData(locale: Locale = 'en'): BlogPost[] {
         content: "",
         extraImage: project.extraImage,
         demoUrl: project.demoUrl,
+        githubUrl: project.githubUrl,
     })).sort((a, b) => ((a.publishedAt ?? "") < (b.publishedAt ?? "") ? 1 : -1));
 }
 
@@ -63,6 +64,7 @@ export async function getPostData(slug: string, locale: Locale = 'en'): Promise<
         content: content,
         extraImage: project.extraImage,
         demoUrl: project.demoUrl,
+        githubUrl: project.githubUrl,
     };
 
     const allPosts = getSortedPostsData(locale);

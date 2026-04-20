@@ -10,7 +10,7 @@
       "about": "Über mich",
       "skills": "Fähigkeiten",
       "projects": "Projekte",
-      "research": "Forschung",
+      "research": "Interessen",
       "blog": "Blog",
       "contact": "Kontakt"
     }
@@ -20,14 +20,14 @@
       "greeting": "Hallo, ich bin Ilias Laoukili",
       "role": "Student für KI und Cybersicherheit",
       "title": "Ilias Laoukili",
-      "description": "Leidenschaftlich für künstliche Intelligenz, Cybersicherheit und den Aufbau innovativer Lösungen.",
+      "description": "Entwicklung von RAG- und GNN-Systemen an der Schnittstelle von KI und angewandter Forschung, mit aktiver Arbeit am LAMA (Université Gustave Eiffel) und einem bevorstehenden F&E-Praktikum am Nanyang Polytechnic.",
       "downloadCv": "Lebenslauf herunterladen",
       "contactMe": "Kontaktieren Sie mich"
     },
     "introduction": {
       "sectionTitle": "Über mich",
       "seeProjects": "Meine Projekte ansehen",
-      "content": "Ich bin Student für KI & Cybersicherheit an der ESIEE Paris, angetrieben von der Leidenschaft, innovative Lösungen zu entwickeln. Ich nutze praktische Expertise in Graph Neural Networks, Digitaler Signalverarbeitung und Machine-Learning-Pipelines, um komplexe Probleme zu lösen und praktische Lösungen mit realem Impact zu entwickeln."
+      "content": "Ich bin Student für KI & Cybersicherheit an der ESIEE Paris und Forschungsassistent an der Université Gustave Eiffel, wo ich Graph-Sparsifizierung für GNNs erforsche. Diesen Sommer werde ich am Nanyang Polytechnic in Singapur ein RAG-System entwickeln, das EnergyPlus-Energiesimulationen über natürlichsprachliche Anfragen zugänglich macht. Meine Arbeit umfasst Graph Neural Networks, Digitale Signalverarbeitung und angewandte KI. Außerdem engagiere ich mich ehrenamtlich beim Französischen Roten Kreuz."
     },
     "projects": {
       "title": "Projekte",
@@ -39,15 +39,15 @@
       "subtitle": "Technische Fähigkeiten & Fachgebiete",
       "categories": {
         "aiMl": "KI & Machine Learning",
-        "webDev": "Webentwicklung",
-        "cloudDevops": "Cloud & DevOps",
+        "humanLanguages": "Sprachen",
+        "cloudDevops": "Tools & Plattformen",
         "languages": "Programmiersprachen"
       }
     },
     "stats": {
       "academic": {
         "label": "Akademische Leistungssteigerung",
-        "value": "45%",
+        "value": "30%",
         "description": "Durchschnittliche Verbesserung für 45+ betreute STEM-Studenten"
       },
       "modelAccuracy": {
@@ -66,9 +66,60 @@
         "description": "Erreicht durch geometrische Sparsifikation in der GNN-Forschung"
       }
     },
+    "experience": {
+      "sectionTitle": "Erfahrung",
+      "subtitle": "Erfahrung & Ausbildung",
+      "present": "Heute",
+      "upcoming": "Bevorstehend",
+      "incoming": "Eingehend",
+      "items": {
+        "research": {
+          "title": "Forschungsassistent",
+          "org": "Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, Frankreich",
+          "period": "Nov 2025 – Heute",
+          "description": "Tremplin Recherche Programm. Untersuchung der Graphensparsifizierung für GNNs mittels diskreter Ricci-Krümmung."
+        },
+        "internship": {
+          "title": "F&E-Praktikant",
+          "org": "Nanyang Polytechnic",
+          "location": "Singapur",
+          "period": "Sommer 2026",
+          "description": "Entwicklung eines KI-gestützten RAG-Frameworks, um EnergyPlus-Energiesimulation über natürlichsprachliche Abfragen zugänglich zu machen, für die Energieoptimierung grüner Gebäude."
+        },
+        "tutor": {
+          "title": "MINT-Nachhilfelehrer",
+          "org": "Complétude, Parkours, ESIEE Paris",
+          "location": "Frankreich",
+          "period": "2022 – Heute",
+          "description": "Nachhilfe für 45+ Schüler in Mathematik, Physik und Informatik. Durchschnittliche Leistungsverbesserung von 30%."
+        },
+        "redcross": {
+          "title": "Freiwilliger",
+          "org": "Französisches Rotes Kreuz",
+          "location": "Frankreich",
+          "period": "2023 – Heute",
+          "description": "Humanitäre Hilfe und gemeinschaftliche Unterstützungsaktivitäten."
+        },
+        "esiee": {
+          "title": "Ingenieur Master — KI & Cybersicherheit",
+          "org": "ESIEE Paris / Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, Frankreich",
+          "period": "2022 – 2027",
+          "description": "Selektives Grande École Ingenieurprogramm. Spezialisierung auf künstliche Intelligenz und Cybersicherheit."
+        },
+        "laval": {
+          "title": "Doppelabschluss",
+          "org": "Université Laval",
+          "location": "Québec, Kanada",
+          "period": "2026 – 2027",
+          "description": "Eingehender internationaler Doppelabschluss-Austausch."
+        }
+      }
+    },
     "research": {
       "sectionTitle": "Forschung",
-      "subtitle": "Forschungsbereiche & Interessengebiete",
+      "subtitle": "Arbeits- & Interessengebiete",
       "interests": {
         "graphNetworks": {
           "title": "Graph Neural Networks",
@@ -96,8 +147,8 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Forschung & Artikel",
-    "subtitle": "Wissenschaftliche Veröffentlichungen, technische Analysen und Gedanken zu KI und Cybersicherheit",
+    "heroTitle": "Projekte & Artikel",
+    "subtitle": "Technische Artikel und Projektanalysen zu KI-Forschung und Graph-Lernen",
     "searchPlaceholder": "Artikel nach Titel suchen...",
     "allArticles": "Alle Artikel",
     "readTime": "Min. Lesezeit",

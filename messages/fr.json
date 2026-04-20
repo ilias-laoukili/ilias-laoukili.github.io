@@ -10,7 +10,7 @@
       "about": "À propos",
       "skills": "Compétences",
       "projects": "Projets",
-      "research": "Recherche",
+      "research": "Intérêts",
       "blog": "Blog",
       "contact": "Contact"
     }
@@ -20,14 +20,14 @@
       "greeting": "Bonjour, je suis Ilias Laoukili",
       "role": "Étudiant Ingénieur IA & Cybersécurité",
       "title": "Ilias Laoukili",
-      "description": "Passionné par l'intelligence artificielle, la cybersécurité et la création de solutions innovantes.",
+      "description": "Développement de systèmes RAG et GNN à l'intersection de l'IA et de la recherche appliquée, avec des travaux actifs au LAMA (Université Gustave Eiffel) et un stage R&D à venir au Nanyang Polytechnic.",
       "downloadCv": "Télécharger CV",
       "contactMe": "Me Contacter"
     },
     "introduction": {
       "sectionTitle": "À propos de moi",
       "seeProjects": "Voir mes projets",
-      "content": "Je suis étudiant ingénieur en IA & Cybersécurité à l'ESIEE Paris, animé par la passion de développer des solutions innovantes. J'exploite mon expertise pratique en Réseaux de Neurones sur Graphes, Traitement du Signal Numérique et pipelines de Machine Learning pour résoudre des problèmes complexes et construire des solutions pratiques ayant un impact réel."
+      "content": "Je suis étudiant ingénieur en IA & Cybersécurité à l'ESIEE Paris et Assistant de Recherche à l'Université Gustave Eiffel, où j'étudie la sparsification de graphes pour les GNN. Cet été, je serai au Nanyang Polytechnic de Singapour pour développer un système RAG permettant d'interroger EnergyPlus en langage naturel pour l'optimisation énergétique des bâtiments. Mes travaux couvrent les Réseaux de Neurones sur Graphes, le Traitement du Signal Numérique et l'IA appliquée. Je suis également bénévole à la Croix-Rouge française."
     },
     "projects": {
       "title": "Projets",
@@ -39,15 +39,15 @@
       "subtitle": "Compétences Techniques & Domaines d'Expertise",
       "categories": {
         "aiMl": "IA & Machine Learning",
-        "webDev": "Développement Web",
-        "cloudDevops": "Cloud & DevOps",
+        "humanLanguages": "Langues",
+        "cloudDevops": "Outils & Plateformes",
         "languages": "Langages de Programmation"
       }
     },
     "stats": {
       "academic": {
         "label": "Amélioration des Performances Académiques",
-        "value": "45%",
+        "value": "30%",
         "description": "Amélioration moyenne pour plus de 45 étudiants tutorés en STEM"
       },
       "modelAccuracy": {
@@ -66,9 +66,60 @@
         "description": "Obtenue par sparsification géométrique dans la recherche sur les GNN"
       }
     },
+    "experience": {
+      "sectionTitle": "Expérience",
+      "subtitle": "Expérience & Formation",
+      "present": "Présent",
+      "upcoming": "À venir",
+      "incoming": "Entrant",
+      "items": {
+        "research": {
+          "title": "Assistant de Recherche",
+          "org": "Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, France",
+          "period": "Nov 2025 – Présent",
+          "description": "Programme Tremplin Recherche. Recherche sur la sparisification de graphes pour les GNN via la courbure de Ricci discrète — recadrage de la suppression d'arêtes comme intervention géométrique pour résoudre l'oversquashing."
+        },
+        "internship": {
+          "title": "Stagiaire R&D",
+          "org": "Nanyang Polytechnic",
+          "location": "Singapour",
+          "period": "Été 2026",
+          "description": "Développement d'un framework RAG pour rendre EnergyPlus accessible via des requêtes en langage naturel, pour l'optimisation énergétique des bâtiments verts."
+        },
+        "tutor": {
+          "title": "Tuteur STEM",
+          "org": "Complétude, Parkours, ESIEE Paris",
+          "location": "France",
+          "period": "2022 – Présent",
+          "description": "Tutorat de 45+ étudiants en Mathématiques, Physique et Informatique. Amélioration moyenne des résultats académiques de 30%."
+        },
+        "redcross": {
+          "title": "Bénévole",
+          "org": "Croix-Rouge française",
+          "location": "France",
+          "period": "2023 – Présent",
+          "description": "Aide humanitaire et activités de soutien communautaire."
+        },
+        "esiee": {
+          "title": "Master Ingénieur — IA & Cybersécurité",
+          "org": "ESIEE Paris / Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, France",
+          "period": "2022 – 2027",
+          "description": "Grande École d'ingénierie sélective. Spécialisation en intelligence artificielle et cybersécurité."
+        },
+        "laval": {
+          "title": "Double Diplôme",
+          "org": "Université Laval",
+          "location": "Québec, Canada",
+          "period": "2026 – 2027",
+          "description": "Échange international en double diplôme entrant."
+        }
+      }
+    },
     "research": {
       "sectionTitle": "Recherche",
-      "subtitle": "Domaines de Recherche & Centres d'Intérêt",
+      "subtitle": "Domaines de Travail & Centres d'Intérêt",
       "interests": {
         "graphNetworks": {
           "title": "Réseaux de Neurones sur Graphes",
@@ -96,8 +147,8 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Recherche & Articles",
-    "subtitle": "Publications scientifiques, analyses techniques et réflexions sur l'IA et la cybersécurité",
+    "heroTitle": "Projets & Articles",
+    "subtitle": "Articles techniques et analyses de projets en recherche IA et apprentissage sur graphes",
     "searchPlaceholder": "Rechercher un article par titre...",
     "allArticles": "Tous les articles",
     "readTime": "min de lecture",

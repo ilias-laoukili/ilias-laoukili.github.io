@@ -18,12 +18,15 @@ type HeaderProps = {
 
 const Header = ({ className, locale = 'en' }: HeaderProps) => {
     const [visible, setVisible] = useState<boolean>(false);
+    const [activeSection, setActiveSection] = useState<string>("#home");
     const pathname = usePathname();
     const router = useRouter();
     const { t } = useTranslations('common.navigation');
 
     const basePath = locale === 'en' ? '' : `/${locale}`;
     const blogPath = `${basePath}/blog`;
+    const isHomePage = pathname === '/' || pathname === `/${locale}` || pathname === basePath;
+    const isBlogPage = pathname.includes("/blog");
 
     const headerNavigation = [
         { id: "0", title: t('home'), url: "#home" },
@@ -39,6 +42,28 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
         setVisible(false);
         enablePageScroll();
     }, [pathname]);
+
+    // Track currently visible section via IntersectionObserver
+    useEffect(() => {
+        if (!isHomePage) return;
+        const sectionIds = ["home", "about", "skills", "projects", "research"];
+        const observers: IntersectionObserver[] = [];
+
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) setActiveSection(`#${id}`);
+                },
+                { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+            );
+            observer.observe(el);
+            observers.push(observer);
+        });
+
+        return () => observers.forEach((o) => o.disconnect());
+    }, [isHomePage]);
 
     const toggleMenu = () => {
         setVisible((prev) => {
@@ -70,9 +95,6 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
         }
     };
 
-    const isHomePage = pathname === '/' || pathname === `/${locale}` || pathname === basePath;
-    const isBlogPage = pathname.includes("/blog");
-
     return (
         <header className={`relative z-[9999] ${className || ""}`}>
             <div className="container flex items-center h-20 md:h-17">
@@ -93,7 +115,7 @@ const Header = ({ className, locale = 'en' }: HeaderProps) => {
                         {headerNavigation.map((link) => {
                             const isActive =
                                 (link.url === blogPath && isBlogPage) ||
-                                (!isBlogPage && isHomePage && link.url.startsWith("#"));
+                                (!isBlogPage && isHomePage && link.url === activeSection);
 
                             return (
                                 <Link

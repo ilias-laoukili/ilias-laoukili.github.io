@@ -13,6 +13,7 @@ import type { Locale } from "@/lib/i18n";
 const Skills = dynamic(() => import("./Skills"), { ssr: true });
 const Projects = dynamic(() => import("./Projects"), { ssr: true });
 const ResearchInterests = dynamic(() => import("./ResearchInterests"), { ssr: true });
+const Experience = dynamic(() => import("./Experience"), { ssr: true });
 
 type HomePageProps = {
     blogPosts: BlogPost[];
@@ -27,6 +28,7 @@ const HomePage = ({ blogPosts, locale }: HomePageProps) => {
                 <Main />
             </div>
             <Introduction />
+            <Experience />
             <Skills />
             <Projects blogPosts={blogPosts} locale={locale} />
             <ResearchInterests />

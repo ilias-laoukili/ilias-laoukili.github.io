@@ -10,7 +10,7 @@
       "about": "Over mij",
       "skills": "Vaardigheden",
       "projects": "Projecten",
-      "research": "Onderzoek",
+      "research": "Interesses",
       "blog": "Blog",
       "contact": "Contact"
     }
@@ -20,14 +20,14 @@
       "greeting": "Hallo, ik ben Ilias Laoukili",
       "role": "AI & Cybersecurity Engineering Student",
       "title": "Ilias Laoukili",
-      "description": "Gepassioneerd door kunstmatige intelligentie, cyberbeveiliging en het bouwen van innovatieve oplossingen.",
+      "description": "RAG- en GNN-systemen ontwikkelen op het snijpunt van AI en toegepast onderzoek, met actief werk bij LAMA (Université Gustave Eiffel) en een aankomende R&D-stage bij Nanyang Polytechnic.",
       "downloadCv": "CV downloaden",
       "contactMe": "Neem contact op"
     },
     "introduction": {
       "sectionTitle": "Over mij",
       "seeProjects": "Bekijk mijn projecten",
-      "content": "Ik ben een AI & Cybersecurity Engineering Student aan ESIEE Paris, gedreven door een passie voor het ontwikkelen van innovatieve oplossingen. Ik benut praktische expertise in Graph Neural Networks, Digitale Signaalverwerking en Machine Learning-pipelines om complexe problemen op te lossen en praktische oplossingen te bouwen met echte impact."
+      "content": "Ik ben een AI & Cybersecurity Engineering Student aan ESIEE Paris en Onderzoeksassistent aan de Université Gustave Eiffel, waar ik graafverdunning voor GNN's onderzoek. Deze zomer ben ik bij Nanyang Polytechnic in Singapore om een RAG-systeem te bouwen dat EnergyPlus-energiesimulatie toegankelijk maakt via gewone taalvragen. Mijn werk omvat Graph Neural Networks, Digitale Signaalverwerking en toegepaste AI. Ik doe ook vrijwilligerswerk voor het Franse Rode Kruis."
     },
     "projects": {
       "title": "Projecten",
@@ -39,15 +39,15 @@
       "subtitle": "Technische Vaardigheden & Expertisegebieden",
       "categories": {
         "aiMl": "AI & Machine Learning",
-        "webDev": "Webontwikkeling",
-        "cloudDevops": "Cloud & DevOps",
+        "humanLanguages": "Talen",
+        "cloudDevops": "Tools & Platformen",
         "languages": "Programmeertalen"
       }
     },
     "stats": {
       "academic": {
         "label": "Academische Prestatieverbetering",
-        "value": "45%",
+        "value": "30%",
         "description": "Gemiddelde verbetering voor 45+ begeleide STEM-studenten"
       },
       "modelAccuracy": {
@@ -66,9 +66,60 @@
         "description": "Bereikt door geometrische sparsificatie in GNN-onderzoek"
       }
     },
+    "experience": {
+      "sectionTitle": "Ervaring",
+      "subtitle": "Ervaring & Opleiding",
+      "present": "Heden",
+      "upcoming": "Aanstaand",
+      "incoming": "Inkomend",
+      "items": {
+        "research": {
+          "title": "Onderzoeksassistent",
+          "org": "Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, Frankrijk",
+          "period": "Nov 2025 – Heden",
+          "description": "Tremplin Recherche programma. Onderzoek naar graafverdunning voor GNN's via discrete Ricci-kromming."
+        },
+        "internship": {
+          "title": "R&D Stagiair",
+          "org": "Nanyang Polytechnic",
+          "location": "Singapore",
+          "period": "Zomer 2026",
+          "description": "Ontwikkeling van een AI-aangedreven RAG-framework om EnergyPlus-energiesimulatie toegankelijk te maken via vragen in natuurlijke taal, voor energieoptimalisatie van groene gebouwen."
+        },
+        "tutor": {
+          "title": "STEM Tutor",
+          "org": "Complétude, Parkours, ESIEE Paris",
+          "location": "Frankrijk",
+          "period": "2022 – Heden",
+          "description": "Bijles aan 45+ studenten in Wiskunde, Natuurkunde en Informatica. Gemiddelde prestatieverbetering van 30%."
+        },
+        "redcross": {
+          "title": "Vrijwilliger",
+          "org": "Frans Rode Kruis",
+          "location": "Frankrijk",
+          "period": "2023 – Heden",
+          "description": "Humanitaire hulp en gemeenschapsondersteuning."
+        },
+        "esiee": {
+          "title": "Engineering Master — AI & Cybersecurity",
+          "org": "ESIEE Paris / Université Gustave Eiffel",
+          "location": "Noisy-le-Grand, Frankrijk",
+          "period": "2022 – 2027",
+          "description": "Selectief Grande École ingenieursprogramma. Specialisatie in kunstmatige intelligentie en cybersecurity."
+        },
+        "laval": {
+          "title": "Dubbele Graad",
+          "org": "Université Laval",
+          "location": "Québec, Canada",
+          "period": "2026 – 2027",
+          "description": "Inkomende internationale dubbele graad uitwisseling."
+        }
+      }
+    },
     "research": {
       "sectionTitle": "Onderzoek",
-      "subtitle": "Onderzoeksgebieden & Interessegebieden",
+      "subtitle": "Werk- & Interessegebieden",
       "interests": {
         "graphNetworks": {
           "title": "Graph Neural Networks",
@@ -96,8 +147,8 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Onderzoek & Artikelen",
-    "subtitle": "Wetenschappelijke publicaties, technische analyses en gedachten over AI en cybersecurity",
+    "heroTitle": "Projecten & Artikelen",
+    "subtitle": "Technische artikelen en projectanalyses over AI-onderzoek en graafgericht leren",
     "searchPlaceholder": "Zoek artikelen op titel...",
     "allArticles": "Alle artikelen",
     "readTime": "min lezen",

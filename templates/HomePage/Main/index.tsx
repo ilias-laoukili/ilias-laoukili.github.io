@@ -76,7 +76,7 @@ const Main = () => {
                         className="!border-gray-900 !bg-gray-900 !text-white hover:!bg-white hover:!text-gray-900 dark:!border-white dark:!bg-white dark:!text-gray-900 dark:hover:!bg-gray-900 dark:hover:!text-white"
                         title={t('downloadCv')}
                         arrow
-                        href={'/US_Ilias_Laoukili_CV.pdf'}
+                        href={'https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry.pdf'}
                     />
                     <HoverBorderGradient
                         containerClassName="rounded-full"

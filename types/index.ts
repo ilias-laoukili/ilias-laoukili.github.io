@@ -9,6 +9,7 @@ export type Project = {
     pdfUrl?: string;
     demoUrl?: string;
     extraImage?: string;
+    githubUrl?: string;
 };
 
 export type BlogPost = {
@@ -22,6 +23,7 @@ export type BlogPost = {
     excerpt?: string;
     extraImage?: string;
     demoUrl?: string;
+    githubUrl?: string;
 };
 
 export type BlogCategory = {

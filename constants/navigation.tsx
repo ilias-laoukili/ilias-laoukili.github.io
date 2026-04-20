@@ -68,8 +68,8 @@ export const navigationFooter = [
             {
                 id: "1",
                 title: "Download CV",
-                url: "/US_Ilias_Laoukili_CV.pdf",
-                external: false,
+                url: "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry.pdf",
+                external: true,
             },
         ],
     },
