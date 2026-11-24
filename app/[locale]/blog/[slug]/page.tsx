@@ -33,7 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         return { title: "Post Not Found" };
     }
 
-    const url = `${SITE_URL}/${locale}/blog/${params.slug}`;
+    const url = `${SITE_URL}/${locale}/blog/${params.slug}/`;
+    const ogImage =
+        params.slug === "plekton"
+            ? `${SITE_URL}/images/og-plekton.png`
+            : post.mainImage
+              ? `${SITE_URL}${post.mainImage}`
+              : `${SITE_URL}/images/og-image.png`;
 
     return {
         title: post.title,
@@ -50,9 +56,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url,
             images: [
                 {
-                    url: post.mainImage || "/images/og-image.png",
-                    width: 1200,
-                    height: 630,
+                    url: ogImage,
+                    width: 1280,
+                    height: 640,
                     alt: post.title,
                 },
             ],
@@ -61,13 +67,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: "summary_large_image",
             title: post.title,
             description: post.excerpt,
-            images: [post.mainImage || "/images/og-image.png"],
+            images: [ogImage],
         },
         alternates: {
             canonical: url,
             languages: {
-                en: `${SITE_URL}/en/blog/${params.slug}`,
-                fr: `${SITE_URL}/fr/blog/${params.slug}`,
+                en: `${SITE_URL}/en/blog/${params.slug}/`,
+                fr: `${SITE_URL}/fr/blog/${params.slug}/`,
             },
         },
     };
