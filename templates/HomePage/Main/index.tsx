@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowUpRight, FileDown, Mail } from "lucide-react";
+import { ArrowUpRight, FileDown } from "lucide-react";
 import Image from "@/components/Image";
+import ContactEmail from "@/components/ContactEmail";
 import { useTranslations } from "@/lib/i18n/client";
 import type { Locale } from "@/lib/i18n";
 import profile from "@/data/profile.generated.json";
@@ -73,13 +74,7 @@ const Main = ({ locale }: MainProps) => {
                         </span>
                     </a>
 
-                    <a
-                        href={`mailto:${profile.identity.email}`}
-                        className="inline-flex h-10 items-center gap-1.5 border border-white/30 bg-[#080b12]/50 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:ring-offset-[#080b12]"
-                    >
-                        <Mail className="h-3.5 w-3.5 text-neutral-300" aria-hidden="true" />
-                        <span>{t("contact")}</span>
-                    </a>
+                    <ContactEmail locale={loc} variant="hero" label={t("contact")} />
                 </div>
 
                 <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-6 font-mono text-xs text-neutral-300">

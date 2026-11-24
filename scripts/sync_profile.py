@@ -220,8 +220,8 @@ def build_payload(resume_path: Path) -> dict[str, Any]:
         "siteUrl": SITE_URL,
         "identity": {
             "name": identity["name"],
-            "email": identity["emails"]["industry"],
-            "academicEmail": identity["emails"]["academic"],
+            # Obfuscated char codes (XOR 42) so static HTML/JSON exposes no raw email to scrapers
+            "emailCodes": [ord(ch) ^ 42 for ch in identity["emails"]["industry"]],
             "location": identity["location"],
             "github": identity["links"]["github"]["url"],
             "linkedin": identity["links"]["linkedin"]["url"],
@@ -329,8 +329,8 @@ def cmd_check() -> int:
         if en_posts != fr_posts:
             errors.append(f"_posts EN/FR mismatch: en={en_posts}, fr={fr_posts}")
 
-    # 5. Scan tracked content/config files for stale references
-    stale_tokens = ("ilias-laoukili.github.io", "synth-graph-rs", "940/990")
+    # 5. Scan tracked content/config files for stale references or exposed emails
+    stale_tokens = ("ilias-laoukili.github.io", "synth-graph-rs", "940/990", "proton.me", "ulaval.ca")
     scan_paths = [
         ROOT / "app" / "layout.tsx",
         ROOT / "app" / "[locale]" / "blog" / "page.tsx",

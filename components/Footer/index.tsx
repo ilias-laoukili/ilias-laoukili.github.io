@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import ContactEmail from "@/components/ContactEmail";
 import { useTranslations } from "@/lib/i18n/client";
 import type { Locale } from "@/lib/i18n";
 import profile from "@/data/profile.generated.json";
@@ -26,12 +27,7 @@ const Footer = ({ locale = "en" }: FooterProps) => {
                         <p className="mt-3 text-sm text-muted-foreground">
                             {profile.identity.location[loc]}
                         </p>
-                        <a
-                            href={`mailto:${profile.identity.email}`}
-                            className="mt-1 inline-flex min-h-[28px] items-center py-1 font-mono text-xs text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
-                        >
-                            {profile.identity.email}
-                        </a>
+                        <ContactEmail locale={loc} variant="reveal" />
                     </div>
 
                     <div>
@@ -116,13 +112,11 @@ const Footer = ({ locale = "en" }: FooterProps) => {
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    href={`mailto:${profile.identity.email}`}
-                                    className="inline-flex min-h-[28px] items-center gap-1 py-0.5 text-muted-foreground transition-colors hover:text-foreground"
-                                >
-                                    {loc === "fr" ? "Courriel" : "Email"}
-                                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                                </a>
+                                <ContactEmail
+                                    locale={loc}
+                                    variant="link"
+                                    label={loc === "fr" ? "Courriel" : "Email"}
+                                />
                             </li>
                         </ul>
                     </div>
