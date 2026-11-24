@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useLocale } from "@/lib/i18n/client";
 import { Sun, Moon } from "lucide-react";
 
 type ThemeToggleProps = {
@@ -9,24 +10,30 @@ type ThemeToggleProps = {
 
 const ThemeToggle = ({ className }: ThemeToggleProps) => {
     const { theme, toggleTheme } = useTheme();
+    const locale = useLocale();
+    const isFr = locale === "fr";
+
+    const label =
+        theme === "dark"
+            ? isFr
+                ? "Passer au mode clair"
+                : "Switch to light mode"
+            : isFr
+              ? "Passer au mode sombre"
+              : "Switch to dark mode";
 
     return (
         <button
+            type="button"
             onClick={toggleTheme}
-            className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:scale-110 ${
-                theme === "dark"
-                    ? "bg-gray-800 text-yellow-400 hover:bg-gray-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            } ${className || ""}`}
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            className={`inline-flex h-9 w-9 items-center justify-center border border-border bg-background text-muted-foreground transition-colors hover:border-foreground hover:text-foreground ${className || ""}`}
+            aria-label={label}
+            title={label}
         >
-            <span className="sr-only">
-                {theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            </span>
             {theme === "dark" ? (
-                <Sun className="w-5 h-5 transition-transform duration-300" />
+                <Sun className="h-4 w-4" aria-hidden="true" />
             ) : (
-                <Moon className="w-5 h-5 transition-transform duration-300" />
+                <Moon className="h-4 w-4" aria-hidden="true" />
             )}
         </button>
     );

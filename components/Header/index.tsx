@@ -1,166 +1,122 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Link from "next/link";
-import Button from "@/components/Button";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useTranslations } from "@/lib/i18n/client";
-import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 
 type HeaderProps = {
     className?: string;
-    light?: boolean;
     locale?: Locale;
 };
 
-const Header = ({ className, locale = 'en' }: HeaderProps) => {
-    const [visible, setVisible] = useState<boolean>(false);
-    const [activeSection, setActiveSection] = useState<string>("#home");
+const Header = ({ className, locale = "en" }: HeaderProps) => {
+    const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
-    const router = useRouter();
-    const { t } = useTranslations('common.navigation');
+    const { t } = useTranslations("common.navigation");
+    const isFr = locale === "fr";
 
-    const basePath = locale === 'en' ? '' : `/${locale}`;
-    const blogPath = `${basePath}/blog`;
-    const isHomePage = pathname === '/' || pathname === `/${locale}` || pathname === basePath;
+    const homePath = `/${locale}/`;
+    const blogPath = `/${locale}/blog/`;
     const isBlogPage = pathname.includes("/blog");
 
-    const headerNavigation = [
-        { id: "0", title: t('home'), url: "#home" },
-        { id: "1", title: t('about'), url: "#about" },
-        { id: "2", title: t('skills'), url: "#skills" },
-        { id: "3", title: t('projects'), url: "#projects" },
-        { id: "4", title: t('research'), url: "#research" },
-        { id: "5", title: t('blog'), url: blogPath },
+    const navItems = [
+        { label: t("experience"), href: `${homePath}#experience` },
+        { label: t("projects"), href: `${homePath}#projects` },
+        { label: t("skills"), href: `${homePath}#skills` },
+        { label: t("blog"), href: blogPath },
     ];
 
-    // Close mobile menu on route change
     useEffect(() => {
-        setVisible(false);
-        enablePageScroll();
+        setMenuOpen(false);
     }, [pathname]);
 
-    // Track currently visible section via IntersectionObserver
-    useEffect(() => {
-        if (!isHomePage) return;
-        const sectionIds = ["home", "about", "skills", "projects", "research"];
-        const observers: IntersectionObserver[] = [];
-
-        sectionIds.forEach((id) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) setActiveSection(`#${id}`);
-                },
-                { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-            );
-            observer.observe(el);
-            observers.push(observer);
-        });
-
-        return () => observers.forEach((o) => o.disconnect());
-    }, [isHomePage]);
-
-    const toggleMenu = () => {
-        setVisible((prev) => {
-            if (prev) {
-                enablePageScroll();
-            } else {
-                disablePageScroll();
-            }
-            return !prev;
-        });
-    };
-
-    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
-        if (url.startsWith("#")) {
-            e.preventDefault();
-            if(pathname.includes("/blog") && url.startsWith("#")) {
-                router.push(basePath + '/' + url)
-            }
-            else {
-                const element = document.querySelector(url);
-                if (element) {
-                    element.scrollIntoView({ behavior: "smooth", block: "start" });
-                    if (visible) {
-                        setVisible(false);
-                        enablePageScroll();
-                    }
-                }
-            }
-        }
-    };
-
     return (
-        <header className={`relative z-[9999] ${className || ""}`}>
-            <div className="container flex items-center h-20 md:h-17">
+        <header
+            className={`sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 ${className || ""}`}
+        >
+            <div className="site-container flex h-16 items-center justify-between gap-4">
                 <Link
-                    className="shrink-0 md:relative md:z-3 font-bold text-xl dark:text-white"
-                    href={basePath || '/'}
-                    onClick={(e) => handleSmoothScroll(e, "#home")}
+                    href={homePath}
+                    className="inline-flex min-h-[36px] items-center font-mono text-sm font-medium uppercase tracking-[0.14em] text-foreground transition-opacity hover:opacity-75"
                 >
                     Ilias Laoukili
                 </Link>
-                <div
-                    className={`flex items-center grow justify-center md:fixed md:z-2 md:inset-0 md:flex-col md:items-start md:pt-24 md:px-5 md:pb-8 md:transition-all ${
-                        "md:bg-white md:dark:bg-gray-950"
-                    } ${visible ? "" : "md:invisible md:opacity-0"}`}
-                    {...(visible ? { role: "dialog", "aria-modal": true } : {})}
-                >
-                    <nav aria-label="Main navigation" className="flex absolute left-1/2 -translate-x-1/2 space-x-6 md:relative md:left-0 md:translate-x-0 md:flex-col md:space-x-0 md:space-y-8 md:mb-auto">
-                        {headerNavigation.map((link) => {
-                            const isActive =
-                                (link.url === blogPath && isBlogPage) ||
-                                (!isBlogPage && isHomePage && link.url === activeSection);
 
-                            return (
-                                <Link
-                                    className={`text-base font-medium ${isActive ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"} transition-colors lg:text-caption md:text-h5`}
-                                    href={isBlogPage && link.url.startsWith("#") ? `${basePath}/${link.url}` : link.url}
-                                    key={link.id}
-                                    onClick={(e) => handleSmoothScroll(e, link.url)}
-                                >
-                                    {link.title}
-                                </Link>
-                            );
-                        })}
-                    </nav>
-                    <div className="flex items-center gap-4 ml-auto md:ml-0">
-                        <ThemeToggle />
-                        <LanguageSwitcher locale={locale} />
-                        <Button
-                            className="!border-gray-900 !bg-transparent !text-gray-900 hover:!bg-gray-900 hover:!text-white dark:!border-white dark:!text-white dark:hover:!bg-white dark:hover:!text-gray-900"
-                            title={t('contact')}
-                            href="mailto:ilias.laoukili@proton.me"
-                            arrow
-                            onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')}
-                        />
-                    </div>
-                </div>
-                <button
-                    className={`hidden relative z-20 flex-col justify-center items-center w-9 h-9 ml-auto rounded-full tap-highlight-color before:w-4 before:h-0.5 before:rounded-full before:transition-all after:w-4 after:h-0.5 after:rounded-full after:transition-all md:flex ${
-                        visible
-                            ? "before:rotate-45 before:translate-y-[0.37rem] after:-rotate-45 after:-translate-y-[0.37rem]"
-                            : ""
-                    } ${
-                        "bg-white dark:bg-gray-800 before:bg-g-500 dark:before:bg-gray-300 after:bg-g-500 dark:after:bg-gray-300"
-                    }`}
-                    onClick={toggleMenu}
-                    aria-label={visible ? "Close menu" : "Open menu"}
-                    aria-expanded={visible}
+                <nav
+                    aria-label={isFr ? "Navigation principale" : "Main navigation"}
+                    className="hidden items-center gap-6 md:flex"
                 >
-                    <span
-                        aria-hidden="true"
-                        className={`w-4 h-0.5 my-1 rounded-full transition-all ${
-                            visible ? "w-0 opacity-0" : ""
-                        } ${"bg-g-500 dark:bg-gray-300" }`}
-                    ></span>
-                </button>
+                    {navItems.map((item) => {
+                        const active = item.href === blogPath && isBlogPage;
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`inline-flex min-h-[32px] items-center px-1 text-sm transition-colors ${
+                                    active
+                                        ? "font-medium text-foreground"
+                                        : "text-muted-foreground hover:text-foreground"
+                                }`}
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    })}
+                </nav>
+
+                <div className="flex items-center gap-2">
+                    <LanguageSwitcher locale={locale} />
+                    <ThemeToggle />
+                    <button
+                        type="button"
+                        onClick={() => setMenuOpen((prev) => !prev)}
+                        className="inline-flex h-9 w-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground md:hidden"
+                        aria-label={
+                            menuOpen
+                                ? isFr
+                                    ? "Fermer le menu"
+                                    : "Close menu"
+                                : isFr
+                                  ? "Ouvrir le menu"
+                                  : "Open menu"
+                        }
+                        aria-expanded={menuOpen}
+                        aria-controls="mobile-nav"
+                    >
+                        {menuOpen ? (
+                            <X className="h-4 w-4" aria-hidden="true" />
+                        ) : (
+                            <Menu className="h-4 w-4" aria-hidden="true" />
+                        )}
+                    </button>
+                </div>
             </div>
+
+            {menuOpen && (
+                <nav
+                    id="mobile-nav"
+                    aria-label={isFr ? "Navigation mobile" : "Mobile navigation"}
+                    className="border-t border-border bg-background md:hidden"
+                >
+                    <div className="site-container flex flex-col divide-y divide-border py-2">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setMenuOpen(false)}
+                                className="flex min-h-[44px] items-center font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+                </nav>
+            )}
         </header>
     );
 };

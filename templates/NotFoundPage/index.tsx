@@ -1,27 +1,29 @@
 "use client";
 
+import Link from "next/link";
 import Layout from "@/components/Layout";
-import Image from "@/components/Image";
-import Button from "@/components/Button";
-import { useTranslations } from "@/lib/i18n/client";
+import { useTranslations, useLocale } from "@/lib/i18n/client";
 
 const NotFoundPage = () => {
-    const { t } = useTranslations('notFound');
+    const { t } = useTranslations("notFound");
+    const locale = useLocale();
 
     return (
-        <Layout>
-            <div className="pt-22 text-center dark:bg-gray-950">
-                <div className="container">
-                    <div>
-                        <div className="max-w-[35rem] mx-auto mb-4 text-h2 dark:text-white">
-                            {t('title')}
-                        </div>
-                        <div className="max-w-[29rem] mx-auto mb-8 text-g-100 dark:text-gray-400">
-                            {t('description')}
-                        </div>
-                        <Button title={t('backHome')} href="/" />
-                    </div>
-                </div>
+        <Layout locale={locale}>
+            <div className="site-container py-28">
+                <div className="section-index">ERROR / 404</div>
+                <h1 className="mt-3 font-display text-3xl font-semibold text-foreground sm:text-4xl">
+                    {t("title")}
+                </h1>
+                <p className="mt-3 max-w-md text-base text-muted-foreground">
+                    {t("description")}
+                </p>
+                <Link
+                    href={`/${locale}`}
+                    className="mt-8 inline-flex h-10 items-center border border-foreground bg-foreground px-5 text-sm font-medium text-background transition-opacity hover:opacity-85"
+                >
+                    {t("backHome")}
+                </Link>
             </div>
         </Layout>
     );

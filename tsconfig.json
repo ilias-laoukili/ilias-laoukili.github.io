@@ -38,6 +38,9 @@
       "@/constants/*": [
         "constants/*"
       ],
+      "@/data/*": [
+        "data/*"
+      ],
       "@/types/*": [
         "types/*"
       ],

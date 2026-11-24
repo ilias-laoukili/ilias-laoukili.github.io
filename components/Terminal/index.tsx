@@ -145,7 +145,7 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
 
       case "ls": {
         const projectList = PROJECTS.map(
-          (p) => `  📁 ${p.slug.padEnd(30)} [${p.category}]`
+          (p) => `  📁 ${p.slug.padEnd(30)} [${p.category.en}]`
         ).join("\n");
         addToHistory({
           type: "output",
@@ -158,7 +158,7 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
         if (args.length === 0) {
           addToHistory({
             type: "output",
-            content: "Usage: cat [slug]\nExample: cat graph-sparsification",
+            content: "Usage: cat [slug]\nExample: cat plekton",
           });
         } else {
           const slug = args.join("-");
@@ -174,7 +174,7 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
             const tagsText = project.tags.slice(0, 3).join(", ");
 
             // Word-wrap excerpt into lines
-            const words = project.excerpt.split(" ");
+            const words = project.excerpt.en.split(" ");
             const excerptLines: string[] = [];
             let currentLine = "";
             for (const word of words) {
@@ -189,9 +189,9 @@ const Terminal = ({ isOpen, onClose }: TerminalProps) => {
 
             const details = [
               `+${"-".repeat(boxWidth + 2)}+`,
-              `| ${fitText(project.title, boxWidth)} |`,
+              `| ${fitText(project.title.en, boxWidth)} |`,
               `+${"-".repeat(boxWidth + 2)}+`,
-              `| Category: ${fitText(project.category, boxWidth - 10)} |`,
+              `| Category: ${fitText(project.category.en, boxWidth - 10)} |`,
               `| Date: ${fitText(project.date, boxWidth - 6)} |`,
               `| Tags: ${fitText(tagsText, boxWidth - 6)} |`,
               `+${"-".repeat(boxWidth + 2)}+`,

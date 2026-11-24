@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { locales, isValidLocale, type Locale } from "@/lib/i18n";
 
+const SITE_URL = "https://ilias.laoukili.com";
+
 type Props = {
     params: {
         slug: string;
@@ -11,33 +13,27 @@ type Props = {
     };
 };
 
-// This generates the static pages at build time
 export async function generateStaticParams() {
     const params: { locale: string; slug: string }[] = [];
-    
     for (const locale of locales) {
         const posts = getSortedPostsData(locale);
         for (const post of posts) {
-            params.push({
-                locale,
-                slug: post.slug,
-            });
+            params.push({ locale, slug: post.slug });
         }
     }
-    
     return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const locale = params.locale as Locale;
+    const locale: Locale = isValidLocale(params.locale) ? params.locale : "en";
     const allPosts = getSortedPostsData(locale);
-    const post = allPosts.find(p => p.slug === params.slug);
+    const post = allPosts.find((p) => p.slug === params.slug);
 
     if (!post) {
         return { title: "Post Not Found" };
     }
 
-    const url = `https://ilias-laoukili.github.io/${locale}/blog/${params.slug}`;
+    const url = `${SITE_URL}/${locale}/blog/${params.slug}`;
 
     return {
         title: post.title,
@@ -50,32 +46,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             publishedTime: post.publishedAt,
             authors: ["Ilias Laoukili"],
             tags: post.tags,
-            locale: locale === "en" ? "en_US" : locale,
+            locale: locale === "en" ? "en_US" : "fr_CA",
             url,
-            images: post.mainImage ? [
+            images: [
                 {
-                    url: post.mainImage,
+                    url: post.mainImage || "/images/og-image.png",
                     width: 1200,
                     height: 630,
                     alt: post.title,
                 },
-            ] : undefined,
+            ],
         },
         twitter: {
             card: "summary_large_image",
             title: post.title,
             description: post.excerpt,
-            images: post.mainImage ? [post.mainImage] : undefined,
+            images: [post.mainImage || "/images/og-image.png"],
         },
         alternates: {
             canonical: url,
+            languages: {
+                en: `${SITE_URL}/en/blog/${params.slug}`,
+                fr: `${SITE_URL}/fr/blog/${params.slug}`,
+            },
         },
     };
 }
 
 const PostPage = async ({ params }: Props) => {
-    const locale: Locale = isValidLocale(params.locale) ? params.locale : 'en';
-
+    const locale: Locale = isValidLocale(params.locale) ? params.locale : "en";
     try {
         const { article, similarArticles } = await getPostData(params.slug, locale);
         return <BlogDetailPage article={article} similarArticles={similarArticles} locale={locale} />;

@@ -1,53 +1,63 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-
-const interTight = Inter_Tight({
-    weight: ["500"],
-    subsets: ["latin"],
-    display: "swap",
-    variable: "--font-inter-tight",
-    preload: true,
-});
 
 const inter = Inter({
     weight: ["400", "500", "600"],
     subsets: ["latin"],
     display: "swap",
     variable: "--font-inter",
-    preload: true,
 });
+
+const interTight = Inter_Tight({
+    weight: ["500", "600"],
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-inter-tight",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+    weight: ["400", "500"],
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-jetbrains-mono",
+});
+
+const SITE_URL = "https://ilias.laoukili.com";
 
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
     themeColor: [
         { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#030712" },
+        { media: "(prefers-color-scheme: dark)", color: "#09090b" },
     ],
 };
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://ilias-laoukili.github.io"),
+    metadataBase: new URL(SITE_URL),
     title: {
-        default: "Ilias Laoukili - AI & Cybersecurity Engineer",
+        default: "Ilias Laoukili — AI, Cybersecurity & ML Systems",
         template: "%s | Ilias Laoukili",
     },
-    description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris. Expertise in Machine Learning, Computer Vision, and secure system design.",
+    description:
+        "Ilias Laoukili — AI Advisor at Ministère de la Cybersécurité et du Numérique (MCN), M.Sc. Computer Science & AI researcher at Université Laval, and ESIEE Paris engineering student.",
     keywords: [
         "Ilias Laoukili",
-        "Portfolio",
-        "AI Engineer",
+        "AI Advisor",
         "Cybersecurity",
         "Machine Learning",
-        "Computer Vision",
-        "YOLO",
-        "Python",
+        "ML Systems",
+        "Graph Neural Networks",
+        "RAG",
+        "Rust",
+        "PyTorch",
+        "Université Laval",
         "ESIEE Paris",
-        "Software Engineer"
+        "Québec",
     ],
-    authors: [{ name: "Ilias Laoukili", url: "https://ilias-laoukili.github.io" }],
+    authors: [{ name: "Ilias Laoukili", url: SITE_URL }],
     creator: "Ilias Laoukili",
     robots: {
         index: true,
@@ -61,35 +71,34 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Ilias Laoukili - AI & Cybersecurity Engineer",
-        description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris",
-        siteName: "Ilias Laoukili Portfolio",
+        title: "Ilias Laoukili — AI, Cybersecurity & ML Systems",
+        description:
+            "AI Advisor @ MCN · M.Sc. Computer Science & AI @ Université Laval · ESIEE Paris. Building GNN, RAG, and Rust/Python ML systems.",
+        siteName: "Ilias Laoukili",
         type: "website",
         locale: "en_US",
-        url: "https://ilias-laoukili.github.io",
+        url: SITE_URL,
         images: [
             {
                 url: "/images/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "Ilias Laoukili - AI & Cybersecurity Engineer",
+                alt: "Ilias Laoukili — AI, Cybersecurity & ML Systems",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Ilias Laoukili - AI & Cybersecurity Engineer",
-        description: "Portfolio of Ilias Laoukili - AI & Cybersecurity Engineering Student at ESIEE Paris",
+        title: "Ilias Laoukili — AI, Cybersecurity & ML Systems",
+        description:
+            "AI Advisor @ MCN · M.Sc. Computer Science & AI @ Université Laval · ESIEE Paris.",
         images: ["/images/og-image.png"],
     },
     alternates: {
-        canonical: "https://ilias-laoukili.github.io",
+        canonical: SITE_URL,
         languages: {
-            "en": "https://ilias-laoukili.github.io/en",
-            "fr": "https://ilias-laoukili.github.io/fr",
-            "de": "https://ilias-laoukili.github.io/de",
-            "es": "https://ilias-laoukili.github.io/es",
-            "nl": "https://ilias-laoukili.github.io/nl",
+            en: `${SITE_URL}/en`,
+            fr: `${SITE_URL}/fr`,
         },
     },
 };
@@ -100,18 +109,21 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning className={`${inter.variable} ${interTight.variable}`}>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
+        >
             <head>
-                {/* Prevent flash of wrong theme */}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
                             (function() {
                                 try {
-                                    var theme = localStorage.getItem('theme');
-                                    if (!theme) {
-                                        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                                    if (window.location.pathname.indexOf('/fr') === 0) {
+                                        document.documentElement.lang = 'fr';
                                     }
+                                    var theme = localStorage.getItem('theme');
                                     if (theme === 'dark') {
                                         document.documentElement.classList.add('dark');
                                     }
@@ -120,26 +132,10 @@ export default function RootLayout({
                         `,
                     }}
                 />
-                <style dangerouslySetInnerHTML={{ __html: `
-                    /* Critical CSS for LCP - inline hero text styles */
-                    .text-display { font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 500; line-height: 1.1; }
-                    .text-h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); font-weight: 500; }
-                    .text-h6 { font-size: clamp(1rem, 2vw, 1.25rem); }
-                ` }} />
             </head>
-            <body
-                className="bg-white dark:bg-gray-950 font-sans text-paragraph font-medium text-g-500 dark:text-gray-300 antialiased md:text-body transition-colors duration-300"
-            >
-                <ThemeProvider>
-                    <a
-                        href="#main-content"
-                        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:bg-gray-800 dark:focus:text-white"
-                    >
-                        Skip to main content
-                    </a>
-                    <main id="main-content">
-                        {children}
-                    </main>
+            <body className="bg-background font-sans text-foreground">
+                <ThemeProvider defaultTheme="light">
+                    {children}
                 </ThemeProvider>
             </body>
         </html>

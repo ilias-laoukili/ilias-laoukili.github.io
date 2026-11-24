@@ -1,11 +1,19 @@
+export type LocalizedString = {
+    en: string;
+    fr: string;
+};
+
 export type Project = {
-    title: string;
+    title: LocalizedString;
     slug: string;
     date: string;
-    category: string;
+    category: LocalizedString;
     tags: string[];
-    excerpt: string;
+    excerpt: LocalizedString;
     imageUrl: string;
+    imageAlt: LocalizedString;
+    imageCaption?: LocalizedString;
+    coverVideo?: string;
     pdfUrl?: string;
     demoUrl?: string;
     extraImage?: string;
@@ -17,6 +25,9 @@ export type BlogPost = {
     title: string;
     content: string;
     mainImage?: string;
+    imageAlt?: string;
+    imageCaption?: string;
+    coverVideo?: string;
     category?: string;
     publishedAt?: string;
     tags?: string[];
@@ -29,10 +40,4 @@ export type BlogPost = {
 export type BlogCategory = {
     id: string;
     title: string;
-};
-
-export type Stat = {
-    value: string;
-    label: string;
-    description?: string;
 };

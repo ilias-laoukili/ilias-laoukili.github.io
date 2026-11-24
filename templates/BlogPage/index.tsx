@@ -4,8 +4,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import Hero from "./Hero";
 import ArticlesList from "./ArticlesList";
-import FloatingNav from "@/components/FloatingNav";
-import type { BlogPost, BlogCategory } from "@/types/index";
+import type { BlogPost, BlogCategory } from "@/types";
 import type { Locale } from "@/lib/i18n";
 
 type BlogPageProps = {
@@ -20,7 +19,6 @@ const BlogPage = ({ blogPosts, categories, locale }: BlogPageProps) => {
 
     return (
         <Layout locale={locale}>
-            <FloatingNav locale={locale} />
             <Hero
                 selectedCategory={selectedCategory}
                 onCategoryChange={setSelectedCategory}
@@ -28,9 +26,8 @@ const BlogPage = ({ blogPosts, categories, locale }: BlogPageProps) => {
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
             />
-
-            <ArticlesList 
-                selectedCategory={selectedCategory} 
+            <ArticlesList
+                selectedCategory={selectedCategory}
                 blogPosts={blogPosts}
                 searchQuery={searchQuery}
                 categories={categories}

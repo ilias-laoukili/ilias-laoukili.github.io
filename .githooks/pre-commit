@@ -1,0 +1,25 @@
+#!/bin/sh
+# Checks run by git before each commit: the commit is refused as soon as one of them fails.
+# Activate once per copy of the repository: git config core.hooksPath .githooks
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+refuse() {
+    echo "pre-commit: commit refused: $1" >&2
+    exit 1
+}
+
+# 1. What is checked is what is committed: no tracked change may stay outside the commit.
+git status --porcelain | grep -q '^.[^ ]' \
+    && refuse "some changes are not staged (see git status); add them or set them aside."
+
+# 2. Profile sync, EN/FR parity, and SEO checks pass.
+python3 scripts/sync_profile.py check \
+    || refuse "sync/parity checks failed; run 'python3 scripts/sync_profile.py build' if profile.yaml changed."
+
+# 3. Lint and static Next.js build succeed when code/content changed.
+if git diff --cached --name-only -- app/ components/ constants/ data/ lib/ messages/ public/ templates/ utils/ _posts/ package.json next.config.mjs tailwind.config.ts | grep -q '.'; then
+    npm run lint || refuse "npm run lint failed."
+    npm run build || refuse "npm run build failed."
+fi
+
+exit 0

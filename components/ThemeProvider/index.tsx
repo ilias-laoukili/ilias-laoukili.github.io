@@ -20,14 +20,10 @@ export function useTheme() {
     return context;
 }
 
-type ThemeProviderProps = {
-    children: ReactNode;
-    defaultTheme?: Theme;
-};
-
 function getStoredTheme(): Theme | null {
     try {
-        return localStorage.getItem("theme") as Theme | null;
+        const val = localStorage.getItem("theme");
+        return val === "dark" || val === "light" ? val : null;
     } catch {
         return null;
     }
@@ -37,34 +33,27 @@ function storeTheme(theme: Theme) {
     try {
         localStorage.setItem("theme", theme);
     } catch {
-        // localStorage unavailable (e.g. private browsing)
+        // localStorage unavailable
     }
 }
 
-export function ThemeProvider({ children, defaultTheme = "light" }: ThemeProviderProps) {
+export function ThemeProvider({
+    children,
+    defaultTheme = "light",
+}: {
+    children: ReactNode;
+    defaultTheme?: Theme;
+}) {
     const [theme, setThemeState] = useState<Theme>(defaultTheme);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        const savedTheme = getStoredTheme();
-        const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        const initialTheme = savedTheme || systemPreference;
-        setThemeState(initialTheme);
-        document.documentElement.classList.toggle("dark", initialTheme === "dark");
-
-        // Listen for OS theme changes
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        const handleChange = (e: MediaQueryListEvent) => {
-            if (!getStoredTheme()) {
-                const newTheme = e.matches ? "dark" : "light";
-                setThemeState(newTheme);
-                document.documentElement.classList.toggle("dark", newTheme === "dark");
-            }
-        };
-        mediaQuery.addEventListener("change", handleChange);
-        return () => mediaQuery.removeEventListener("change", handleChange);
-    }, []);
+        const saved = getStoredTheme();
+        const initial = saved ?? defaultTheme;
+        setThemeState(initial);
+        document.documentElement.classList.toggle("dark", initial === "dark");
+    }, [defaultTheme]);
 
     useEffect(() => {
         if (mounted) {
@@ -80,15 +69,6 @@ export function ThemeProvider({ children, defaultTheme = "light" }: ThemeProvide
     const setTheme = useCallback((newTheme: Theme) => {
         setThemeState(newTheme);
     }, []);
-
-    // Prevent flash of wrong theme
-    if (!mounted) {
-        return (
-            <ThemeContext.Provider value={{ theme: defaultTheme, toggleTheme, setTheme }}>
-                {children}
-            </ThemeContext.Provider>
-        );
-    }
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

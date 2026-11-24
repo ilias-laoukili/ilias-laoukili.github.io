@@ -1,176 +1,65 @@
 {
   "common": {
-    "readMore": "Read More",
-    "backToHome": "Back to Home",
-    "subscribe": "Subscribe",
-    "email": "Email",
-    "tryLiveDemo": "Try Live Demo",
+    "readMore": "Read write-up",
+    "backToHome": "Back to home",
+    "tryLiveDemo": "Live demo",
+    "viewOnGithub": "GitHub",
     "navigation": {
-      "home": "Home",
-      "about": "About",
-      "skills": "Skills",
+      "experience": "Experience",
       "projects": "Projects",
-      "research": "Interests",
-      "blog": "Blog",
-      "contact": "Contact"
+      "skills": "Skills",
+      "blog": "Writing"
     }
   },
   "home": {
     "hero": {
-      "greeting": "Hi, I'm Ilias Laoukili",
-      "role": "AI & Cybersecurity Engineering Student",
-      "title": "Ilias Laoukili",
-      "description": "Building RAG and GNN systems at the intersection of AI and applied research, with active work at LAMA (Université Gustave Eiffel) and an upcoming R&D internship at Nanyang Polytechnic.",
-      "downloadCv": "Download CV",
-      "contactMe": "Contact Me"
-    },
-    "introduction": {
-      "sectionTitle": "About Me",
-      "seeProjects": "See my projects",
-      "content": "I am an AI & Cybersecurity Engineering Student at ESIEE Paris and Research Assistant at Université Gustave Eiffel, investigating graph sparsification for GNNs. This summer I will be at Nanyang Polytechnic in Singapore, building a RAG system to make EnergyPlus energy simulation accessible via natural language. My work spans Graph Neural Networks, Digital Signal Processing, and applied AI. I also volunteer with the French Red Cross."
-    },
-    "projects": {
-      "title": "Projects",
-      "subtitle": "Research Projects & Technical Achievements",
-      "viewAll": "Show all projects"
-    },
-    "skills": {
-      "sectionTitle": "Expertise",
-      "subtitle": "Technical Skills & Areas of Expertise",
-      "categories": {
-        "aiMl": "AI & Machine Learning",
-        "humanLanguages": "Languages",
-        "cloudDevops": "Tools & Platforms",
-        "languages": "Programming Languages"
-      }
-    },
-    "stats": {
-      "academic": {
-        "label": "Academic Performance Boost",
-        "value": "30%",
-        "description": "Average improvement for 45+ students tutored in STEM"
-      },
-      "modelAccuracy": {
-        "label": "Model Accuracy",
-        "value": "85%",
-        "description": "Achieved in audio emotion classification using DSP and Random Forest"
-      },
-      "years": {
-        "label": "Years of Rigorous STEM Study",
-        "value": "4+",
-        "description": "Completed selective Preparatory Classes and currently pursuing an Engineering Master's"
-      },
-      "graphCompression": {
-        "label": "Graph Compression",
-        "value": "40%",
-        "description": "Achieved through geometric sparsification in Graph Neural Network research"
-      }
+      "telemetry": "LOC // QUÉBEC · 46.81°N 71.21°W",
+      "status": "AI ADVISOR @ MCN · M.SC. UNIVERSITÉ LAVAL",
+      "role": "AI & Cybersecurity · ML Systems",
+      "downloadCv": "Download Resume",
+      "contact": "Email"
     },
     "experience": {
-      "sectionTitle": "Experience",
-      "subtitle": "Experience & Education",
-      "present": "Present",
-      "upcoming": "Upcoming",
-      "incoming": "Incoming",
-      "items": {
-        "research": {
-          "title": "Research Assistant",
-          "org": "Université Gustave Eiffel",
-          "location": "Noisy-le-Grand, France",
-          "period": "Nov 2025 – Present",
-          "description": "Tremplin Recherche program. Investigating graph sparsification for GNNs via discrete Ricci curvature — reframing edge removal as geometric intervention to address oversquashing."
-        },
-        "internship": {
-          "title": "R&D Intern",
-          "org": "Nanyang Polytechnic",
-          "location": "Singapore",
-          "period": "Summer 2026",
-          "description": "Building an AI-powered RAG framework to make EnergyPlus energy simulation accessible via natural language queries, for green building energy optimization."
-        },
-        "tutor": {
-          "title": "STEM Tutor",
-          "org": "Complétude, Parkours, ESIEE Paris",
-          "location": "France",
-          "period": "2022 – Present",
-          "description": "Tutored 45+ students in Mathematics, Physics, and Computer Science. Average academic performance improvement of 30%."
-        },
-        "redcross": {
-          "title": "Volunteer",
-          "org": "French Red Cross",
-          "location": "France",
-          "period": "2023 – Present",
-          "description": "Humanitarian aid and community support activities."
-        },
-        "esiee": {
-          "title": "Engineering Master's — AI & Cybersecurity",
-          "org": "ESIEE Paris / Université Gustave Eiffel",
-          "location": "Noisy-le-Grand, France",
-          "period": "2022 – 2027",
-          "description": "Selective Grande École engineering program. Specialisation in artificial intelligence and cybersecurity."
-        },
-        "laval": {
-          "title": "Dual Degree",
-          "org": "Université Laval",
-          "location": "Québec, Canada",
-          "period": "2026 – 2027",
-          "description": "Incoming international dual degree exchange."
-        }
-      }
+      "index": "01 / BACKGROUND",
+      "title": "Experience & Education",
+      "workHeading": "Experience",
+      "educationHeading": "Education",
+      "volunteeringHeading": "Volunteering",
+      "current": "Active"
     },
-    "research": {
-      "sectionTitle": "Research",
-      "subtitle": "Areas of Work & Interest",
-      "interests": {
-        "graphNetworks": {
-          "title": "Graph Neural Networks",
-          "description": "Researching geometric approaches to graph sparsification and topology optimization. Focused on improving GNN performance by modifying graph structure rather than just compressing it."
-        },
-        "signalProcessing": {
-          "title": "Digital Signal Processing",
-          "description": "Developing custom DSP pipelines for audio analysis, including vocoders and feature extraction. Applying signal processing techniques to enable machine learning on audio data."
-        },
-        "mlPipelines": {
-          "title": "Scalable ML Pipelines",
-          "description": "Designing end-to-end machine learning systems with clean architecture. Building maintainable, production-ready pipelines for data preprocessing, model training, and deployment."
-        },
-        "education": {
-          "title": "Educational Technology",
-          "description": "Passionate about making complex technical concepts accessible through tutoring and mentorship. Developing innovative teaching methods to improve learning outcomes in STEM fields."
-        }
-      }
+    "projects": {
+      "index": "02 / PROJECTS & WRITING",
+      "title": "Selected Work",
+      "viewAll": "All articles"
     },
-    "contact": {
-      "title": "Stay updated on my latest projects and achievements",
-      "description": "Contact me and receive updates about my latest projects, research work, and new blog posts about AI, cybersecurity, and software development. Join me on this journey of continuous learning and innovation.",
-      "button": "Contact Me"
+    "skills": {
+      "index": "03 / TECHNICAL STACK",
+      "title": "Skills & Languages"
     }
   },
   "blog": {
-    "title": "Blog",
-    "heroTitle": "Projects & Articles",
-    "subtitle": "Technical write-ups and project deep-dives on AI research and graph learning",
-    "searchPlaceholder": "Search for an article by title...",
-    "allArticles": "All articles",
-    "readTime": "min read",
-    "publishedOn": "Published on",
-    "noArticles": "No articles found",
-    "tryAdjusting": "Try adjusting your search or category filters.",
-    "backToArticles": "Back to articles",
-    "similarArticles": "Similar Articles"
+    "index": "WRITING / ARCHIVE",
+    "heroTitle": "Projects & Technical Notes",
+    "subtitle": "Write-ups on graph neural networks, Rust/Python ML systems, and applied AI.",
+    "searchPlaceholder": "Filter by title or topic...",
+    "allArticles": "All",
+    "noArticles": "No matching articles",
+    "tryAdjusting": "Try a different keyword or category.",
+    "backToArticles": "Back to all articles",
+    "similarArticles": "Related notes"
   },
   "notFound": {
-    "title": "Sorry, we couldn't find the page you were looking for.",
-    "description": "Return to home and discover more about my work",
-    "backHome": "Back to homepage"
+    "title": "Page not found",
+    "description": "The page you requested does not exist or has moved.",
+    "backHome": "Return home"
   },
   "footer": {
-    "tagline": "Engineering student passionate about AI and cybersecurity, building innovative solutions for a safer digital future",
-    "contactMe": "Contact Me",
-    "copyright": "©2026 Ilias Laoukili. All rights reserved.",
-    "location": "ESIEE Paris, Noisy-le-Grand, France",
-    "navigation": "Navigation",
-    "contact": "Contact",
-    "social": "Social",
-    "downloadCV": "Download CV"
+    "cvHeading": "Curriculum Vitae",
+    "industryEn": "Industry (EN)",
+    "industryFr": "Industry (FR)",
+    "academicEn": "Research / Academic (EN)",
+    "academicFr": "Research / Academic (FR)",
+    "linksHeading": "Links",
+    "copyright": "© 2026 Ilias Laoukili"
   }
 }

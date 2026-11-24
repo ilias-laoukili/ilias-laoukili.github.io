@@ -1,95 +1,122 @@
 "use client";
 
-import Button from "@/components/Button";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { motion } from "motion/react";
-import dynamic from "next/dynamic";
+import { ArrowUpRight, FileDown, Mail } from "lucide-react";
+import Image from "@/components/Image";
 import { useTranslations } from "@/lib/i18n/client";
-import { useState, useEffect } from "react";
+import type { Locale } from "@/lib/i18n";
+import profile from "@/data/profile.generated.json";
 
-// Dynamically import the heavy 3D component - defer loading until after LCP
-const ColorBends = dynamic(() => import("../hero"), {
-    ssr: false,
-    loading: () => null,
-});
+type MainProps = {
+    locale: Locale;
+};
 
-const Main = () => {
-    const { t } = useTranslations('home.hero');
-    const [show3D, setShow3D] = useState(false);
-    
-    // Defer 3D background loading until after initial paint
-    useEffect(() => {
-        // Use requestIdleCallback for non-critical 3D loading
-        if ('requestIdleCallback' in window) {
-            (window as any).requestIdleCallback(() => setShow3D(true), { timeout: 1000 });
-        } else {
-            // Fallback for Safari
-            setTimeout(() => setShow3D(true), 100);
-        }
-    }, []);
-    
+const Main = ({ locale }: MainProps) => {
+    const { t } = useTranslations("home.hero");
+    const loc = locale === "fr" ? "fr" : "en";
+
     return (
-        <div className="relative min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-            {/* Deferred 3D background - loads after LCP */}
-            {show3D && (
-                <div className="absolute inset-0 z-0 w-full animate-fade-in">
-                    <ColorBends
-                        colors={["#00ff00", "#32cd32", "#7fff88"]}
-                        rotation={30}
-                        speed={0.3}
-                        scale={1.2}
-                        frequency={1.43}
-                        warpStrength={1.2}
-                        mouseInfluence={0.8}
-                        parallax={-0.6}
-                        noise={0.08}
-                    />
-                </div>
-            )}
-            <div className="container relative z-10 flex items-center justify-center min-h-[54.3125rem] 2xl:min-h-[48rem] md:min-h-screen">
-                <div className="max-w-[70rem] text-center justify-center flex flex-col items-center">
-                    {/* LCP Element - Role subtitle - NO animation delay */}
-                    <div className="text-h3 text-gray-700 dark:text-gray-300">
-                        {t('role')}
-                    </div>
-                    {/* LCP Element - Main title - render immediately with NO delay */}
-                    <h1 className="flex flex-col items-center justify-center flex-wrap max-w-[50rem]">
-                        <span className="text-display text-gray-900 dark:text-white">{t('title')}</span>
-                    </h1>
-                    {/* Description - NO delay */}
-                    <p className="mb-8 text-h6 text-gray-600 dark:text-gray-400 font-sans">
-                        {t('description')}
-                    </p>
-
-                {/* CTA buttons - animate after LCP */}
-                <motion.div
-                    className="flex gap-4 justify-center md:flex-col md:items-center"
-                    initial={{ y: 10 }}
-                    animate={{ y: 0 }}
-                    transition={{
-                        duration: 0.4,
-                        delay: 0.1,
-                        ease: "easeOut",
-                    }}
-                >
-                    <Button
-                        className="!border-gray-900 !bg-gray-900 !text-white hover:!bg-white hover:!text-gray-900 dark:!border-white dark:!bg-white dark:!text-gray-900 dark:hover:!bg-gray-900 dark:hover:!text-white"
-                        title={t('downloadCv')}
-                        arrow
-                        href={'https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry.pdf'}
-                    />
-                    <HoverBorderGradient
-                        containerClassName="rounded-full"
-                        as="button"
-                        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
-                        onClick={() => window.open('mailto:ilias.laoukili@proton.me', '_blank')}
-                    >
-                        <span>{t('contactMe')}</span>
-                    </HoverBorderGradient>
-                </motion.div>
+        <section className="relative overflow-hidden border-b border-border bg-[#080b12] text-white">
+            {/* Atmospheric NASA-editorial visual backdrop (decorative) */}
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+                <Image
+                    src="/images/hero-nasa.png"
+                    alt=""
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-center opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#080b12]/90 via-[#080b12]/65 to-[#080b12]/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080b12]/80 via-transparent to-[#080b12]/40" />
             </div>
-        </div>
-    </div>
+
+            <div className="site-container relative z-10 py-20 sm:py-28">
+                <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-xs uppercase tracking-[0.14em] text-neutral-300">
+                    <span className="inline-flex items-center gap-2">
+                        <span
+                            className="inline-block h-1.5 w-1.5 rounded-full bg-sky-400"
+                            aria-hidden="true"
+                        />
+                        <span>{t("status")}</span>
+                    </span>
+                    <span className="hidden text-white/25 sm:inline" aria-hidden="true">
+                        |
+                    </span>
+                    <span className="text-neutral-400">{t("telemetry")}</span>
+                </div>
+
+                <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+                    {profile.identity.name}
+                </h1>
+
+                <p className="mt-3 font-mono text-sm text-sky-200/90 sm:text-base">
+                    {t("role")}
+                </p>
+
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-200 sm:text-lg">
+                    {profile.summary[loc]}
+                </p>
+
+                <div className="mt-9 flex flex-wrap items-center gap-3">
+                    <a
+                        href={profile.cvDownloads.industry[loc]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-10 items-center gap-2 bg-white px-5 text-sm font-medium text-[#080b12] transition-opacity hover:opacity-90 focus-visible:ring-offset-[#080b12]"
+                    >
+                        <FileDown className="h-4 w-4" aria-hidden="true" />
+                        <span>{t("downloadCv")}</span>
+                        <span className="sr-only">
+                            {loc === "fr"
+                                ? " (PDF, ouvre dans un nouvel onglet)"
+                                : " (PDF, opens in a new tab)"}
+                        </span>
+                    </a>
+
+                    <a
+                        href={`mailto:${profile.identity.email}`}
+                        className="inline-flex h-10 items-center gap-1.5 border border-white/30 bg-[#080b12]/50 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:ring-offset-[#080b12]"
+                    >
+                        <Mail className="h-3.5 w-3.5 text-neutral-300" aria-hidden="true" />
+                        <span>{t("contact")}</span>
+                    </a>
+                </div>
+
+                <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-6 font-mono text-xs text-neutral-300">
+                    <a
+                        href={profile.identity.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[28px] items-center gap-1 py-1 transition-colors hover:text-white focus-visible:ring-offset-[#080b12]"
+                    >
+                        github.com/ilias-laoukili
+                        <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                        <span className="sr-only">
+                            {loc === "fr"
+                                ? " (ouvre dans un nouvel onglet)"
+                                : " (opens in a new tab)"}
+                        </span>
+                    </a>
+                    <a
+                        href={profile.identity.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[28px] items-center gap-1 py-1 transition-colors hover:text-white focus-visible:ring-offset-[#080b12]"
+                    >
+                        linkedin.com/in/ilias-laoukili
+                        <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                        <span className="sr-only">
+                            {loc === "fr"
+                                ? " (ouvre dans un nouvel onglet)"
+                                : " (opens in a new tab)"}
+                        </span>
+                    </a>
+                    <span className="inline-flex min-h-[28px] items-center py-1 text-neutral-300">
+                        {profile.identity.location[loc]}
+                    </span>
+                </div>
+            </div>
+        </section>
     );
 };
 

@@ -1,0 +1,305 @@
+{
+  "siteUrl": "https://ilias.laoukili.com",
+  "identity": {
+    "name": "Ilias Laoukili",
+    "email": "ilias.laoukili@proton.me",
+    "academicEmail": "ilias.laoukili@ulaval.ca",
+    "location": {
+      "en": "Québec City, QC, Canada",
+      "fr": "Québec, QC, Canada"
+    },
+    "github": "https://github.com/ilias-laoukili",
+    "linkedin": "https://www.linkedin.com/in/ilias-laoukili"
+  },
+  "cvDownloads": {
+    "industry": {
+      "en": "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry_en.pdf",
+      "fr": "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_industry_fr.pdf"
+    },
+    "academic": {
+      "en": "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_research_academic_en.pdf",
+      "fr": "https://github.com/ilias-laoukili/resume/releases/latest/download/cv_research_academic_fr.pdf"
+    }
+  },
+  "summary": {
+    "en": "AI & Cybersecurity engineering student and M.Sc. (Research) candidate at Université Laval, currently serving as an AI Advisor at the Ministère de la Cybersécurité et du Numérique (MCN). Hands-on experience building RAG, GNN, and high-performance Rust/Python ML systems across research at LAMA (Université Gustave Eiffel) and an R&D internship at Nanyang Polytechnic, Singapore.",
+    "fr": "Élève-ingénieur en IA et cybersécurité et étudiant à la maîtrise recherche (M.Sc.) à l'Université Laval, actuellement conseiller en intelligence artificielle au ministère de la Cybersécurité et du Numérique (MCN). Expérience pratique en systèmes RAG, GNN et bibliothèques Rust/Python haute performance (recherche au LAMA, stage R&D à Nanyang Polytechnic, Singapour)."
+  },
+  "experience": [
+    {
+      "id": "mcn",
+      "role": {
+        "en": "AI Advisor (Student Position)",
+        "fr": "Conseiller en intelligence artificielle (Emploi étudiant)"
+      },
+      "organization": {
+        "en": "Ministère de la Cybersécurité et du Numérique (MCN) — AI Transformation Office",
+        "fr": "Ministère de la Cybersécurité et du Numérique (MCN) — Bureau de la transformation de l'IA"
+      },
+      "location": {
+        "en": "Québec, QC, Canada",
+        "fr": "Québec, QC, Canada"
+      },
+      "period": {
+        "en": "Nov. 2026 — Present",
+        "fr": "Nov. 2026 — Présent"
+      },
+      "current": true,
+      "bullets": {
+        "en": [
+          "Contributing to the ministry's AI engineering and industrialization capacity to deliver secure, operational, and reusable AI digital services.",
+          "Supporting architecture documentation, data preparation, prototyping, testing, and integration of applied AI solutions alongside architecture, data, security, and MLOps specialists."
+        ],
+        "fr": [
+          "Contribution à la capacité ministérielle de réalisation et d'industrialisation de services numériques IA sécurisés, opérationnels et réutilisables.",
+          "Soutien à la documentation d'architecture, la préparation des données, le prototypage, les essais et l'intégration de solutions IA avec des spécialistes (architecture, données, sécurité, MLOps)."
+        ]
+      }
+    },
+    {
+      "id": "nyp",
+      "role": {
+        "en": "R&D Engineering Intern",
+        "fr": "Stagiaire ingénieur R&D"
+      },
+      "organization": {
+        "en": "Nanyang Polytechnic (NYP)",
+        "fr": "Nanyang Polytechnic (NYP)"
+      },
+      "location": {
+        "en": "Singapore",
+        "fr": "Singapour"
+      },
+      "period": {
+        "en": "May 2026 — Aug. 2026",
+        "fr": "Mai 2026 — Août 2026"
+      },
+      "current": false,
+      "bullets": {
+        "en": [
+          "Developed an AI-powered system for green building energy simulation, engineering a RAG framework to make EnergyPlus accessible via natural language queries.",
+          "Collaborated with research teams to optimize energy efficiency simulations through applied AI algorithms."
+        ],
+        "fr": [
+          "Développement d'un système IA pour la simulation énergétique de bâtiments durables, avec conception d'un framework RAG rendant EnergyPlus interrogeable en langage naturel.",
+          "Collaboration avec les équipes de recherche pour optimiser les simulations d'efficacité énergétique par des algorithmes d'IA appliquée."
+        ]
+      }
+    },
+    {
+      "id": "lama",
+      "role": {
+        "en": "Research Assistant (Tremplin Recherche)",
+        "fr": "Assistant de recherche (Tremplin Recherche)"
+      },
+      "organization": {
+        "en": "Université Gustave Eiffel / LAMA",
+        "fr": "Université Gustave Eiffel / LAMA"
+      },
+      "location": {
+        "en": "Champs-sur-Marne, France",
+        "fr": "Champs-sur-Marne, France"
+      },
+      "period": {
+        "en": "Nov. 2025 — May 2026",
+        "fr": "Nov. 2025 — Mai 2026"
+      },
+      "current": false,
+      "bullets": {
+        "en": [
+          "Investigated trade-offs between Graph Neural Network (GNN) performance and computational efficiency via graph sparsification.",
+          "Analyzed graph topology and sparsification patterns to reduce GNN computational overhead without accuracy degradation."
+        ],
+        "fr": [
+          "Étude des compromis entre performance et efficacité de calcul des réseaux de neurones sur graphes (GNN) via la sparsification de graphes.",
+          "Analyse de la topologie des graphes et des schémas de sparsification afin de réduire le coût de calcul sans perte de précision."
+        ]
+      }
+    },
+    {
+      "id": "tutoring",
+      "role": {
+        "en": "Academic Tutor & Private Instructor",
+        "fr": "Tuteur académique et professeur particulier"
+      },
+      "organization": {
+        "en": "Complétude, Parkours, ESIEE Paris",
+        "fr": "Complétude, Parkours, ESIEE Paris"
+      },
+      "location": {
+        "en": "Paris Region, France",
+        "fr": "Île-de-France, France"
+      },
+      "period": {
+        "en": "Sep. 2021 — May 2026",
+        "fr": "Sept. 2021 — Mai 2026"
+      },
+      "current": false,
+      "bullets": {
+        "en": [
+          "Tutored 45+ students in Math/CS, improving academic performance by 30% through personalized guidance."
+        ],
+        "fr": [
+          "Accompagnement de plus de 45 élèves en mathématiques et informatique, avec une amélioration moyenne des résultats de 30%."
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "id": "ulaval",
+      "institution": {
+        "en": "Université Laval",
+        "fr": "Université Laval"
+      },
+      "location": {
+        "en": "Québec, QC, Canada",
+        "fr": "Québec, QC, Canada"
+      },
+      "degree": {
+        "en": "M.Sc. in Computer Science, Research Track (Mémoire) — Dual Degree",
+        "fr": "Maîtrise en informatique avec mémoire (M.Sc. recherche) — Double diplôme"
+      },
+      "period": {
+        "en": "Fall 2026 — Present",
+        "fr": "Automne 2026 — Présent"
+      },
+      "current": true,
+      "bullets": {
+        "en": [
+          "Pursuing a research-based master's in Computer Science/AI, supervised by Prof. Talal Halabi, complementing the French engineering curriculum."
+        ],
+        "fr": [
+          "Maîtrise recherche en informatique et IA, sous la direction du Prof. Talal Halabi, en complément du cursus d'ingénieur."
+        ]
+      }
+    },
+    {
+      "id": "esiee",
+      "institution": {
+        "en": "ESIEE Paris",
+        "fr": "ESIEE Paris"
+      },
+      "location": {
+        "en": "Noisy-le-Grand, France",
+        "fr": "Noisy-le-Grand, France"
+      },
+      "degree": {
+        "en": "M.Eng. in Artificial Intelligence & Cybersecurity (Grande École)",
+        "fr": "Diplôme d'ingénieur en Intelligence Artificielle et Cybersécurité (Grande École)"
+      },
+      "period": {
+        "en": "2024 — 2027",
+        "fr": "2024 — 2027"
+      },
+      "current": false,
+      "bullets": {
+        "en": [
+          "State-recognized engineering degree. Curriculum: Machine Learning, Computer Vision, Data Science, Cybersecurity."
+        ],
+        "fr": [
+          "Diplôme d'ingénieur reconnu par l'État (CTI). Cours : apprentissage automatique, vision par ordinateur, science des données, cybersécurité."
+        ]
+      }
+    },
+    {
+      "id": "cpge",
+      "institution": {
+        "en": "Lycée Gustave Monod",
+        "fr": "Lycée Gustave Monod"
+      },
+      "location": {
+        "en": "Enghien-les-Bains, France",
+        "fr": "Enghien-les-Bains, France"
+      },
+      "degree": {
+        "en": "Classes Préparatoires aux Grandes Écoles (CPGE)",
+        "fr": "Classes Préparatoires aux Grandes Écoles (CPGE)"
+      },
+      "period": {
+        "en": "2021 — 2024",
+        "fr": "2021 — 2024"
+      },
+      "current": false,
+      "bullets": {
+        "en": [
+          "Intensive preparation in Math & Physics (MPSI/PCSI/PC) for French engineering school entrance exams."
+        ],
+        "fr": [
+          "Préparation intensive en mathématiques et physique (MPSI/PCSI/PC) aux concours des grandes écoles d'ingénieurs."
+        ]
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "red_cross",
+      "role": {
+        "en": "Volunteer",
+        "fr": "Bénévole"
+      },
+      "organization": {
+        "en": "French Red Cross",
+        "fr": "Croix-Rouge française"
+      },
+      "location": {
+        "en": "Puteaux, France",
+        "fr": "Puteaux, France"
+      },
+      "period": {
+        "en": "2023 — Jun. 2026",
+        "fr": "2023 — Juin 2026"
+      },
+      "bullets": {
+        "en": [
+          "Contributed to community outreach and logistics, supporting over 200 families."
+        ],
+        "fr": [
+          "Contribution à l'aide sociale et à la logistique de terrain auprès de plus de 200 familles."
+        ]
+      }
+    }
+  ],
+  "skills": [
+    {
+      "label": {
+        "en": "Core & AI",
+        "fr": "IA & Langages clés"
+      },
+      "items": {
+        "en": "Python, Rust, SQL, PyTorch, PyTorch Geometric, Scikit-learn, GNNs, RAG/LLM, DSP (Librosa)",
+        "fr": "Python, Rust, SQL, PyTorch, PyTorch Geometric, Scikit-learn, GNN, RAG/LLM, DSP (Librosa)"
+      }
+    },
+    {
+      "label": {
+        "en": "Tools & Dev",
+        "fr": "Outils & DevOps"
+      },
+      "items": {
+        "en": "Git/GitHub, Docker, CI/CD, PyO3, Streamlit, Hydra, Linux, Wireshark, MongoDB, EnergyPlus",
+        "fr": "Git/GitHub, Docker, CI/CD, PyO3, Streamlit, Hydra, Linux, Wireshark, MongoDB, EnergyPlus"
+      }
+    },
+    {
+      "label": {
+        "en": "Certifications",
+        "fr": "Certifications"
+      },
+      "items": {
+        "en": "MongoDB Associate Developer, Harvard CS50's Introduction to AI with Python",
+        "fr": "MongoDB Associate Developer, Harvard CS50's Introduction to AI with Python"
+      }
+    },
+    {
+      "label": {
+        "en": "Languages",
+        "fr": "Langues"
+      },
+      "items": {
+        "en": "French (Native), German (C1 — Abibac), English (Professional working proficiency — TOEIC 935/990)",
+        "fr": "Français (Langue maternelle), Allemand (C1 — Abibac), Anglais (Compétence professionnelle — TOEIC 935/990)"
+      }
+    }
+  ]
+}
