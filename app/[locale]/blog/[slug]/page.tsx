@@ -37,9 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const ogImage =
         params.slug === "plekton"
             ? `${SITE_URL}/images/og-plekton.png`
-            : post.mainImage
-              ? `${SITE_URL}${post.mainImage}`
-              : `${SITE_URL}/images/og-image.png`;
+            : params.slug === "manis"
+              ? `${SITE_URL}/images/og-manis.png`
+              : post.mainImage
+                ? `${SITE_URL}${post.mainImage}`
+                : `${SITE_URL}/images/og-image.png`;
 
     return {
         title: post.title,
