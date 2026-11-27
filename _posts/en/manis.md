@@ -2,7 +2,7 @@
 
 Checking a running Ubuntu server against CIS Benchmarks is already a solved problem: Canonical's USG, OpenSCAP, and Lynis do that well. The case that felt awkward to automate cleanly in CI was different: auditing an extracted rootfs or mounted Linux image **before it boots**, without root privileges, without installing OpenSCAP or Python inside the pipeline, and failing the build if a hardening control regresses between two image builds.
 
-`manis` (`v1.0.0`) is a single static Rust binary (~1.9 MB stripped, `#![forbid(unsafe_code)]`) built around that workflow. It never shells out to `dpkg`, `systemctl`, `ufw`, or `findmnt`. Instead, it reads system state directly through files (`/etc`, `/var/lib/dpkg/status`, `/proc`, `/sys`, `/boot`) behind a `SystemView` abstraction.
+`manis` (`v1.0.0`) started in January 2026 as a set of shell scripts checking ANSSI-BP-028 controls on Linux, and evolved into a single static Rust binary (~1.9 MB stripped, `#![forbid(unsafe_code)]`) built around that workflow. It never shells out to `dpkg`, `systemctl`, `ufw`, or `findmnt`. Instead, it reads system state directly through files (`/etc`, `/var/lib/dpkg/status`, `/proc`, `/sys`, `/boot`) behind a `SystemView` abstraction.
 
 ## Offline confinement matters
 

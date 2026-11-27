@@ -4,7 +4,7 @@ Pendant mes [expériences de sparsification de graphes](/fr/blog/graph-sparsific
 
 J'avais besoin d'un outil pour générer des graphes synthétiques en contrôlant séparément chacun de ces facteurs, ajuster des modèles à blocs sur des graphes réels et exécuter la sparsification spectrale dans mes balayages Python sans perdre plusieurs minutes par graphe avec NetworkX.
 
-Le nom vient du grec *πλεκτόν* (« tissé »). Comme le crochet — où chaque maille dépend de sa topologie locale et résiste à une mécanisation naïve — `plekton` automatise la synthèse et la sparsification de graphes structurés.
+Initié en mars 2026 sous la forme d'un premier prototype Rust (`synth-graph-rs`) puis unifié sous le nom *plekton* (du grec *πλεκτόν*, « tissé »), le projet automatise la synthèse et la sparsification de graphes structurés — à l'image du crochet, où chaque maille dépend de sa topologie locale et résiste à une mécanisation naïve.
 
 ## Architecture et API
 

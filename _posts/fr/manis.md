@@ -2,7 +2,7 @@
 
 Vérifier un serveur Ubuntu qui tourne déjà face au benchmark CIS est un problème largement couvert : USG (Canonical), OpenSCAP et Lynis le font très bien. Le cas qui restait pénible à automatiser proprement en CI était différent : auditer une image ou un rootfs Linux **avant qu'il ne démarre**, sans droits root, sans installer OpenSCAP ni Python dans le pipeline, et bloquer le build dès qu'un contrôle régresse entre deux versions d'image.
 
-`manis` (`v1.0.0`) est un binaire Rust statique unique (~1,9 Mo strippé, `#![forbid(unsafe_code)]`) conçu pour ce besoin précis. Il ne lance aucun sous-processus (`dpkg`, `systemctl`, `ufw` ou `findmnt` ne sont jamais appelés). Toute l'inspection passe par des lectures de fichiers derrière une abstraction `SystemView`.
+`manis` (`v1.0.0`) est né en janvier 2026 d'une série de scripts shell vérifiant des contrôles ANSSI-BP-028 sous Linux, avant d'évoluer vers un binaire Rust statique unique (~1,9 Mo strippé, `#![forbid(unsafe_code)]`) conçu pour ce besoin précis. Il ne lance aucun sous-processus (`dpkg`, `systemctl`, `ufw` ou `findmnt` ne sont jamais appelés). Toute l'inspection passe par des lectures de fichiers derrière une abstraction `SystemView`.
 
 ## Le piège des liens symboliques en `--root`
 

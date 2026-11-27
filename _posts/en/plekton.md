@@ -4,7 +4,7 @@ During my [graph sparsification experiments](/en/blog/graph-sparsification/) at 
 
 I needed a way to generate synthetic graphs with explicit control over those parameters, fit blockmodels to real graphs, and run spectral sparsification inside Python hyperparameter sweeps without waiting minutes per graph in NetworkX.
 
-The name comes from Greek *πλεκτόν* ("woven"). Like crochet, where every stitch depends on local topology and resists naïve mechanization, `plekton` automates the synthesis and sparsification of structured graphs.
+Started in March 2026 as an early Rust prototype (`synth-graph-rs`) and later unified under the name *plekton* (from Greek *πλεκτόν*, "woven"), the library automates the synthesis and sparsification of structured graphs—much like crochet, where every stitch depends on local topology and resists naïve mechanization.
 
 ## Design and API
 

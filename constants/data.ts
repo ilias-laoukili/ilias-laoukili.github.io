@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
             fr: "manis — Audit de durcissement Linux hors ligne en Rust",
         },
         slug: "manis",
-        date: "2026-11-26",
+        date: "2026-01-24",
         category: {
             en: "Security / Rust",
             fr: "Sécurité / Rust",
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
             fr: "plekton — Graphes synthétiques et sparsification spectrale en Rust",
         },
         slug: "plekton",
-        date: "2026-11-23",
+        date: "2026-03-12",
         category: {
             en: "Systems / Rust",
             fr: "Systèmes / Rust",
