@@ -134,7 +134,7 @@ const BlogDetailPage = ({ article, similarArticles = [], locale }: BlogDetailPag
                 )}
 
                 <div className="site-container max-w-3xl py-14">
-                    <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-a:text-accent prose-code:font-mono prose-pre:border prose-pre:border-border prose-pre:bg-muted">
+                    <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-a:text-accent prose-code:font-mono prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-border prose-pre:bg-muted prose-pre:text-foreground [&_pre_code]:text-foreground">
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
